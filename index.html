@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>India & Egypt 2026 — Family Travel App</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Family Trip">
+<meta name="theme-color" content="#1b2a4a">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231b2a4a'/%3E%3Ctext x='50' y='66' font-size='54' text-anchor='middle'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231b2a4a'/%3E%3Ctext x='50' y='66' font-size='54' text-anchor='middle'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --saffron:#e07a2c;
+    --gold:#c9a227;
+    --deep:#1b2a4a;
+    --deep2:#26395e;
+    --paper:#fbf7ef;
+    --card:#ffffff;
+    --ink:#22252b;
+    --muted:#6b7280;
+    --line:#e7e0d2;
+    --good:#2f7d5c;
+    --danger:#b3452f;
+    --radius:16px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{
+    margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,var(--deep) 0%, var(--deep) 120px, var(--paper) 120px);
+    color:var(--ink); min-height:100%;
+  }
+  #app{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--paper);}
+  header.topbar{
+    padding:18px 18px 14px;color:#fff;
+    background:linear-gradient(135deg,var(--deep),var(--deep2));
+    position:sticky;top:0;z-index:20;
+  }
+  header.topbar h1{margin:0;font-size:19px;font-weight:700;letter-spacing:.2px;}
+  header.topbar .sub{font-size:12.5px;opacity:.85;margin-top:3px;}
+  main{flex:1;padding:14px 14px calc(90px + var(--safe-bottom));}
+  nav.tabs{
+    position:fixed;left:0;right:0;bottom:0;
+    max-width:520px;margin:0 auto;
+    display:flex;background:#fff;border-top:1px solid var(--line);
+    padding-bottom:var(--safe-bottom);
+    box-shadow:0 -4px 16px rgba(0,0,0,.06);
+    z-index:30;
+  }
+  nav.tabs button{
+    flex:1;border:none;background:none;padding:9px 2px 8px;font-size:10.5px;color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:600;
+  }
+  nav.tabs button .ic{font-size:19px;}
+  nav.tabs button.active{color:var(--saffron);}
+  h2.section-title{font-size:17px;margin:2px 0 12px;color:var(--deep);}
+  .card{background:var(--card);border-radius:var(--radius);padding:14px 15px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--line);}
+  .pill{display:inline-block;background:#f3ead9;color:var(--saffron);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-right:6px;}
+  .pill.green{background:#e4f2ea;color:var(--good);}
+  .pill.blue{background:#e6eefc;color:#2454a3;}
+  .muted{color:var(--muted);font-size:12.5px;}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .btn{
+    border:none;background:var(--deep);color:#fff;padding:10px 14px;border-radius:12px;font-size:13.5px;font-weight:700;
+  }
+  .btn.secondary{background:#f0ece1;color:var(--deep);}
+  .btn.ghost{background:none;color:var(--saffron);padding:6px 8px;font-weight:700;}
+  .btn.small{padding:7px 10px;font-size:12px;}
+  .btn.danger{background:var(--danger);color:#fff;}
+  .btn.block{width:100%;}
+  input,select,textarea{
+    width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff;color:var(--ink);font-family:inherit;
+  }
+  textarea{resize:vertical;min-height:60px;}
+  label.field{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 4px;}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;}
+  .chip{flex:none;padding:8px 13px;border-radius:20px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted);}
+  .chip.active{background:var(--deep);color:#fff;border-color:var(--deep);}
+  .day-card .date{font-size:11.5px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.4px;}
+  .day-card h3{margin:2px 0 4px;font-size:15.5px;color:var(--deep);}
+  .day-card .loc{font-size:12.5px;color:var(--muted);margin-bottom:6px;}
+  .day-card p{font-size:13.5px;line-height:1.45;margin:6px 0;}
+  .tips{margin:8px 0 0;padding:0;list-style:none;}
+  .tips li{font-size:12.5px;line-height:1.4;padding:5px 0 5px 20px;position:relative;color:#3a3d44;}
+  .tips li:before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:900;}
+  .doc-item{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);}
+  .doc-item:first-child{border-top:none;}
+  .thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;background:#eee;flex:none;border:1px solid var(--line);}
+  .thumb.placeholder{display:flex;align-items:center;justify-content:center;font-size:22px;}
+  .doc-info{flex:1;min-width:0;}
+  .doc-info .t{font-weight:700;font-size:13.5px;}
+  .doc-info .m{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .empty{text-align:center;color:var(--muted);font-size:13px;padding:30px 10px;}
+  .modal-bg{position:fixed;inset:0;background:rgba(20,20,25,.55);z-index:100;display:flex;align-items:flex-end;justify-content:center;}
+  .modal{background:#fff;width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:18px 18px calc(22px + var(--safe-bottom));max-height:88vh;overflow-y:auto;}
+  .modal h3{margin:0 0 12px;font-size:16.5px;color:var(--deep);}
+  .modal-actions{display:flex;gap:8px;margin-top:14px;}
+  .modal-actions .btn{flex:1;}
+  .close-x{position:absolute;top:10px;right:14px;font-size:20px;background:none;border:none;color:var(--muted);}
+  .guide-stop{border-top:1px solid var(--line);padding:12px 0;}
+  .guide-stop:first-child{border-top:none;}
+  .guide-stop.current{background:#fff7ea;border-radius:10px;padding:12px;margin:0 -12px;}
+  .guide-stop h4{margin:0 0 5px;font-size:13.5px;color:var(--deep);}
+  .guide-stop p{margin:0;font-size:13px;line-height:1.5;color:#333;}
+  .player-bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 4px;display:flex;align-items:center;justify-content:center;gap:14px;border-radius:14px;margin-top:10px;box-shadow:0 -2px 10px rgba(0,0,0,.05);}
+  .player-bar button{background:var(--deep);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:17px;}
+  .player-bar button.big{width:54px;height:54px;font-size:20px;background:var(--saffron);}
+  .checklist-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px;}
+  .checklist-item:first-child{border-top:none;}
+  .checklist-item input{width:19px;height:19px;flex:none;}
+  .checklist-item.checked span{text-decoration:line-through;color:var(--muted);}
+  .info-block h4{margin:14px 0 4px;color:var(--deep);font-size:14px;}
+  .info-block p, .info-block li{font-size:13px;line-height:1.5;color:#3a3d44;}
+  .info-block ul{margin:4px 0;padding-left:18px;}
+  .banner{background:#fff7ea;border:1px solid #f0dcae;border-radius:14px;padding:12px 14px;font-size:12.5px;line-height:1.5;margin-bottom:12px;color:#5a4a1f;}
+  .banner b{color:#8a5c0a;}
+  .traveler-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+  .traveler-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700;color:var(--deep);}
+  .traveler-card .r{font-weight:500;color:var(--muted);font-size:11.5px;}
+  .flex-between{display:flex;justify-content:space-between;align-items:center;}
+  a{color:var(--saffron);}
+  .toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:#22252b;color:#fff;padding:10px 18px;border-radius:30px;font-size:13px;z-index:200;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <h1 id="headerTitle">India & Egypt 2026</h1>
+    <div class="sub" id="headerSub">Aug 1 – Aug 13, 2026 · AC42 meets all at YYZ · 6 travellers</div>
+  </header>
+  <main id="main"></main>
+  <nav class="tabs" id="tabs">
+    <button data-tab="home" class="active"><span class="ic">🏠</span>Home</button>
+    <button data-tab="itinerary"><span class="ic">🗓️</span>Itinerary</button>
+    <button data-tab="flights"><span class="ic">✈️</span>Flights</button>
+    <button data-tab="docs"><span class="ic">🗂️</span>Docs</button>
+    <button data-tab="guides"><span class="ic">📍</span>Guides</button>
+    <button data-tab="tours"><span class="ic">🎧</span>Tours</button>
+    <button data-tab="info"><span class="ic">ℹ️</span>Info</button>
+  </nav>
+</div>
+<script>
+/* ============ DATA ============ */
+const TRAVELERS = [
+  {id:"marc",     name:"Marc",     from:"YYC"},
+  {id:"natasha",  name:"Natasha",  from:"YYC"},
+  {id:"courtney", name:"Courtney", from:"YYC"},
+  {id:"scarlett", name:"Scarlett", from:"YYC"},
+  {id:"milo",     name:"Milo",     from:"YYC"},
+  {id:"jordyn",   name:"Jordyn",   from:"SLC"}
+];
+const CONFIRMED_FLIGHTS = [
+  {
+    group: "Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)",
+    groupIds: ["marc","natasha","courtney","milo","scarlett"],
+    avionRef: "P-C3OVWC",
+    airlineRef: "C3P22L",
+    airline: "Air Canada",
+    paid: "250,000 pts + CA$4,052.60",
+    legs: [
+      { flight:"AC142", from:"Calgary (YYC)", to:"Toronto (YYZ)", departs:"Aug 1 · 10:30am", arrives:"Aug 1 · 4:19pm", duration:"3h 49m" },
+      { flight:"AC42",  from:"Toronto (YYZ)", to:"Delhi (DEL)",   departs:"Aug 1 · 7:40pm",  arrives:"Aug 2 · 7:50pm",  duration:"14h 40m", note:"Arrives Aug 2 local time" }
+    ]
+  },
+  {
+    group: "Jordyn (SLC)",
+    groupIds: ["jordyn"],
+    avionRef: "NBQQUJ",
+    airlineRef: "C3T6XI",
+    airline: "Air Canada / United",
+    paid: "50,000 pts + CA$665.88",
+    legs: [
+      { flight:"AC3960 (op. United)", from:"Salt Lake City (SLC)", to:"Denver (DEN)",   departs:"Aug 1 · 8:30am",  arrives:"Aug 1 · 10:27am", duration:"1h 57m" },
+      { flight:"AC1040",              from:"Denver (DEN)",         to:"Toronto (YYZ)",  departs:"Aug 1 · 11:25am", arrives:"Aug 1 · 4:35pm",  duration:"3h 10m" },
+      { flight:"AC42",                from:"Toronto (YYZ)",        to:"Delhi (DEL)",    departs:"Aug 1 · 7:40pm",  arrives:"Aug 2 · 7:50pm",  duration:"14h 40m", note:"Same flight as Calgary group from YYZ" }
+    ]
+  },
+  {
+    group: "All 6 — Delhi to Patna",
+    groupIds: ["marc","natasha","courtney","milo","scarlett","jordyn"],
+    avionRef: "SCF2QT",
+    airlineRef: "SCF2QT",
+    airline: "IndiGo",
+    paid: "INR 1,02,120",
+    legs: [
+      { flight:"6E 2373 (A320)", from:"Delhi (T2)", to:"Patna (PAT)", departs:"Aug 3 · 11:10am", arrives:"Aug 3 · 12:45pm", duration:"1h 35m", note:"Check-in closes 10:10am · Baggage: 20kg checked + 7kg cabin" }
+    ],
+    seats: [
+      { name:"Marc",     seat:"1E", meal:"Chicken Junglee Sandwich" },
+      { name:"Natasha",  seat:"1D", meal:"Veg Biryani" },
+      { name:"Courtney", seat:"1F", meal:"Veg Biryani" },
+      { name:"Jordyn",   seat:"2D", meal:"LCML (Low Calorie)" },
+      { name:"Scarlett", seat:"2E", meal:"Chicken Junglee Sandwich" },
+      { name:"Milo",     seat:"2F", meal:"Chicken Junglee Sandwich" }
+    ]
+  },
+  {
+    group: "All 6 — Patna to Delhi",
+    groupIds: ["marc","natasha","courtney","milo","scarlett","jordyn"],
+    avionRef: "SCF2QT",
+    airlineRef: "SCF2QT",
+    airline: "IndiGo",
+    paid: "Included above",
+    legs: [
+      { flight:"6E 5121 (A320)", from:"Patna (PAT)", to:"Delhi (T3)", departs:"Aug 8 · 3:50pm", arrives:"Aug 8 · 5:40pm", duration:"1h 50m", note:"Check-in closes 2:50pm · Arrives T3 (international terminal)" }
+    ],
+    seats: [
+      { name:"Marc",     seat:"1E", meal:"Super 6E" },
+      { name:"Natasha",  seat:"1D", meal:"Veg Biryani" },
+      { name:"Courtney", seat:"1F", meal:"Veg Biryani" },
+      { name:"Jordyn",   seat:"2D", meal:"LCML (Low Calorie)" },
+      { name:"Scarlett", seat:"2E", meal:"Chicken Junglee Sandwich" },
+      { name:"Milo",     seat:"2F", meal:"Chicken Junglee Sandwich" }
+    ]
+  }
+];
+const CHURCH_DELHI = {
+  name: "Church of Jesus Christ of Latter-day Saints",
+  address: "F-48 Poorvi Marg, Vasant Vihar, New Delhi 110057",
+  time: "Sunday, Aug 9 · 1:00pm Sacrament Meeting",
+  phone: "011-46026152",
+  email: "550442@ChurchofJesusChrist.org",
+  notes: "About 10 minutes from IGI Airport. The private car returning from Agra can drop the family here directly for the 1pm meeting, then continue on to the airport afterward — no station stop needed."
+};
+const DOC_CATEGORIES = [
+  {key:"passport", label:"Passport", icon:"🛂"},
+  {key:"boarding", label:"Boarding Passes", icon:"✈️"},
+  {key:"transport", label:"Ground Transport", icon:"🚗"},
+  {key:"attraction", label:"Attraction Tickets", icon:"🎟️"},
+  {key:"hotel", label:"Hotel Bookings", icon:"🏨"}
+];
+const ITINERARY = [
+  {date:"2026-08-01", title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
+  {date:"2026-08-02", title:"Arrive Delhi", loc:"Delhi (DEL)", details:"Land in Delhi and transfer to the hotel. Overnight in Delhi (Aug 2–3) to rest before heading to Bihar.", tips:["Use the e-Visa immigration line at DEL, not the regular foreign-national line.","Book an official prepaid/airport taxi or hotel pickup — avoid unlicensed touts.","It's monsoon season: expect heat, humidity, and possible rain showers."]},
+  {date:"2026-08-03", title:"Delhi → Patna → Bihar", loc:"Delhi (DEL) → Patna (PAT) → Bihar", details:"IndiGo 6E 2373 departs Delhi T2 at 11:10am, arriving Patna at 12:45pm. Check-in closes at 10:10am — be at T2 by 9:30am. Rising Star Outreach meets the family at Patna airport and drives everyone to the Bihar campus (~5.5hr drive).", tips:["✈ Flight: 6E 2373 · Departs DEL T2 11:10am → Arrives PAT 12:45pm · PNR: SCF2QT","Check-in closes 10:10am — be at domestic terminal T2 by 9:30am at the latest","Pack a separate \"Bihar bag\": modest, durable, easy-to-wash clothing.","Bring extra cash — ATMs are scarce once outside Patna city."]},
+  {date:"2026-08-04", title:"Bihar — Humanitarian Work (Day 2)", loc:"Sunderpur region, Bihar", details:"Serving with Rising Star Outreach: medical care, education, and colony-development work alongside the leprosy-affected communities near the Nepal border.", tips:["Stay on prescribed malaria prophylaxis if recommended by your travel doctor.","Drink only bottled/filtered water; avoid ice.","Keep cameras/phones secure and dust-protected — rural roads are unpaved."]},
+  {date:"2026-08-05", title:"Bihar — Humanitarian Work (Day 3)", loc:"Sunderpur region, Bihar", details:"Continued service work with Rising Star Outreach.", tips:["Debrief as a family each evening — this work can be emotionally heavy, especially for the kids.","Sunscreen + insect repellent daily, even on cloudy monsoon days."]},
+  {date:"2026-08-06", title:"Bihar — Humanitarian Work (Day 4)", loc:"Sunderpur region, Bihar", details:"Continued service work with Rising Star Outreach.", tips:["Charge devices whenever power is available — rural power can be intermittent.","Keep a small first-aid kit handy (blister care, rehydration salts, antidiarrheal)."]},
+  {date:"2026-08-07", title:"Bihar — Humanitarian Work (Day 5)", loc:"Sunderpur region, Bihar", details:"Final day of service work — wrap-up, farewells, and travel back toward Patna.", tips:["Reconfirm the Patna → Delhi flight for tomorrow.","Repack — separate \"Bihar clothes\" from clean clothes for Agra/Cairo."]},
+  {date:"2026-08-08", title:"Patna → Delhi → Agra (private car)", loc:"Patna (PAT) → Delhi (DEL T3) → Agra (by road)", details:"Depart RSO campus early morning (~6am), arrive Patna by noon. IndiGo 6E 5121 departs Patna at 3:50pm, arriving Delhi T3 at 5:40pm. A private car service picks the family up directly at the terminal for the ~3.5–4 hour drive to Agra via the Yamuna Expressway, arriving around 9:30–10pm. Booking a car instead of the evening train removes the risk of a missed fixed departure if the flight runs late.", tips:["✈ Flight: 6E 5121 · Departs PAT 3:50pm → Arrives DEL T3 5:40pm · PNR: SCF2QT","Check-in closes 2:50pm — be at Patna airport by 2:20pm","🚗 Private car booked: Delhi T3 → Agra hotel (~230km, 3.5–4 hrs via Yamuna Expressway)","Luggage stays with you in the car the whole way — no station transfer or storage needed","Driver/vehicle stays in Agra overnight for the return leg the next morning","Confirm driver name, phone number, and pickup point (arrivals hall) before you land"]},
+  {date:"2026-08-09", title:"Taj Mahal sunrise → Delhi (by car) → Church → Egypt flight", loc:"Agra → Delhi (Vasant Vihar) → IGI Airport", details:"Walk to the Taj Mahal East Gate at 5:30am for sunrise entry at 6:00am — the most magical time to visit. Allow 2.5–3 hours. The same private car departs Agra around 9:30am for the ~3.5–4 hour drive back to Delhi, heading straight to the LDS church in Vasant Vihar for the 1pm sacrament meeting, then on to IGI Airport T3 for the evening Egypt flight.", tips:["🌅 Taj Mahal opens 6:00am — arrive East Gate by 5:30am for first entry","Foreign-visitor ticket: ₹1,100/person + ₹200 mausoleum interior — book online (asi.payumoney.com)","Taj is closed Fridays — August 9 is Sunday ✓","No tripods, drones, food, or large bags inside Taj security","🚗 Private car departs Agra ~9:30am → straight to Vasant Vihar, Delhi (~3.5–4 hrs, arrival ~1–1:30pm depending on traffic)","Build in a buffer — Delhi–Agra highway traffic can vary; ask the driver to leave by 9am if you want more cushion before the 1pm meeting","⛪ Church: F-48 Poorvi Marg, Vasant Vihar, New Delhi · 1:00pm Sacrament Meeting · 011-46026152","Vasant Vihar is ~10 min from IGI Airport — the same car can continue there after church","✈ Evening flight to Egypt from Delhi IGI Terminal 3"]},
+  {date:"2026-08-10", title:"Arrive Cairo & begin touring", loc:"Cairo, Egypt", details:"Arrive in Cairo (the flight may leave the night of the 9th or the morning of the 10th, depending on availability). Begin 2–3 days touring the Pyramids of Giza, the Great Sphinx, and the Nile.", tips:["Confirm your Egypt entry method — e-Visa (apply online ahead) or visa-on-arrival (both Canadian and US passports qualify).","Most Egyptian attractions are now card-only — bring a Visa/Mastercard, not just cash.","Passport should be valid 6+ months past arrival in Egypt."]},
+  {date:"2026-08-11", title:"Giza Pyramids & Great Sphinx", loc:"Giza Plateau, Cairo", details:"A full day exploring the Giza Plateau: the Great Pyramid of Khufu, Khafre, Menkaure, and the Great Sphinx.", tips:["General plateau admission is about 700 EGP/adult; going inside Khufu's pyramid is a separate ~1,500 EGP ticket.","Politely decline unsolicited camel/horse offers, or agree on a firm price up front.","Go early — August in Cairo is dry and can top 38°C (100°F) by midday."]},
+  {date:"2026-08-12", title:"Nile & Cairo highlights", loc:"Cairo / Nile River", details:"Enjoy the Nile — a felucca sail or river cruise — plus any remaining Cairo sights (Egyptian Museum, Old Cairo, local markets).", tips:["A sunset felucca (traditional sailboat) ride is a highlight — agree on price and duration before boarding.","Stay hydrated and carry bottled water.","Modest dress recommended, especially near mosques."]},
+  {date:"2026-08-13", title:"Depart Cairo → Calgary (→ SLC)", loc:"Cairo → Calgary", details:"Fly home from Cairo back to Calgary (YYC). Courtney and Jordyn continue onward from Calgary to Salt Lake City.", tips:["Reconfirm the Calgary connection before leaving Cairo.","Keep every boarding pass in the Docs tab until everyone is fully home.","Safe travels — welcome home!"]}
+];
+const DEST_GUIDES = [
+  {
+    key:"delhi", title:"Delhi", dates:"Aug 2–3, 9", emoji:"🕌",
+    sections:[
+      {h:"Visa", t:"Both Canadian and US passport holders need an e-Visa or paper visa approved before arrival — apply at least 4+ days ahead (up to 120 days in advance) at indianvisaonline.gov.in. Passport must have 6+ months validity. Entry must be through a designated airport (Delhi/DEL qualifies)."},
+      {h:"Currency", t:"Indian Rupee (INR). ATMs are widely available in Delhi and Agra; carry some cash for small vendors, tips, and rural Bihar where ATMs are scarce."},
+      {h:"Weather (August)", t:"Monsoon season: hot and humid, roughly 26–34°C (79–93°F), with periodic rain showers. Pack a light rain jacket or umbrella and breathable, quick-dry clothing."},
+      {h:"Getting around", t:"Use official prepaid taxis, Uber/Ola, or hotel-arranged cars. Delhi Metro is efficient for point-to-point trips if you have time."},
+      {h:"Etiquette", t:"Modest dress is appreciated at religious sites (shoulders/knees covered). Remove shoes before entering temples, mosques, and gurdwaras. Use your right hand for eating/giving items."}
+    ]
+  },
+  {
+    key:"bihar", title:"Patna & Bihar", dates:"Aug 3–8", emoji:"🤝",
+    sections:[
+      {h:"About the region", t:"Bihar is one of India's most historic yet economically challenged states. Rising Star Outreach's Sunderpur campus (opened Nov 2024) serves 22 leprosy-affected colonies near the Nepal border through medical care, education, and colony-development programs."},
+      {h:"Health prep", t:"CDC recommends routine vaccines plus hepatitis A, typhoid, and considering Japanese encephalitis and malaria prophylaxis for this region — talk to a travel clinic 4–6 weeks before departure."},
+      {h:"Practical", t:"Cash is essential outside Patna city; card acceptance is minimal. Mobile data can be patchy in rural colonies — download offline maps and entertainment in advance."},
+      {h:"Cultural notes", t:"Dress modestly and conservatively out of respect for the communities you're serving. Ask before photographing individuals, especially children."}
+    ]
+  },
+  {
+    key:"agra", title:"Agra", dates:"Aug 8–9", emoji:"🕌",
+    sections:[
+      {h:"Taj Mahal basics", t:"Open 30 minutes before sunrise to 30 minutes before sunset; closed Fridays. Foreign-visitor ticket ≈ ₹1,100 (+₹200 optional to enter the mausoleum interior). Separate queue for foreign tourists — book online via the ASI ticketing site when possible."},
+      {h:"Security", t:"No tripods, drones, food, or large bags. Only small clear bags and essentials are typically allowed inside."},
+      {h:"Best time", t:"Arrive at the gate before sunrise for soft light, cooler temperatures, and the smallest crowds — the marble changes color through the day, from pink at dawn to golden at sunset."},
+      {h:"Getting there", t:"The family is using a private car service between Delhi and Agra (~3.5–4 hours by road via the Yamuna Expressway) rather than the train, to stay flexible around the same-day connections to church and the Egypt flight. Fast trains (Gatimaan/Shatabdi, ~2 hours) are the usual alternative if plans change."}
+    ]
+  },
+  {
+    key:"cairo", title:"Cairo & Giza", dates:"Aug 9/10–13", emoji:"🐫",
+    sections:[
+      {h:"Visa", t:"Canadian and US passport holders can use Egypt's e-Visa (apply online, ~5 days processing) or visa-on-arrival at the airport, both valid for a 30-day single entry. Passport must be valid 6+ months past arrival."},
+      {h:"Currency & payments", t:"Egyptian Pound (EGP). As of 2026, most attractions (pyramids, museums) are card-only — bring a Visa/Mastercard. Keep small EGP bills for tips and street vendors; larger bills can be hard to break."},
+      {h:"Weather (August)", t:"Hot and dry — highs around 35–38°C (95–100°F), lows near 22°C (72°F), almost no rain. Sun protection, a hat, and hydration are essential; plan major sightseeing for early morning."},
+      {h:"Giza Plateau", t:"Open ~7am–4/5pm (last entry 4pm). General admission ≈700 EGP/adult, covers the Sphinx viewing area. Entering the Great Pyramid interior is an extra ticket (≈1,500 EGP)."},
+      {h:"Etiquette", t:"Modest dress recommended, especially near mosques. Agree on prices for camel/horse rides, felucca sails, and taxis before you commit."}
+    ]
+  }
+];
+const GUIDES = [
+  {
+    key:"taj", title:"The Taj Mahal", loc:"Agra, India", emoji:"🕌", minutes:"~18 min",
+    stops:[
+      {h:"Welcome to the Taj Mahal", t:"You're standing before one of the most celebrated buildings on Earth. The Taj Mahal was commissioned in 1632 by the Mughal emperor Shah Jahan as a mausoleum for his beloved wife, Mumtaz Mahal, who died giving birth to their fourteenth child. It took roughly twenty years and an estimated twenty thousand artisans and laborers to complete. Today it's a UNESCO World Heritage Site and widely considered the finest example of Mughal architecture in the world."},
+      {h:"The Great Gate", t:"Before you even see the Taj itself, you pass through the Darwaza-i-Rauza, the Great Gate — a soaring red sandstone entrance inlaid with white marble and verses from the Quran. Look closely at the calligraphy: the letters actually get larger as they rise, an optical trick so the text appears a uniform size from the ground. The gate is designed to frame your very first glimpse of the Taj Mahal like a picture frame — pause here for a moment before walking through."},
+      {h:"The Charbagh Garden", t:"You're now walking through a charbagh, a Persian-style 'four gardens' layout divided by raised marble water channels that represent the four rivers of paradise described in Islamic tradition. The long reflecting pool ahead is the classic photo spot — the one that mirrors the entire building in still water. Historians believe the garden was meant to be paradise on Earth, a fitting resting place for the woman it was built for."},
+      {h:"The Mausoleum", t:"The main structure is built almost entirely of white Makrana marble, famous for subtly changing color with the light — pinkish at dawn, brilliant white at midday, and golden under moonlight. Look at the surface up close if you get the chance: the flowers and vines are pietra dura, an inlay technique using semi-precious stones like jade, turquoise, lapis lazuli, and coral, cut paper-thin and set into the marble. The central dome rises about 35 meters, and the four minarets at each corner were deliberately built to lean very slightly outward — so that in the event of an earthquake, they would fall away from the tomb rather than onto it."},
+      {h:"Inside the tomb chamber", t:"Inside, you'll see two cenotaphs — decorative tombs — under the dome: Mumtaz Mahal's in the exact center, and Shah Jahan's placed just beside it. That's actually the only asymmetrical element in the entire complex, because his tomb was added later, after his own death. The real burial crypt lies in a quieter chamber below, and the intricate marble screen surrounding the cenotaphs — the jali — was carved from single slabs of marble into lace-like lattice work."},
+      {h:"The mosque and guest house", t:"Flanking the Taj on either side are two identical red sandstone buildings for symmetry: a working mosque on the west side, still used for Friday prayers — which is why the Taj Mahal closes to general visitors every Friday — and a mirror-image guest house on the east that was never used for prayer, built purely to balance the composition."},
+      {h:"A love story's ending", t:"One more story worth knowing: years after finishing the Taj, Shah Jahan was overthrown and imprisoned by his own son, Aurangzeb, in the nearby Agra Fort. Legend says he spent his final years gazing at the Taj Mahal across the Yamuna River from a small window in his cell. When he died, he was laid to rest beside Mumtaz Mahal, finally reunited inside the monument he built for her."}
+    ]
+  },
+  {
+    key:"giza", title:"Giza Pyramids & Great Sphinx", loc:"Giza, Egypt", emoji:"🐫", minutes:"~16 min",
+    stops:[
+      {h:"Welcome to the Giza Plateau", t:"You're standing on one of the most iconic archaeological sites on the planet — the Giza Plateau, home to three main pyramids and the Great Sphinx, built as royal tombs during Egypt's Fourth Dynasty, roughly 2600 to 2500 BC. This is the only surviving wonder of the ancient world's original Seven Wonders list."},
+      {h:"The Great Pyramid of Khufu", t:"The largest pyramid here was built for the pharaoh Khufu around 2560 BC. It originally stood about 146 meters tall — today it's closer to 139 meters after losing its smooth outer casing stones over the centuries. It's built from an estimated 2.3 million limestone blocks, each weighing an average of two and a half tons, aligned to the cardinal directions with remarkable precision. Exactly how it was built — with the tools and technology of the time — is still debated by Egyptologists today, with theories ranging from massive ramps to sophisticated lever systems."},
+      {h:"The Pyramid of Khafre", t:"The second pyramid, built for Khufu's son Khafre, is actually slightly smaller than his father's — but it often looks taller because it sits on higher ground and was built at a steeper angle. Look near its peak: you can still see patches of the original smooth white limestone casing that once covered every pyramid on this plateau, giving them a polished, gleaming appearance in ancient times."},
+      {h:"The Pyramid of Menkaure", t:"The smallest of the three main pyramids belonged to Khafre's son, Menkaure. Its lower courses were cased in red granite hauled from Aswan, hundreds of kilometers up the Nile — a reminder of just how much organized labor and logistics these monuments required."},
+      {h:"The Great Sphinx", t:"Now turn your attention to the Great Sphinx — a guardian figure with a lion's body and a human head, carved from a single limestone outcrop left over from the quarry that supplied the pyramids. It stands about 20 meters tall and stretches 73 meters long, and most Egyptologists believe the face represents Khafre himself. Notice the damaged nose — a mystery that draws plenty of legends, though it was likely deliberately broken centuries after construction rather than by Napoleon's soldiers, as the popular myth claims. The Sphinx faces due east, watching the sunrise over the Nile valley for more than four thousand years."},
+      {h:"Before you go", t:"A couple of practical notes: politely but firmly decline unsolicited camel or horse offers unless you've agreed on a price in advance, keep water on hand, and if you want the classic panorama photo with all three pyramids in frame, head to the viewpoint on the plateau's south ridge."}
+    ]
+  },
+  {
+    key:"nile", title:"The Nile River", loc:"Cairo, Egypt", emoji:"🚤", minutes:"~10 min",
+    stops:[
+      {h:"The lifeblood of Egypt", t:"You're looking at the Nile — the river that made Egyptian civilization possible for over five thousand years. It's often cited as the longest river in the world, stretching about 6,650 kilometers, flowing north from Central Africa into the Mediterranean Sea. Ancient Egypt existed almost entirely as a narrow ribbon of farmland along its banks."},
+      {h:"A gift of the river", t:"The Greek historian Herodotus famously called Egypt 'the gift of the Nile.' Every year, the river used to flood its banks and deposit a fresh layer of fertile black silt across the fields — Egyptians even had a god for it, Hapi, associated with abundance and fertility. That flood cycle shaped the entire ancient calendar and economy, until the Aswan High Dam was built in the twentieth century to control it."},
+      {h:"Feluccas", t:"The traditional wooden sailboats you'll see gliding along the water are called feluccas — used on the Nile for centuries, powered by nothing but wind and current, no engine required. A sunset felucca ride is one of the most peaceful ways to experience Cairo; just agree on the price and length of the ride with the captain before you set off."},
+      {h:"Moving the stones", t:"Historians believe boats very much like these ancestors of the felucca were used to ferry massive limestone and granite blocks up and down the Nile during the construction of the pyramids and temples — turning the river into ancient Egypt's main highway."},
+      {h:"The Nile today", t:"Modern Cairo is built right along its banks, and the river is still central to Egyptian life — for agriculture, transportation, fishing, and simply as a gathering place in the cool of the evening. As you look out over the water, you're seeing the same river that carried pharaohs, traders, and pilgrims for millennia."}
+    ]
+  },
+  {
+    key:"delhi_bonus", title:"Delhi Highlights (bonus)", loc:"Delhi, India", emoji:"🏰", minutes:"~14 min",
+    stops:[
+      {h:"A city of layers", t:"Delhi isn't one city but many, stacked on top of each other across centuries. Old Delhi is the walled Mughal-era capital built in the 1600s, full of narrow lanes, markets, and mosques. New Delhi, just south of it, is the wide, planned colonial capital designed by the British architect Edwin Lutyens in the early twentieth century. If you have free time, it's worth seeing both."},
+      {h:"Red Fort (Lal Qila)", t:"The Red Fort was the main residence of Mughal emperors for about two hundred years, starting with Shah Jahan — the same emperor who built the Taj Mahal. Built from red sandstone, it's a UNESCO World Heritage Site and still hosts India's Prime Minister for a national address every Independence Day."},
+      {h:"Jama Masjid", t:"Also commissioned by Shah Jahan, Jama Masjid is one of India's largest mosques, with a courtyard that can hold tens of thousands of worshippers. If it's open, climbing one of the minarets rewards you with sweeping views across Old Delhi's rooftops."},
+      {h:"Humayun's Tomb", t:"This garden tomb, built in the 1560s for the Mughal emperor Humayun, is often called a direct architectural ancestor of the Taj Mahal — the first major garden-tomb built in India, using the same charbagh layout and red sandstone-and-marble style that would be perfected a century later in Agra."},
+      {h:"India Gate & New Delhi", t:"India Gate is a soaring war memorial honoring soldiers who died in World War I and the Third Anglo-Afghan War, anchoring the wide colonial-era boulevards of New Delhi. It's a popular spot for locals in the evening, especially for a walk or street snack."},
+      {h:"Getting around Old Delhi", t:"Cycle-rickshaws are a fun and practical way to navigate Old Delhi's narrow lanes — agree on a price before you climb in. Expect crowds, honking, and a lot of sensory overload — it's part of the experience."}
+    ]
+  }
+];
+const PACKING = [
+  "India e-Visa approvals printed/saved for everyone (6 people)",
+  "Egypt e-Visa or visa-on-arrival plan confirmed for everyone",
+  "Passports valid 6+ months past Aug 13 return date",
+  "Travel insurance confirmation",
+  "✈ Air Canada booking refs saved: C3P22L (Calgary group) · C3T6XI (Jordyn)",
+  "✈ IndiGo PNR SCF2QT saved — DEL→PAT Aug 3 · PAT→DEL Aug 8",
+  "Card used for IndiGo booking (issued outside India) — bring hard/soft copy for airport verification",
+  "Taj Mahal tickets booked online (asi.payumoney.com) for Aug 9",
+  "Agra hotel booked (East Gate area recommended) for Aug 8 night",
+  "Private car service booked: Delhi T3 → Agra (Aug 8 evening) and Agra → Vasant Vihar/airport, Delhi (Aug 9)",
+  "Driver name & phone number saved in the Docs tab (Ground Transport)",
+  "Prescriptions + basic first-aid kit (rehydration salts, antidiarrheal, blister care)",
+  "Malaria prophylaxis / other travel-clinic recommended meds",
+  "Universal travel adapter (India: Type C/D/M · Egypt: Type C/F, both 220–230V)",
+  "Modest clothing for Bihar colonies, temples/mosques, and the LDS church meeting",
+  "Lightweight rain layer (India monsoon) + sun hat/sunscreen (Egypt heat)",
+  "Cash: INR for Bihar/rural areas; Visa/Mastercard for Egypt (mostly card-only)",
+  "Downloaded offline maps for Delhi, Agra, Patna, Cairo",
+  "Comfortable walking shoes for the Taj Mahal & Giza plateau",
+  "Reusable water bottle + electrolyte packets",
+  "Camera/phone protection (dust — Bihar; sand — Giza)"
+];
+/* ============ STATE ============ */
+let state = loadState();
+function defaultState(){ return { documents: [], checklist: {}, seenWelcome:false }; }
+function loadState(){
+  try{ const s = JSON.parse(localStorage.getItem('travelAppState')); return s || defaultState(); }
+  catch(e){ return defaultState(); }
+}
+function saveState(){ localStorage.setItem('travelAppState', JSON.stringify(state)); }
+/* ============ INDEXEDDB (photos) ============ */
+let _db;
+function openDB(){
+  return new Promise((resolve,reject)=>{
+    if(_db) return resolve(_db);
+    const req = indexedDB.open('travelAppPhotosDB', 1);
+    req.onupgradeneeded = e => { e.target.result.createObjectStore('photos'); };
+    req.onsuccess = e => { _db = e.target.result; resolve(_db); };
+    req.onerror = e => reject(e);
+  });
+}
+function idbPut(id, blob){ return openDB().then(d=>new Promise((res,rej)=>{ const tx=d.transaction('photos','readwrite'); tx.objectStore('photos').put(blob, id); tx.oncomplete=()=>res(); tx.onerror=e=>rej(e); })); }
+function idbGet(id){ return openDB().then(d=>new Promise((res,rej)=>{ const tx=d.transaction('photos','readonly'); const rq=tx.objectStore('photos').get(id); rq.onsuccess=()=>res(rq.result); rq.onerror=e=>rej(e); })); }
+function idbDelete(id){ return openDB().then(d=>new Promise((res,rej)=>{ const tx=d.transaction('photos','readwrite'); tx.objectStore('photos').delete(id); tx.oncomplete=()=>res(); tx.onerror=e=>rej(e); })); }
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+function resizeImage(file){
+  return new Promise((resolve)=>{
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        let {width,height} = img;
+        const maxDim = 1400;
+        if(width > maxDim || height > maxDim){
+          const scale = maxDim / Math.max(width,height);
+          width = Math.round(width*scale); height = Math.round(height*scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        canvas.getContext('2d').drawImage(img,0,0,width,height);
+        canvas.toBlob(blob => resolve(blob), 'image/jpeg', 0.75);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function blobToBase64(blob){ return new Promise(res=>{ const r=new FileReader(); r.onloadend=()=>res(r.result); r.readAsDataURL(blob); }); }
+function dataURLToBlob(dataurl){
+  const parts = dataurl.split(',');
+  const mime = parts[0].match(/:(.*?);/)[1];
+  const bstr = atob(parts[1]);
+  let n = bstr.length; const u8 = new Uint8Array(n);
+  while(n--){ u8[n] = bstr.charCodeAt(n); }
+  return new Blob([u8], {type:mime});
+}
+/* ============ HELPERS ============ */
+function fmtDate(iso){
+  const d = new Date(iso+"T00:00:00");
+  return d.toLocaleDateString(undefined,{weekday:'short', month:'short', day:'numeric'});
+}
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+function daysUntil(iso){
+  const a = new Date(todayISO()+"T00:00:00"), b = new Date(iso+"T00:00:00");
+  return Math.round((b-a)/86400000);
+}
+function travelerName(id){ const t = TRAVELERS.find(x=>x.id===id); return t? t.name : id; }
+function catInfo(key){ return DOC_CATEGORIES.find(c=>c.key===key); }
+function showToast(msg){
+  const el = document.createElement('div'); el.className='toast'; el.textContent=msg;
+  document.body.appendChild(el); setTimeout(()=>el.remove(), 1800);
+}
+/* ============ NAV ============ */
+let activeTab = 'home';
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-tab]'); if(!btn) return;
+  activeTab = btn.dataset.tab;
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active', b===btn));
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  render();
+});
+/* ============ RENDER ROUTER ============ */
+function render(){
+  const main = document.getElementById('main');
+  if(activeTab==='home') return renderHome(main);
+  if(activeTab==='itinerary') return renderItinerary(main);
+  if(activeTab==='flights') return renderFlights(main);
+  if(activeTab==='docs') return renderDocs(main);
+  if(activeTab==='guides') return renderDestGuides(main);
+  if(activeTab==='tours') return renderTours(main);
+  if(activeTab==='info') return renderInfo(main);
+}
+/* ============ HOME ============ */
+function renderHome(main){
+  const dLeft = daysUntil("2026-08-01");
+  const dHome = daysUntil("2026-08-13");
+  let statusHtml;
+  if(dLeft > 0){
+    statusHtml = `<div class="card"><div class="pill">${dLeft} day${dLeft===1?'':'s'} to go</div><h2 style="margin:8px 0 4px;font-size:18px;color:var(--deep)">Departure: Sat, Aug 1</h2><p class="muted" style="margin:0">Calgary (YYC) & Salt Lake City (SLC) → Toronto → Delhi</p></div>`;
+  } else if(dLeft<=0 && dHome>=0){
+    const today = ITINERARY.find(d=>d.date===todayISO());
+    statusHtml = `<div class="card"><div class="pill green">On the trip</div>` +
+      (today ? `<h2 style="margin:8px 0 4px;font-size:18px;color:var(--deep)">Today: ${today.title}</h2><p class="muted" style="margin:0 0 8px">${today.loc}</p><p style="margin:0">${today.details}</p>` : `<p class="muted" style="margin:8px 0 0">Check the Itinerary tab for today's plan.</p>`) +
+      `</div>`;
+  } else {
+    statusHtml = `<div class="card"><div class="pill blue">Trip complete</div><h2 style="margin:8px 0 4px;font-size:18px;color:var(--deep)">Welcome home!</h2><p class="muted" style="margin:0">Aug 1 – Aug 13, 2026 · India & Egypt</p></div>`;
+  }
+  main.innerHTML = `
+    ${statusHtml}
+    <div class="banner"><b>Add this app to your Home Screen</b> so it's one tap away — and every phone keeps its own copy of the data, right on the device.<br><br>
+    <b>iPhone:</b> tap the Share icon in Safari → "Add to Home Screen."<br>
+    <b>Android:</b> tap the ⋮ menu in Chrome → "Add to Home screen" / "Install app."</div>
+    <h2 class="section-title">Travelers</h2>
+    <div class="traveler-grid">
+      ${TRAVELERS.map(t=>`<div class="traveler-card">${t.name}<div class="r">from ${t.from}</div></div>`).join('')}
+    </div>
+    <h2 class="section-title">Quick links</h2>
+    <div class="card" style="display:flex;flex-direction:column;gap:0;padding:6px 4px;">
+      ${quickLink('🗓️','Full itinerary','itinerary')}
+      ${quickLink('✈️','Confirmed flights & bookings','flights')}
+      ${quickLink('🗂️','Passports, tickets & hotel docs','docs')}
+      ${quickLink('📍','Destination guides & visas','guides')}
+      ${quickLink('🎧','Virtual walking tours (audio)','tours')}
+      ${quickLink('✅','Packing checklist & emergency info','info')}
+    </div>
+    <h2 class="section-title">⛪ Church — Delhi</h2>
+    <div class="card info-block" style="border-left:3px solid var(--saffron);">
+      <p style="margin:0 0 4px"><b>${CHURCH_DELHI.name}</b></p>
+      <p style="margin:0 0 4px">📍 ${CHURCH_DELHI.address}</p>
+      <p style="margin:0 0 4px">🕐 ${CHURCH_DELHI.time}</p>
+      <p style="margin:0 0 4px">📞 ${CHURCH_DELHI.phone}</p>
+      <p style="margin:0" class="muted">${CHURCH_DELHI.notes}</p>
+    </div>
+  `;
+}
+function quickLink(icon,label,tab){
+  return `<button onclick="goTab('${tab}')" style="display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:10px 10px;font-size:14px;font-weight:600;color:var(--ink);text-align:left;border-radius:10px;"><span style="font-size:18px">${icon}</span>${label}<span style="margin-left:auto;color:var(--muted)">›</span></button>`;
+}
+function goTab(tab){
+  activeTab = tab;
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  render();
+}
+/* ============ ITINERARY ============ */
+function renderItinerary(main){
+  main.innerHTML = `<h2 class="section-title">Day by day</h2><div id="dayList"></div>`;
+  const list = document.getElementById('dayList');
+  list.innerHTML = ITINERARY.map(d=>{
+    const isToday = d.date===todayISO();
+    return `<div class="card day-card" style="${isToday?'border-color:var(--saffron);border-width:2px;':''}">
+      <div class="date">${fmtDate(d.date)}${isToday?' · TODAY':''}</div>
+      <h3>${d.title}</h3>
+      <div class="loc">📍 ${d.loc}</div>
+      <p>${d.details}</p>
+      <ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
+    </div>`;
+  }).join('');
+}
+/* ============ FLIGHTS ============ */
+function renderFlights(main){
+  main.innerHTML = `
+    <h2 class="section-title">Confirmed flights</h2>
+    ${CONFIRMED_FLIGHTS.map(b=>`
+      <div class="card" style="margin-bottom:14px;">
+        <div class="row" style="margin-bottom:8px;">
+          <span style="font-weight:800;font-size:14px;color:var(--deep)">${b.group}</span>
+          <span class="pill blue">${b.airline}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.7;">
+          <span>Avion ref: <b style="color:var(--ink)">${b.avionRef}</b></span> &nbsp;·&nbsp;
+          <span>Airline ref: <b style="color:var(--ink)">${b.airlineRef}</b></span><br>
+          <span>Paid: <b style="color:var(--ink)">${b.paid}</b></span>
+        </div>
+        ${b.legs.map((leg,i)=>`
+          <div style="background:#f8f5ef;border-radius:12px;padding:10px 12px;margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:11px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;">Flight ${i+1} · ${leg.flight}</span>
+              <span style="font-size:11px;color:var(--muted)">${leg.duration}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;margin:4px 0;">
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13px;font-weight:700;color:var(--deep)">${leg.from}</div>
+                <div style="font-size:12px;color:var(--muted)">${leg.departs}</div>
+              </div>
+              <div style="color:var(--saffron);font-size:16px;">→</div>
+              <div style="flex:1;min-width:0;text-align:right;">
+                <div style="font-size:13px;font-weight:700;color:var(--deep)">${leg.to}</div>
+                <div style="font-size:12px;color:var(--muted)">${leg.arrives}</div>
+              </div>
+            </div>
+            ${leg.note ? `<div style="font-size:11.5px;color:var(--good);margin-top:4px;font-weight:600;">ℹ ${leg.note}</div>` : ''}
+          </div>
+        `).join('')}
+        ${b.seats ? `
+          <div style="margin-top:6px;">
+            <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;">Seat assignments</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              ${b.seats.map(s=>`
+                <div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 10px;">
+                  <div style="font-size:13px;font-weight:700;color:var(--deep)">${s.name} <span style="color:var(--saffron)">· ${s.seat}</span></div>
+                  <div style="font-size:11px;color:var(--muted)">${s.meal}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>
+    `).join('')}
+    <h2 class="section-title">⛪ Church — Delhi (Aug 9)</h2>
+    <div class="card" style="border-left:3px solid var(--saffron);">
+      <div style="font-weight:800;font-size:14px;color:var(--deep);margin-bottom:6px;">${CHURCH_DELHI.name}</div>
+      <div class="info-block">
+        <p style="margin:3px 0">📍 ${CHURCH_DELHI.address}</p>
+        <p style="margin:3px 0">🕐 ${CHURCH_DELHI.time}</p>
+        <p style="margin:3px 0">📞 <a href="tel:01146026152">${CHURCH_DELHI.phone}</a></p>
+        <p style="margin:3px 0">✉️ <a href="mailto:${CHURCH_DELHI.email}">${CHURCH_DELHI.email}</a></p>
+        <p style="margin:8px 0 0" class="muted">${CHURCH_DELHI.notes}</p>
+      </div>
+    </div>
+    <div class="banner" style="margin-top:4px;">
+      <b>Aug 9 flow:</b> Taj Mahal sunrise tour → private car departs Agra ~9:30am → straight to Vasant Vihar for 1pm church (~3.5–4 hr drive) → same car to IGI Airport T3 (~10 min) → evening Egypt flight. Luggage stays in the car the whole way — no station stop needed.
+    </div>
+  `;
+}
+/* ============ DOCS ============ */
+let docsTravelerFilter = TRAVELERS[0].id;
+let docsCatFilter = DOC_CATEGORIES[0].key;
+function renderDocs(main){
+  main.innerHTML = `
+    <h2 class="section-title">Travel documents</h2>
+    <div class="chips" id="travelerChips">${TRAVELERS.map(t=>`<button class="chip ${t.id===docsTravelerFilter?'active':''}" data-t="${t.id}">${t.name}</button>`).join('')}</div>
+    <div class="chips" id="catChips">${DOC_CATEGORIES.map(c=>`<button class="chip ${c.key===docsCatFilter?'active':''}" data-c="${c.key}">${c.icon} ${c.label}</button>`).join('')}</div>
+    <div class="card" id="docListCard"></div>
+    <button class="btn block" id="addDocBtn" style="margin-top:4px;">+ Add ${catInfo(docsCatFilter).label} for ${travelerName(docsTravelerFilter)}</button>
+  `;
+  document.getElementById('travelerChips').addEventListener('click', e=>{
+    const b = e.target.closest('button[data-t]'); if(!b) return;
+    docsTravelerFilter = b.dataset.t; renderDocs(main);
+  });
+  document.getElementById('catChips').addEventListener('click', e=>{
+    const b = e.target.closest('button[data-c]'); if(!b) return;
+    docsCatFilter = b.dataset.c; renderDocs(main);
+  });
+  document.getElementById('addDocBtn').addEventListener('click', ()=>openDocForm(null));
+  renderDocList();
+}
+function renderDocList(){
+  const card = document.getElementById('docListCard'); if(!card) return;
+  const items = state.documents.filter(d=>d.traveler===docsTravelerFilter && d.category===docsCatFilter);
+  if(items.length===0){ card.innerHTML = `<div class="empty">No ${catInfo(docsCatFilter).label.toLowerCase()} saved yet for ${travelerName(docsTravelerFilter)}.</div>`; return; }
+  card.innerHTML = items.map(d=>`
+    <div class="doc-item" data-id="${d.id}">
+      <div class="thumb placeholder" id="thumb-${d.id}">${catInfo(d.category).icon}</div>
+      <div class="doc-info">
+        <div class="t">${d.title || catInfo(d.category).label}</div>
+        <div class="m">${d.date? fmtDate(d.date)+' · ':''}${d.refNumber || 'no reference #'}</div>
+      </div>
+      <button class="btn ghost view-doc" data-id="${d.id}">View</button>
+    </div>
+  `).join('');
+  items.forEach(d=>{
+    if(d.photoId){
+      idbGet(d.photoId).then(blob=>{
+        if(!blob) return;
+        const url = URL.createObjectURL(blob);
+        const el = document.getElementById('thumb-'+d.id);
+        if(el){ el.classList.remove('placeholder'); el.innerHTML=''; const img=document.createElement('img'); img.src=url; img.className='thumb'; img.style.borderRadius='10px'; el.replaceWith(img); img.id='thumb-'+d.id; }
+      });
+    }
+  });
+  card.querySelectorAll('.view-doc').forEach(btn=>btn.addEventListener('click', ()=>{
+    const doc = state.documents.find(x=>x.id===btn.dataset.id);
+    openDocForm(doc);
+  }));
+}
+function openDocForm(doc){
+  const isEdit = !!doc;
+  const cat = catInfo(docsCatFilter);
+  const bg = document.createElement('div'); bg.className='modal-bg';
+  bg.innerHTML = `
+    <div class="modal">
+      <button class="close-x" id="closeModal">✕</button>
+      <h3>${isEdit? 'Edit':'Add'} ${cat.label} — ${travelerName(docsTravelerFilter)}</h3>
+      <label class="field">Title / label</label>
+      <input id="f_title" value="${doc?.title||''}" placeholder="e.g. Air Canada YYC→YYZ">
+      <label class="field">Date</label>
+      <input id="f_date" type="date" value="${doc?.date||''}">
+      <label class="field">Reference / confirmation #</label>
+      <input id="f_ref" value="${doc?.refNumber||''}" placeholder="Booking / PNR / passport #">
+      <label class="field">Notes</label>
+      <textarea id="f_notes" placeholder="Seat #, hotel address, gate, etc.">${doc?.notes||''}</textarea>
+      <label class="field">Photo (passport page, ticket, confirmation email)</label>
+      <input id="f_photo" type="file" accept="image/*" capture="environment">
+      <div id="photoPreviewWrap"></div>
+      <div class="modal-actions">
+        ${isEdit? '<button class="btn danger" id="deleteDoc">Delete</button>' : ''}
+        <button class="btn secondary" id="cancelDoc">Cancel</button>
+        <button class="btn" id="saveDoc">Save</button>
+      </div>
+    </div>`;
+  document.body.appendChild(bg);
+  if(doc?.photoId){
+    idbGet(doc.photoId).then(blob=>{
+      if(blob){ const url = URL.createObjectURL(blob); document.getElementById('photoPreviewWrap').innerHTML = `<img src="${url}" style="width:100%;border-radius:10px;margin-top:8px;">`; }
+    });
+  }
+  bg.querySelector('#closeModal').onclick = ()=>bg.remove();
+  bg.querySelector('#cancelDoc').onclick = ()=>bg.remove();
+  if(isEdit){
+    bg.querySelector('#deleteDoc').onclick = async ()=>{
+      if(doc.photoId) await idbDelete(doc.photoId);
+      state.documents = state.documents.filter(x=>x.id!==doc.id);
+      saveState(); bg.remove(); renderDocList(); showToast('Deleted');
+    };
+  }
+  bg.querySelector('#saveDoc').onclick = async ()=>{
+    const title = document.getElementById('f_title').value.trim();
+    const date = document.getElementById('f_date').value;
+    const ref = document.getElementById('f_ref').value.trim();
+    const notes = document.getElementById('f_notes').value.trim();
+    const fileInput = document.getElementById('f_photo');
+    let photoId = doc?.photoId || null;
+    if(fileInput.files && fileInput.files[0]){
+      const blob = await resizeImage(fileInput.files[0]);
+      photoId = photoId || uid();
+      await idbPut(photoId, blob);
+    }
+    if(isEdit){
+      Object.assign(doc, {title, date, refNumber:ref, notes, photoId});
+    } else {
+      state.documents.push({id:uid(), traveler:docsTravelerFilter, category:docsCatFilter, title, date, refNumber:ref, notes, photoId});
+    }
+    saveState(); bg.remove(); renderDocList(); showToast('Saved');
+  };
+}
+/* ============ DESTINATION GUIDES ============ */
+function renderDestGuides(main){
+  main.innerHTML = `<h2 class="section-title">Destination guides</h2>` + DEST_GUIDES.map(g=>`
+    <div class="card">
+      <div class="row"><h3 style="margin:0;font-size:16px;color:var(--deep)">${g.emoji} ${g.title}</h3><span class="pill">${g.dates}</span></div>
+      <div class="info-block">${g.sections.map(s=>`<h4>${s.h}</h4><p>${s.t}</p>`).join('')}</div>
+    </div>
+  `).join('');
+}
+/* ============ VIRTUAL TOURS ============ */
+let player = { stops:[], index:0, playing:false, guideKey:null };
+function renderTours(main){
+  main.innerHTML = `<h2 class="section-title">Virtual walking tours</h2>
+  <p class="muted" style="margin-top:-6px">Tap a guide, then hit play — your phone's built-in voice will read the stops aloud as you walk through the attraction. Works fully offline.</p>
+  ` + GUIDES.map(g=>`
+    <div class="card" style="cursor:pointer" onclick="openGuide('${g.key}')">
+      <div class="row"><h3 style="margin:0;font-size:16px;color:var(--deep)">${g.emoji} ${g.title}</h3><span class="pill blue">${g.minutes}</span></div>
+      <div class="muted">📍 ${g.loc} · ${g.stops.length} stops</div>
+    </div>
+  `).join('');
+}
+function openGuide(key){
+  const g = GUIDES.find(x=>x.key===key);
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  player = { stops:g.stops, index:0, playing:false, guideKey:key };
+  const main = document.getElementById('main');
+  main.innerHTML = `
+    <button class="btn ghost" onclick="renderTours(document.getElementById('main'))">‹ All tours</button>
+    <h2 class="section-title" style="margin-top:8px">${g.emoji} ${g.title}</h2>
+    <p class="muted" style="margin-top:-8px">📍 ${g.loc}</p>
+    <div class="card" id="stopsCard">${g.stops.map((s,i)=>`
+      <div class="guide-stop" id="stop-${i}">
+        <h4>${i+1}. ${s.h}</h4>
+        <p>${s.t}</p>
+      </div>`).join('')}
+    </div>
+    <div class="player-bar">
+      <button id="prevBtn" title="Previous">⏮</button>
+      <button id="playBtn" class="big" title="Play/Pause">▶</button>
+      <button id="stopBtn" title="Stop">⏹</button>
+      <button id="nextBtn" title="Next">⏭</button>
+    </div>
+  `;
+  document.getElementById('playBtn').onclick = togglePlay;
+  document.getElementById('stopBtn').onclick = stopGuideAudio;
+  document.getElementById('nextBtn').onclick = ()=>jumpStop(1);
+  document.getElementById('prevBtn').onclick = ()=>jumpStop(-1);
+  highlightStop(0);
+}
+function highlightStop(i){
+  document.querySelectorAll('.guide-stop').forEach((el,idx)=>el.classList.toggle('current', idx===i));
+  const el = document.getElementById('stop-'+i);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+function speakStop(){
+  if(!('speechSynthesis' in window)){ showToast('Voice playback not supported on this browser'); return; }
+  if(player.index >= player.stops.length){ player.playing=false; updatePlayIcon(); return; }
+  const s = player.stops[player.index];
+  const utter = new SpeechSynthesisUtterance(s.t);
+  utter.rate = 0.95;
+  utter.onend = ()=>{ if(player.playing){ player.index++; highlightStop(player.index); speakStop(); } };
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+function togglePlay(){
+  if(!('speechSynthesis' in window)){ showToast('Voice playback not supported on this browser'); return; }
+  if(player.playing){
+    player.playing = false;
+    window.speechSynthesis.pause();
+  } else {
+    player.playing = true;
+    if(window.speechSynthesis.paused){ window.speechSynthesis.resume(); }
+    else { highlightStop(player.index); speakStop(); }
+  }
+  updatePlayIcon();
+}
+function stopGuideAudio(){
+  player.playing=false; player.index=0;
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  highlightStop(0); updatePlayIcon();
+}
+function jumpStop(delta){
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  player.index = Math.max(0, Math.min(player.stops.length-1, player.index+delta));
+  highlightStop(player.index);
+  if(player.playing) speakStop();
+}
+function updatePlayIcon(){
+  const btn = document.getElementById('playBtn'); if(!btn) return;
+  btn.textContent = player.playing ? '⏸' : '▶';
+}
+/* ============ INFO (checklist, emergency, backup) ============ */
+function renderInfo(main){
+  main.innerHTML = `
+    <h2 class="section-title">Packing checklist</h2>
+    <div class="card" id="checklistCard">
+      ${PACKING.map((item,i)=>{
+        const key = 'pk'+i;
+        const checked = !!state.checklist[key];
+        return `<label class="checklist-item ${checked?'checked':''}"><input type="checkbox" data-key="${key}" ${checked?'checked':''}><span>${item}</span></label>`;
+      }).join('')}
+    </div>
+    <h2 class="section-title">Emergency & embassy info</h2>
+    <div class="card info-block">
+      <p><b>Rising Star Outreach (Bihar contact)</b> — add your on-the-ground contact name/number here once confirmed.</p>
+      <h4>India</h4>
+      <ul>
+        <li>Canadian High Commission, New Delhi — +91 11 4178 2000</li>
+        <li>US Embassy, New Delhi — +91 11 2419 8000</li>
+        <li>National emergency number (police/fire/medical): 112</li>
+      </ul>
+      <h4>Egypt</h4>
+      <ul>
+        <li>Canadian Embassy, Cairo — +20 2 2461 2200</li>
+        <li>US Embassy, Cairo — +20 2 2797 3300</li>
+        <li>Tourist & Antiquities Police: 126 · General emergency: 122</li>
+      </ul>
+      <p class="muted">Double-check these numbers closer to departure — save them directly into each traveler's phone contacts too.</p>
+    </div>
+    <h2 class="section-title">Quick reference</h2>
+    <div class="card info-block">
+      <h4>Electrical plugs</h4>
+      <p>India: Type C/D/M, 230V · Egypt: Type C/F, 220V. A universal adapter with USB ports covers both — devices marked "INPUT 100-240V" don't need a voltage converter.</p>
+      <h4>Currency</h4>
+      <p>India: Indian Rupee (INR), cash useful outside big cities. Egypt: Egyptian Pound (EGP), but most attractions and hotels are card-only in 2026 — bring Visa/Mastercard and keep small EGP notes for tips.</p>
+    </div>
+    <h2 class="section-title">Backup your data</h2>
+    <div class="card">
+      <p class="muted" style="margin-top:0">Every phone stores its own copy of documents and notes. Use Export to save a backup file (including photos), and Import to load it on another device or restore it later.</p>
+      <div class="modal-actions" style="margin-top:10px">
+        <button class="btn secondary" id="exportBtn">⬇ Export backup</button>
+        <button class="btn" id="importBtn">⬆ Import backup</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json" style="display:none">
+    </div>
+  `;
+  document.getElementById('checklistCard').addEventListener('change', e=>{
+    const input = e.target.closest('input[type=checkbox]'); if(!input) return;
+    state.checklist[input.dataset.key] = input.checked;
+    saveState();
+    input.closest('.checklist-item').classList.toggle('checked', input.checked);
+  });
+  document.getElementById('exportBtn').onclick = exportBackup;
+  document.getElementById('importBtn').onclick = ()=>document.getElementById('importFile').click();
+  document.getElementById('importFile').addEventListener('change', e=>{
+    if(e.target.files[0]) importBackup(e.target.files[0]);
+  });
+}
+async function exportBackup(){
+  showToast('Preparing backup…');
+  const docsWithPhotos = await Promise.all(state.documents.map(async doc=>{
+    if(doc.photoId){
+      const blob = await idbGet(doc.photoId);
+      const photoData = blob ? await blobToBase64(blob) : null;
+      return {...doc, photoData};
+    }
+    return doc;
+  }));
+  const bundle = {...state, documents:docsWithPhotos, exportedAt:new Date().toISOString()};
+  const blob = new Blob([JSON.stringify(bundle)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `family-travel-backup-${todayISO()}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  showToast('Backup downloaded');
+}
+async function importBackup(file){
+  try{
+    const text = await file.text();
+    const bundle = JSON.parse(text);
+    const docs = await Promise.all((bundle.documents||[]).map(async doc=>{
+      if(doc.photoData){
+        const blob = dataURLToBlob(doc.photoData);
+        const photoId = doc.photoId || uid();
+        await idbPut(photoId, blob);
+        const {photoData, ...rest} = doc;
+        return {...rest, photoId};
+      }
+      return doc;
+    }));
+    state = { documents:docs, checklist:bundle.checklist||{}, seenWelcome:true };
+    saveState();
+    showToast('Backup imported');
+    render();
+  }catch(err){
+    showToast('Could not read that backup file');
+  }
+}
+/* ============ INIT ============ */
+render();
+</script>
+</body>
+</html>
