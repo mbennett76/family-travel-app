@@ -137,6 +137,7 @@
     <button data-tab="home" class="active"><span class="ic">🏠</span>Home</button>
     <button data-tab="itinerary"><span class="ic">🗓️</span>Itinerary</button>
     <button data-tab="flights"><span class="ic">✈️</span>Flights</button>
+    <button data-tab="hotels"><span class="ic">🏨</span>Hotels</button>
     <button data-tab="docs"><span class="ic">🗂️</span>Docs</button>
     <button data-tab="guides"><span class="ic">📍</span>Guides</button>
     <button data-tab="tours"><span class="ic">🎧</span>Tours</button>
@@ -254,6 +255,49 @@ const CHURCH_DELHI = {
   notes: "Located directly between Hazrat Nizamuddin station and IGI Airport — ~20 min from NZM, ~10 min to airport. Collect stored luggage at NZM first, then Uber to church, then airport."
 };
 
+const HOTELS = [
+  {
+    name: "Hotel Taj Resorts",
+    location: "Agra, India",
+    emoji: "🕌",
+    address: "#538, Near Shilp Gram, Taj Mahal East Gate, Agra, Uttar Pradesh 282001",
+    checkin: "Sat, Aug 8 · from 1:00pm",
+    checkout: "Sun, Aug 9 · by 11:00am",
+    nights: "1 night",
+    rooms: "3 × Premium Room (4 adults, 2 children)",
+    confirmation: "Hotels.com Itinerary #73496731391848 · Policy #26196E032G",
+    phone: "+91 (562) 2230160",
+    paid: "CA$141.43 (Amex ••••• 1007) · Paid Jul 15, 2026",
+    notes: "Steps from Taj Mahal East Gate — 5:30am sunrise walk. Breakfast NOT included. Present passports at check-in. Free cancel until Aug 1 6pm; after = 100% penalty.",
+    bookedBy: "Marc Bennett"
+  },
+  {
+    name: "Mazaya Pyramids View Inn",
+    location: "Giza, Egypt",
+    emoji: "🐫",
+    address: "3 St Tiba, Nazlet Elsaman, Elharam, 12557 Giza, Egypt",
+    checkin: "Sun, Aug 9 · from 12:00pm",
+    checkout: "Thu, Aug 13 · 12:00pm–1:00pm",
+    nights: "4 nights",
+    rooms: "Room 1: Triple (Jordyn) · Room 2: Deluxe Double Balcony (Marc) · Room 3: Deluxe Double Balcony (Courtney)",
+    confirmation: "Booking.com #6280005341",
+    phone: "+20 100 888 8479",
+    paid: "US$637.56 (Visa ••••7538) · Breakfast included · PIN: kept separately",
+    notes: "Pay in foreign currency only — Egyptian law. Accepts Visa, Mastercard, Cash. Free cancel until 6pm on arrival day. Passports required at check-in.",
+    bookedBy: "Marc Bennett"
+  }
+];
+
+const ARCHER_TOUR = {
+  company: "Archer Luxury Travel",
+  service: "Delhi pickup → Agra Taj Mahal → Church visit Delhi → Delhi Airport drop",
+  validity: "August 8–9, 2026",
+  cost: "USD $114 × 6 pax = USD $684 total",
+  includes: ["Taj Mahal visit", "English-speaking local guide in Agra", "Transport: Delhi pickup → Agra sightseeing → Delhi church → IGI Airport drop", "Applicable taxes"],
+  excludes: ["Meals", "Visa/insurance", "Tips", "Camera/video fees at monuments", "Personal expenses"],
+  cancellation: "60+ days: NIL · 59–45 days: 50% · 44–30 days: 75% · ≤30 days: 100% · Flights once issued: USD $55/person/sector"
+};
+
 const DOC_CATEGORIES = [
   {key:"passport", label:"Passport", icon:"🛂"},
   {key:"boarding", label:"Boarding Passes", icon:"✈️"},
@@ -270,8 +314,8 @@ const ITINERARY = [
   {date:"2026-08-05", title:"Bihar — Humanitarian Work (Day 3)", loc:"Sunderpur region, Bihar", details:"Continued service work with Rising Star Outreach.", tips:["Debrief as a family each evening — this work can be emotionally heavy, especially for the kids.","Sunscreen + insect repellent daily, even on cloudy monsoon days."]},
   {date:"2026-08-06", title:"Bihar — Humanitarian Work (Day 4)", loc:"Sunderpur region, Bihar", details:"Continued service work with Rising Star Outreach.", tips:["Charge devices whenever power is available — rural power can be intermittent.","Keep a small first-aid kit handy (blister care, rehydration salts, antidiarrheal)."]},
   {date:"2026-08-07", title:"Bihar — Humanitarian Work (Day 5)", loc:"Sunderpur region, Bihar", details:"Final day of service work — wrap-up, farewells, and travel back toward Patna.", tips:["Reconfirm the Patna → Delhi flight for tomorrow.","Repack — separate \"Bihar clothes\" from clean clothes for Agra/Cairo."]},
-  {date:"2026-08-08", title:"Patna → Delhi → Agra", loc:"Patna (PAT) → Delhi (DEL T3) → Agra", details:"Depart RSO campus early morning (~6am), arrive Patna by noon. IndiGo 6E 5121 departs Patna at 3:50pm, arriving Delhi T3 at 5:40pm. Transfer to Hazrat Nizamuddin (NZM) station (~30 min by Uber), drop main luggage at the NZM cloak room or LugBee (Platform 1), then board an evening express train to Agra — arriving ~9pm.", tips:["✈ Flight: 6E 5121 · Departs PAT 3:50pm → Arrives DEL T3 5:40pm · PNR: SCF2QT","Check-in closes 2:50pm — be at Patna airport by 2:20pm","Arrives Delhi T3 (international) — Uber to Hazrat Nizamuddin station (~30 min)","🧳 Drop main luggage at NZM cloak room (Platform 1) or LugBee app — travel light to Agra with day packs only","Board evening train to Agra ~7pm (Telangana/Grand Trunk/Tamil Nadu Express, ~2hr)","Try to rest on the train — tomorrow starts before sunrise."]},
-  {date:"2026-08-09", title:"Taj Mahal sunrise → Delhi → Church → Egypt flight", loc:"Agra → Delhi → IGI Airport", details:"Walk to the Taj Mahal East Gate at 5:30am for sunrise entry at 6:00am — the most magical time to visit. Allow 2.5–3 hours. Board a train back to Delhi ~10am, arriving Hazrat Nizamuddin ~11:45am. Collect stored luggage, Uber to the LDS church in Vasant Vihar for 1pm sacrament meeting (~20 min drive), then Uber to IGI Airport T3 (~10 min) for the evening Egypt flight.", tips:["🌅 Taj Mahal opens 6:00am — arrive East Gate by 5:30am for first entry","Foreign-visitor ticket: ₹1,100/person + ₹200 mausoleum interior — book online (asi.payumoney.com)","Taj is closed Fridays — August 9 is Sunday ✓","No tripods, drones, food, or large bags inside Taj security","🚆 Train Agra → Delhi ~10am · Arrive NZM ~11:45am · Collect stored luggage","⛪ Church: F-48 Poorvi Marg, Vasant Vihar, New Delhi · 1:00pm Sacrament Meeting · 011-46026152","Vasant Vihar is ~20 min from NZM and ~10 min from IGI Airport — perfectly placed","✈ Evening flight to Egypt from Delhi IGI Terminal 3"]},
+  {date:"2026-08-08", title:"Patna → Delhi → Agra (Archer Transport)", loc:"Patna (PAT) → Delhi (DEL T3) → Agra", details:"Depart RSO campus early morning (~6am), arrive Patna by noon. IndiGo 6E 5121 departs Patna at 3:50pm, arriving Delhi T3 at 5:40pm. Archer Luxury Travel picks up the group at Delhi airport and transports everyone to Agra. Check in to Hotel Taj Resorts at the Taj Mahal East Gate.", tips:["✈ Flight: 6E 5121 · Departs PAT 3:50pm → Arrives DEL T3 5:40pm · PNR: SCF2QT","Check-in closes 2:50pm — be at Patna airport by 2:20pm","🚗 Archer Luxury Travel pickup at Delhi T3 → transport to Agra (USD $114/person — see Hotels tab)","🏨 Hotel Taj Resorts · East Gate Taj Mahal · Check-in from 1pm (arriving late — advise hotel) · +91 (562) 2230160","Booking: Hotels.com #73496731391848 · CA$141.43 paid","Breakfast NOT included — dinner near hotel tonight","Tomorrow starts at 5:30am — set alarms, get to bed early!"]},
+  {date:"2026-08-09", title:"Taj Mahal sunrise → Delhi Church → Fly to Egypt ✈", loc:"Agra → Delhi (Church) → Cairo (CAI)", details:"Walk to the Taj Mahal East Gate at 5:30am for sunrise entry at 6:00am. Allow 2.5–3 hours. Archer Luxury Travel transports the group back to Delhi, stopping at the LDS Church in Vasant Vihar for 1pm sacrament meeting, then drops everyone at IGI Airport T3 for the Egypt flight. Arrive Cairo and check in to Mazaya Pyramids View Inn in Giza.", tips:["🌅 Taj Mahal opens 6:00am — arrive East Gate by 5:30am for first entry","Foreign-visitor ticket: ₹1,100/person + ₹200 mausoleum interior — book online (asi.payumoney.com)","Taj is closed Fridays — August 9 is Sunday ✓","No tripods, drones, food, or large bags inside Taj security","🚗 Archer Luxury Travel drives group Agra → Delhi (included in USD $114/person)","Hotel Taj Resorts checkout by 11:00am","⛪ Church: F-48 Poorvi Marg, Vasant Vihar, New Delhi · 1:00pm Sacrament Meeting · 011-46026152","🚗 Archer drops family at IGI Airport T3 after church","🏨 Cairo arrival: Mazaya Pyramids View Inn · Booking.com #6280005341 · Check-in from 12pm · Breakfast included · +20 100 888 8479","Pay at Cairo hotel in foreign currency (USD/CAD/EUR) — Egyptian law"]},
   {date:"2026-08-10", title:"Arrive Cairo & begin touring", loc:"Cairo, Egypt", details:"Arrive in Cairo (the flight may leave the night of the 9th or the morning of the 10th, depending on availability). Begin 2–3 days touring the Pyramids of Giza, the Great Sphinx, and the Nile.", tips:["Confirm your Egypt entry method — e-Visa (apply online ahead) or visa-on-arrival (both Canadian and US passports qualify).","Most Egyptian attractions are now card-only — bring a Visa/Mastercard, not just cash.","Passport should be valid 6+ months past arrival in Egypt."]},
   {date:"2026-08-11", title:"Giza Pyramids & Great Sphinx", loc:"Giza Plateau, Cairo", details:"A full day exploring the Giza Plateau: the Great Pyramid of Khufu, Khafre, Menkaure, and the Great Sphinx.", tips:["General plateau admission is about 700 EGP/adult; going inside Khufu's pyramid is a separate ~1,500 EGP ticket.","Politely decline unsolicited camel/horse offers, or agree on a firm price up front.","Go early — August in Cairo is dry and can top 38°C (100°F) by midday."]},
   {date:"2026-08-12", title:"Nile & Cairo highlights", loc:"Cairo / Nile River", details:"Enjoy the Nile — a felucca sail or river cruise — plus any remaining Cairo sights (Egyptian Museum, Old Cairo, local markets).", tips:["A sunset felucca (traditional sailboat) ride is a highlight — agree on price and duration before boarding.","Stay hydrated and carry bottled water.","Modest dress recommended, especially near mosques."]},
@@ -505,6 +549,7 @@ function render(){
   if(activeTab==='home') return renderHome(main);
   if(activeTab==='itinerary') return renderItinerary(main);
   if(activeTab==='flights') return renderFlights(main);
+  if(activeTab==='hotels') return renderHotels(main);
   if(activeTab==='docs') return renderDocs(main);
   if(activeTab==='guides') return renderDestGuides(main);
   if(activeTab==='tours') return renderTours(main);
@@ -540,9 +585,10 @@ function renderHome(main){
     <div class="card" style="display:flex;flex-direction:column;gap:0;padding:6px 4px;">
       ${quickLink('🗓️','Full itinerary','itinerary')}
       ${quickLink('✈️','Confirmed flights & bookings','flights')}
-      ${quickLink('🗂️','Passports, tickets & hotel docs','docs')}
+      ${quickLink('🏨','Hotels, tours & church','hotels')}
+      ${quickLink('🗂️','Passports, tickets & docs','docs')}
       ${quickLink('📍','Destination guides & visas','guides')}
-      ${quickLink('🎧','Virtual walking tours (audio)','tours')}
+      ${quickLink('🎧','Virtual tours & YouTube videos','tours')}
       ${quickLink('✅','Packing checklist & emergency info','info')}
     </div>
     <h2 class="section-title">⛪ Church — Delhi</h2>
@@ -578,6 +624,72 @@ function renderItinerary(main){
       <ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
     </div>`;
   }).join('');
+}
+
+/* ============ HOTELS ============ */
+function renderHotels(main){
+  main.innerHTML = `
+    <h2 class="section-title">Confirmed hotels</h2>
+    ${HOTELS.map(h=>`
+      <div class="card" style="margin-bottom:14px;">
+        <div class="row" style="margin-bottom:8px;">
+          <span style="font-size:16px;font-weight:800;color:var(--deep)">${h.emoji} ${h.name}</span>
+          <span class="pill blue">${h.location}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.8;">
+          <div>📍 ${h.address}</div>
+          <div>📞 <a href="tel:${h.phone.replace(/\s/g,'')}" style="color:var(--saffron)">${h.phone}</a></div>
+          <div>🔖 ${h.confirmation}</div>
+          <div>💳 ${h.paid}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+          <div style="background:#f8f5ef;border-radius:10px;padding:10px 12px;">
+            <div style="font-size:10px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;">Check-in</div>
+            <div style="font-size:13px;font-weight:700;color:var(--deep)">${h.checkin}</div>
+          </div>
+          <div style="background:#f8f5ef;border-radius:10px;padding:10px 12px;">
+            <div style="font-size:10px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;">Check-out</div>
+            <div style="font-size:13px;font-weight:700;color:var(--deep)">${h.checkout}</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--ink);margin-bottom:6px;"><b>Rooms:</b> ${h.rooms}</div>
+        <div style="background:#fff8e6;border-left:3px solid var(--saffron);border-radius:0 8px 8px 0;padding:8px 10px;font-size:12px;color:var(--muted);">${h.notes}</div>
+      </div>
+    `).join('')}
+
+    <h2 class="section-title">🗺️ Archer Luxury Travel — Tour Proposal</h2>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="row" style="margin-bottom:8px;">
+        <span style="font-size:14px;font-weight:800;color:var(--deep)">${ARCHER_TOUR.company}</span>
+        <span class="pill blue">${ARCHER_TOUR.cost}</span>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">📅 ${ARCHER_TOUR.validity}</div>
+      <div style="font-size:13px;color:var(--ink);margin-bottom:8px;">🚗 ${ARCHER_TOUR.service}</div>
+      <div style="margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">Includes</div>
+        ${ARCHER_TOUR.includes.map(i=>`<div style="font-size:12.5px;color:var(--ink);padding:2px 0;">✓ ${i}</div>`).join('')}
+      </div>
+      <div style="margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">Excludes</div>
+        ${ARCHER_TOUR.excludes.map(e=>`<div style="font-size:12px;color:var(--muted);padding:1px 0;">✗ ${e}</div>`).join('')}
+      </div>
+      <div style="background:#fff8e6;border-left:3px solid var(--saffron);border-radius:0 8px 8px 0;padding:8px 10px;font-size:11.5px;color:var(--muted);">
+        <b style="color:var(--ink);">Cancellation:</b> ${ARCHER_TOUR.cancellation}
+      </div>
+    </div>
+
+    <h2 class="section-title">⛪ Church — Delhi (Aug 9)</h2>
+    <div class="card" style="border-left:3px solid var(--saffron);">
+      <div style="font-weight:800;font-size:14px;color:var(--deep);margin-bottom:6px;">${CHURCH_DELHI.name}</div>
+      <div style="font-size:12.5px;line-height:1.9;">
+        <div>📍 ${CHURCH_DELHI.address}</div>
+        <div>🕐 ${CHURCH_DELHI.time}</div>
+        <div>📞 <a href="tel:01146026152" style="color:var(--saffron)">${CHURCH_DELHI.phone}</a></div>
+        <div>✉️ <a href="mailto:${CHURCH_DELHI.email}" style="color:var(--saffron)">${CHURCH_DELHI.email}</a></div>
+      </div>
+      <div style="background:#f8f5ef;border-radius:8px;padding:8px 10px;margin-top:8px;font-size:12px;color:var(--muted);">${CHURCH_DELHI.notes}</div>
+    </div>
+  `;
 }
 
 /* ============ FLIGHTS ============ */
