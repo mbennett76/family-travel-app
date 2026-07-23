@@ -299,11 +299,99 @@ const ARCHER_TOUR = {
 };
 
 const DOC_CATEGORIES = [
-  {key:"passport", label:"Passport", icon:"🛂"},
-  {key:"boarding", label:"Boarding Passes", icon:"✈️"},
-  {key:"train", label:"Train Tickets", icon:"🚆"},
-  {key:"attraction", label:"Attraction Tickets", icon:"🎟️"},
-  {key:"hotel", label:"Hotel Bookings", icon:"🏨"}
+  {key:"visa",      label:"Visas",          icon:"🛂"},
+  {key:"passport",  label:"Passports",      icon:"📕"},
+  {key:"boarding",  label:"Boarding Passes", icon:"✈️"},
+  {key:"train",     label:"Train Tickets",   icon:"🚆"},
+  {key:"attraction",label:"Attraction Tickets", icon:"🎟️"},
+  {key:"hotel",     label:"Hotel Bookings",  icon:"🏨"}
+];
+
+const INDIA_VISAS = [
+  {
+    traveler: "Marc Jeffrey Bennett",
+    id: "marc",
+    status: "GRANTED ✅",
+    appId: "I004VB4B5626",
+    etaNumber: "901A9071Q",
+    passport: "P853459LS",
+    issued: "22 Jul 2026",
+    expires: "21 Jul 2027",
+    entries: "Multiple",
+    type: "e-Tourist Visa 1 year (e-T1 V)",
+    nationality: "Canada",
+    notes: "Fill e-Arrival card within 72hrs of arrival at boi.gov.in or indianvisaonline.gov.in/earrival"
+  },
+  {
+    traveler: "Scarlett Caroline Bennett",
+    id: "scarlett",
+    status: "GRANTED ✅",
+    appId: "I004VB4BC126",
+    etaNumber: "901A91C9Q",
+    passport: "P142612FS",
+    issued: "22 Jul 2026",
+    expires: "21 Jul 2027",
+    entries: "Multiple",
+    type: "e-Tourist Visa 1 year (e-T1 V)",
+    nationality: "Canada",
+    notes: "Fill e-Arrival card within 72hrs of arrival at boi.gov.in or indianvisaonline.gov.in/earrival"
+  },
+  {
+    traveler: "Natasha Louise Bennett",
+    id: "natasha",
+    status: "PENDING — apply now",
+    appId: "—",
+    etaNumber: "—",
+    passport: "—",
+    issued: "—",
+    expires: "—",
+    entries: "—",
+    type: "e-Tourist Visa 1 year (e-T1 V)",
+    nationality: "Canada",
+    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+  },
+  {
+    traveler: "Courtney Bea Bennett",
+    id: "courtney",
+    status: "PENDING — apply now",
+    appId: "—",
+    etaNumber: "—",
+    passport: "—",
+    issued: "—",
+    expires: "—",
+    entries: "—",
+    type: "e-Tourist Visa 1 year (e-T1 V)",
+    nationality: "Canada",
+    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+  },
+  {
+    traveler: "Jordyn Kathleen Bennett",
+    id: "jordyn",
+    status: "PENDING — apply now",
+    appId: "—",
+    etaNumber: "—",
+    passport: "—",
+    issued: "—",
+    expires: "—",
+    entries: "—",
+    type: "e-Tourist Visa 1 year (e-T1 V)",
+    nationality: "USA",
+    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+  },
+  {
+    traveler: "Milo Marc Bennett",
+    id: "milo",
+    status: "PENDING — apply now",
+    appId: "—",
+    etaNumber: "—",
+    passport: "—",
+    issued: "—",
+    expires: "—",
+    entries: "—",
+    type: "e-Tourist Visa 1 year (e-T1 V)",
+    nationality: "Canada",
+    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+  }
 ];
 
 const ITINERARY = [
@@ -586,12 +674,21 @@ function renderHome(main){
       ${quickLink('🗓️','Full itinerary','itinerary')}
       ${quickLink('✈️','Confirmed flights & bookings','flights')}
       ${quickLink('🏨','Hotels, tours & church','hotels')}
-      ${quickLink('🗂️','Passports, tickets & docs','docs')}
+      ${quickLink('🗂️','Visas, passports, tickets & docs','docs')}
       ${quickLink('📍','Destination guides & visas','guides')}
       ${quickLink('🎧','Virtual tours & YouTube videos','tours')}
       ${quickLink('✅','Packing checklist & emergency info','info')}
     </div>
-    <h2 class="section-title">⛪ Church — Delhi</h2>
+    <h2 class="section-title">🛂 India e-Visa status</h2>
+    <div class="card" style="padding:10px 14px;">
+      ${INDIA_VISAS.map(v=>`
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--line);">
+          <span style="font-size:13px;color:var(--deep);font-weight:500;">${v.traveler.split(' ')[0]}</span>
+          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;${v.status.includes('GRANTED') ? 'color:#1a7a3c;background:#d4f5e1;' : 'color:#c0392b;background:#fde8e3;'}">${v.status.includes('GRANTED') ? '✓ Granted' : '⏳ Needed'}</span>
+        </div>
+      `).join('')}
+      <div style="text-align:right;margin-top:8px;"><button class="btn ghost" style="font-size:12px;" onclick="document.querySelector('[data-tab=docs]').click()">View all visas →</button></div>
+    </div>
     <div class="card info-block" style="border-left:3px solid var(--saffron);">
       <p style="margin:0 0 4px"><b>${CHURCH_DELHI.name}</b></p>
       <p style="margin:0 0 4px">📍 ${CHURCH_DELHI.address}</p>
@@ -763,26 +860,78 @@ function renderFlights(main){
 
 /* ============ DOCS ============ */
 let docsTravelerFilter = TRAVELERS[0].id;
-let docsCatFilter = DOC_CATEGORIES[0].key;
+let docsCatFilter = 'visa';
 
 function renderDocs(main){
   main.innerHTML = `
     <h2 class="section-title">Travel documents</h2>
-    <div class="chips" id="travelerChips">${TRAVELERS.map(t=>`<button class="chip ${t.id===docsTravelerFilter?'active':''}" data-t="${t.id}">${t.name}</button>`).join('')}</div>
     <div class="chips" id="catChips">${DOC_CATEGORIES.map(c=>`<button class="chip ${c.key===docsCatFilter?'active':''}" data-c="${c.key}">${c.icon} ${c.label}</button>`).join('')}</div>
+    ${docsCatFilter === 'visa' ? '' : `<div class="chips" id="travelerChips">${TRAVELERS.map(t=>`<button class="chip ${t.id===docsTravelerFilter?'active':''}" data-t="${t.id}">${t.name}</button>`).join('')}</div>`}
     <div class="card" id="docListCard"></div>
-    <button class="btn block" id="addDocBtn" style="margin-top:4px;">+ Add ${catInfo(docsCatFilter).label} for ${travelerName(docsTravelerFilter)}</button>
+    ${docsCatFilter !== 'visa' ? `<button class="btn block" id="addDocBtn" style="margin-top:4px;">+ Add ${catInfo(docsCatFilter).label} for ${travelerName(docsTravelerFilter)}</button>` : ''}
   `;
-  document.getElementById('travelerChips').addEventListener('click', e=>{
-    const b = e.target.closest('button[data-t]'); if(!b) return;
-    docsTravelerFilter = b.dataset.t; renderDocs(main);
-  });
   document.getElementById('catChips').addEventListener('click', e=>{
     const b = e.target.closest('button[data-c]'); if(!b) return;
     docsCatFilter = b.dataset.c; renderDocs(main);
   });
-  document.getElementById('addDocBtn').addEventListener('click', ()=>openDocForm(null));
-  renderDocList();
+  if(docsCatFilter !== 'visa'){
+    document.getElementById('travelerChips').addEventListener('click', e=>{
+      const b = e.target.closest('button[data-t]'); if(!b) return;
+      docsTravelerFilter = b.dataset.t; renderDocs(main);
+    });
+    document.getElementById('addDocBtn').addEventListener('click', ()=>openDocForm(null));
+  }
+  if(docsCatFilter === 'visa'){
+    renderVisaPanel();
+  } else {
+    renderDocList();
+  }
+}
+
+function renderVisaPanel(){
+  const card = document.getElementById('docListCard'); if(!card) return;
+  const granted = INDIA_VISAS.filter(v=>v.status.includes('GRANTED'));
+  const pending = INDIA_VISAS.filter(v=>v.status.includes('PENDING'));
+  card.innerHTML = `
+    <div style="margin-bottom:12px;">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--good);margin-bottom:8px;">✅ India e-Visas — Granted (${granted.length}/6)</div>
+      ${granted.map(v=>`
+        <div style="background:#f0faf4;border:1px solid #b6e8cb;border-radius:12px;padding:12px 14px;margin-bottom:8px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:14px;font-weight:700;color:var(--deep)">${v.traveler}</span>
+            <span style="font-size:11px;font-weight:700;color:#1a7a3c;background:#d4f5e1;padding:3px 9px;border-radius:20px;">GRANTED ✓</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:12px;color:var(--muted);line-height:1.8;">
+            <div><b style="color:var(--ink)">ETA #</b> ${v.etaNumber}</div>
+            <div><b style="color:var(--ink)">App ID</b> ${v.appId}</div>
+            <div><b style="color:var(--ink)">Passport</b> ${v.passport}</div>
+            <div><b style="color:var(--ink)">Issued</b> ${v.issued}</div>
+            <div><b style="color:var(--ink)">Expires</b> ${v.expires}</div>
+            <div><b style="color:var(--ink)">Entries</b> ${v.entries}</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:7px 10px;margin-top:8px;font-size:11.5px;color:var(--muted);">⚠️ ${v.notes}</div>
+        </div>
+      `).join('')}
+    </div>
+    ${pending.length > 0 ? `
+      <div style="margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#c0392b;margin-bottom:8px;">⏳ India e-Visas — Still needed (${pending.length} remaining)</div>
+        ${pending.map(v=>`
+          <div style="background:#fff8f6;border:1px solid #f5c6b8;border-radius:12px;padding:12px 14px;margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:14px;font-weight:700;color:var(--deep)">${v.traveler}</span>
+              <span style="font-size:11px;font-weight:700;color:#c0392b;background:#fde8e3;padding:3px 9px;border-radius:20px;">PENDING</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">Nationality: ${v.nationality} · ${v.notes}</div>
+            <a href="https://indianvisaonline.gov.in" target="_blank" style="display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:#fff;background:#c0392b;padding:6px 14px;border-radius:8px;text-decoration:none;">Apply now ↗</a>
+          </div>
+        `).join('')}
+      </div>
+    ` : '<div style="text-align:center;padding:12px;color:var(--good);font-weight:700;">🎉 All 6 India e-Visas confirmed!</div>'}
+    <div style="background:#fff8e6;border-left:3px solid var(--saffron);border-radius:0 8px 8px 0;padding:10px 12px;font-size:12px;color:var(--muted);margin-top:4px;">
+      <b style="color:var(--ink);">⚠️ e-Arrival card required:</b> Fill online within 72 hours before arriving in India at <a href="https://indianvisaonline.gov.in/earrival" target="_blank" style="color:var(--saffron)">indianvisaonline.gov.in/earrival</a> or via the Su-Swagatam Mobile App. Do this for all 6 travellers on <b>Jul 30–31</b>.
+    </div>
+  `;
 }
 
 function renderDocList(){
