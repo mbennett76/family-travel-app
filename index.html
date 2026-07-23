@@ -139,6 +139,7 @@
     <button data-tab="flights"><span class="ic">✈️</span>Flights</button>
     <button data-tab="hotels"><span class="ic">🏨</span>Hotels</button>
     <button data-tab="docs"><span class="ic">🗂️</span>Docs</button>
+    <button data-tab="prearrival"><span class="ic">📋</span>Pre-Arrival</button>
     <button data-tab="guides"><span class="ic">📍</span>Guides</button>
     <button data-tab="tours"><span class="ic">🎧</span>Tours</button>
     <button data-tab="info"><span class="ic">ℹ️</span>Info</button>
@@ -381,16 +382,16 @@ const INDIA_VISAS = [
   {
     traveler: "Milo Marc Bennett",
     id: "milo",
-    status: "PENDING — apply now",
-    appId: "—",
-    etaNumber: "—",
-    passport: "—",
-    issued: "—",
-    expires: "—",
-    entries: "—",
+    status: "GRANTED ✅",
+    appId: "I004VB53B226",
+    etaNumber: "901AA754Q",
+    passport: "AS704106",
+    issued: "23 Jul 2026",
+    expires: "22 Jul 2027",
+    entries: "Multiple",
     type: "e-Tourist Visa 1 year (e-T1 V)",
     nationality: "Canada",
-    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+    notes: "Fill e-Arrival card within 72hrs of arrival at boi.gov.in or indianvisaonline.gov.in/earrival"
   }
 ];
 
@@ -548,7 +549,7 @@ const PACKING = [
 
 /* ============ STATE ============ */
 let state = loadState();
-function defaultState(){ return { documents: [], checklist: {}, seenWelcome:false }; }
+function defaultState(){ return { documents: [], checklist: {}, preArrival: {}, seenWelcome:false }; }
 function loadState(){
   try{ const s = JSON.parse(localStorage.getItem('travelAppState')); return s || defaultState(); }
   catch(e){ return defaultState(); }
@@ -639,6 +640,7 @@ function render(){
   if(activeTab==='flights') return renderFlights(main);
   if(activeTab==='hotels') return renderHotels(main);
   if(activeTab==='docs') return renderDocs(main);
+  if(activeTab==='prearrival') return renderPreArrival(main);
   if(activeTab==='guides') return renderDestGuides(main);
   if(activeTab==='tours') return renderTours(main);
   if(activeTab==='info') return renderInfo(main);
@@ -674,6 +676,7 @@ function renderHome(main){
       ${quickLink('🗓️','Full itinerary','itinerary')}
       ${quickLink('✈️','Confirmed flights & bookings','flights')}
       ${quickLink('🏨','Hotels, tours & church','hotels')}
+      ${quickLink('📋','Pre-arrival forms — e-Arrival & Health','prearrival')}
       ${quickLink('🗂️','Visas, passports, tickets & docs','docs')}
       ${quickLink('📍','Destination guides & visas','guides')}
       ${quickLink('🎧','Virtual tours & YouTube videos','tours')}
@@ -684,7 +687,7 @@ function renderHome(main){
       ${INDIA_VISAS.map(v=>`
         <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--line);">
           <span style="font-size:13px;color:var(--deep);font-weight:500;">${v.traveler.split(' ')[0]}</span>
-          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;${v.status.includes('GRANTED') ? 'color:#1a7a3c;background:#d4f5e1;' : 'color:#c0392b;background:#fde8e3;'}">${v.status.includes('GRANTED') ? '✓ Granted' : '⏳ Needed'}</span>
+          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;${v.status.includes('GRANTED') ? 'color:#1a7a3c;background:#d4f5e1;' : v.status.includes('upload') ? 'color:#b07d00;background:#fff3cd;' : 'color:#c0392b;background:#fde8e3;'}">${v.status.includes('GRANTED') ? '✓ Granted' : v.status.includes('upload') ? '📎 Upload ETA' : '⏳ Needed'}</span>
         </div>
       `).join('')}
       <div style="text-align:right;margin-top:8px;"><button class="btn ghost" style="font-size:12px;" onclick="document.querySelector('[data-tab=docs]').click()">View all visas →</button></div>
@@ -721,6 +724,161 @@ function renderItinerary(main){
       <ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
     </div>`;
   }).join('');
+}
+
+/* ============ PRE-ARRIVAL ============ */
+const PRE_ARRIVAL_CONFIG = {
+  arrivalIndia: new Date('2026-08-02T19:50:00+05:30'), // AC42 arrives Delhi 7:50pm IST Aug 2
+  windowHours: 72,
+  portals: [
+    {
+      key: 'earrival',
+      name: 'e-Arrival Card',
+      authority: 'Bureau of Immigration, India',
+      url: 'https://indianvisaonline.gov.in/earrival',
+      altUrl: 'https://boi.gov.in',
+      appName: 'Su-Swagatam Mobile App',
+      desc: 'Mandatory for all 6 travellers. Fill online or via the Su-Swagatam app. Required before arriving at Delhi immigration.',
+      required: ['marc','natasha','courtney','jordyn','scarlett','milo'],
+      icon: '🛂',
+      deadline: 'Open 72hrs before arrival · Complete by Jul 30, 7:50pm IST'
+    },
+    {
+      key: 'airsuvidha',
+      name: 'Air Suvidha Health Declaration',
+      authority: 'Ministry of Civil Aviation, India',
+      url: 'https://airsuvidha.civilaviation.gov.in',
+      altUrl: null,
+      appName: null,
+      desc: 'Self-declaration of health status. Complete for all 6 travellers within 72 hours of departure to India.',
+      required: ['marc','natasha','courtney','jordyn','scarlett','milo'],
+      icon: '🏥',
+      deadline: 'Open 72hrs before arrival · Complete by Jul 30, 7:50pm IST'
+    }
+  ]
+};
+
+function renderPreArrival(main){
+  const now = new Date();
+  const arrivalMs = PRE_ARRIVAL_CONFIG.arrivalIndia.getTime();
+  const windowMs = PRE_ARRIVAL_CONFIG.windowHours * 60 * 60 * 1000;
+  const windowOpenMs = arrivalMs - windowMs;
+  const windowOpen = now >= windowOpenMs;
+  const msUntilWindow = windowOpenMs - now;
+  const hoursUntilWindow = Math.floor(msUntilWindow / 3600000);
+  const minsUntilWindow = Math.floor((msUntilWindow % 3600000) / 60000);
+
+  // Load completion state
+  if(!state.preArrival) state.preArrival = {};
+
+  function isComplete(portalKey, travelerId){
+    return !!(state.preArrival[portalKey + '_' + travelerId]);
+  }
+  function toggleComplete(portalKey, travelerId){
+    const k = portalKey + '_' + travelerId;
+    state.preArrival[k] = !state.preArrival[k];
+    saveState();
+    renderPreArrival(main);
+  }
+
+  const totalTasks = PRE_ARRIVAL_CONFIG.portals.length * 6;
+  const completedTasks = PRE_ARRIVAL_CONFIG.portals.reduce((acc, p) =>
+    acc + TRAVELERS.filter(t => isComplete(p.key, t.id)).length, 0);
+  const allDone = completedTasks === totalTasks;
+
+  main.innerHTML = `
+    <h2 class="section-title">📋 Pre-Arrival Requirements — India</h2>
+
+    <!-- Overall progress -->
+    <div class="card" style="margin-bottom:14px;${allDone?'border:2px solid #1a7a3c;':''}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="font-size:14px;font-weight:800;color:var(--deep);">${allDone ? '🎉 All done!' : `${completedTasks} of ${totalTasks} submissions complete`}</span>
+        <span style="font-size:13px;font-weight:700;${allDone?'color:#1a7a3c;':'color:var(--saffron);'}">${Math.round(completedTasks/totalTasks*100)}%</span>
+      </div>
+      <div style="background:var(--line);border-radius:99px;height:8px;overflow:hidden;">
+        <div style="height:100%;width:${Math.round(completedTasks/totalTasks*100)}%;background:${allDone?'#1a7a3c':'var(--saffron)'};border-radius:99px;transition:width .4s;"></div>
+      </div>
+    </div>
+
+    <!-- Submission window countdown -->
+    <div class="card" style="margin-bottom:14px;background:${windowOpen?'#f0faf4':'#fff8e6'};border:2px solid ${windowOpen?'#1a7a3c':'var(--saffron)'};">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <span style="font-size:22px;">${windowOpen ? '🟢' : '🟡'}</span>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:${windowOpen?'#1a7a3c':'var(--deep)'};">
+            ${windowOpen ? 'Submission window is NOW OPEN ✓' : 'Submission window opens in:'}
+          </div>
+          ${!windowOpen ? `<div style="font-size:20px;font-weight:800;color:var(--saffron);letter-spacing:1px;">${hoursUntilWindow}h ${minsUntilWindow}m</div>` : ''}
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);">
+        ✈ AC42 arrives Delhi: <b style="color:var(--ink)">Aug 2, 7:50pm IST</b><br>
+        📅 72-hour window opens: <b style="color:var(--ink)">Jul 30, 7:50pm IST</b> (Jul 30, ~8:20am MDT)<br>
+        ${windowOpen ? '<b style="color:#1a7a3c;">Complete all submissions now for all 6 travellers.</b>' : 'Complete all submissions as soon as this window opens.'}
+      </div>
+    </div>
+
+    <!-- Each portal -->
+    ${PRE_ARRIVAL_CONFIG.portals.map(p => {
+      const portalDone = TRAVELERS.every(t => isComplete(p.key, t.id));
+      return `
+        <div class="card" style="margin-bottom:14px;${portalDone?'border:1.5px solid #1a7a3c;':''}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div>
+              <div style="font-size:15px;font-weight:800;color:var(--deep);">${p.icon} ${p.name}</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">${p.authority}</div>
+            </div>
+            ${portalDone ? '<span style="font-size:11px;font-weight:700;color:#1a7a3c;background:#d4f5e1;padding:3px 10px;border-radius:20px;">ALL DONE ✓</span>' : ''}
+          </div>
+          <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;">${p.desc}</div>
+
+          <!-- Portal link — green when window open -->
+          <a href="${p.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;text-decoration:none;background:${windowOpen?'#1a7a3c':'#e8e6df'};margin-bottom:8px;">
+            <span style="font-size:18px;">🌐</span>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:${windowOpen?'#fff':'var(--deep)'};">${p.url.replace('https://','')}</div>
+              <div style="font-size:11px;color:${windowOpen?'rgba(255,255,255,0.8)':'var(--muted)'};">${windowOpen ? '✓ Window is open — tap to submit now' : 'Window not yet open — available Jul 30'}</div>
+            </div>
+            <span style="color:${windowOpen?'#fff':'var(--muted)'};font-size:16px;">↗</span>
+          </a>
+          ${p.appName ? `
+            <div style="font-size:11.5px;color:var(--muted);margin-bottom:10px;">Also available via: <b style="color:var(--ink)">${p.appName}</b></div>
+          ` : ''}
+
+          <!-- Per-person checklist -->
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:6px;">Mark submitted for each traveller:</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            ${TRAVELERS.map(t => {
+              const done = isComplete(p.key, t.id);
+              return `
+                <button onclick="preArrivalToggle('${p.key}','${t.id}')"
+                  style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1.5px solid ${done?'#1a7a3c':'var(--line)'};background:${done?'#f0faf4':'var(--bg2)'};cursor:pointer;text-align:left;">
+                  <span style="font-size:16px;">${done?'✅':'⬜'}</span>
+                  <div>
+                    <div style="font-size:12.5px;font-weight:700;color:${done?'#1a7a3c':'var(--deep)'};">${t.name}</div>
+                    <div style="font-size:10.5px;color:var(--muted);">${done?'Submitted ✓':'Not yet'}</div>
+                  </div>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }).join('')}
+
+    <div class="banner" style="margin-top:4px;">
+      <b>Important:</b> Each person must submit their own e-Arrival card and health declaration separately. Have passport numbers and flight details (AC42, arriving Delhi Aug 2 7:50pm) ready. The Su-Swagatam app can be pre-filled and submitted when the window opens.
+    </div>
+  `;
+
+  // Expose toggle function globally
+  window.preArrivalToggle = function(portalKey, travelerId){
+    if(!state.preArrival) state.preArrival = {};
+    const k = portalKey + '_' + travelerId;
+    state.preArrival[k] = !state.preArrival[k];
+    saveState();
+    renderPreArrival(main);
+  };
 }
 
 /* ============ HOTELS ============ */
@@ -891,7 +1049,8 @@ function renderDocs(main){
 function renderVisaPanel(){
   const card = document.getElementById('docListCard'); if(!card) return;
   const granted = INDIA_VISAS.filter(v=>v.status.includes('GRANTED'));
-  const pending = INDIA_VISAS.filter(v=>v.status.includes('PENDING'));
+  const uploadNeeded = INDIA_VISAS.filter(v=>v.status.includes('upload'));
+  const applyNeeded = INDIA_VISAS.filter(v=>v.status.includes('apply'));
   card.innerHTML = `
     <div style="margin-bottom:12px;">
       <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--good);margin-bottom:8px;">✅ India e-Visas — Granted (${granted.length}/6)</div>
@@ -913,10 +1072,24 @@ function renderVisaPanel(){
         </div>
       `).join('')}
     </div>
-    ${pending.length > 0 ? `
+    ${uploadNeeded.length > 0 ? `
       <div style="margin-bottom:8px;">
-        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#c0392b;margin-bottom:8px;">⏳ India e-Visas — Still needed (${pending.length} remaining)</div>
-        ${pending.map(v=>`
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#b07d00;margin-bottom:8px;">📎 ETA granted — details needed (${uploadNeeded.length})</div>
+        ${uploadNeeded.map(v=>`
+          <div style="background:#fffbf0;border:1px solid #f5dfa0;border-radius:12px;padding:12px 14px;margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:14px;font-weight:700;color:var(--deep)">${v.traveler}</span>
+              <span style="font-size:11px;font-weight:700;color:#b07d00;background:#fff3cd;padding:3px 9px;border-radius:20px;">UPLOAD ETA</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">${v.notes}</div>
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
+    ${applyNeeded.length > 0 ? `
+      <div style="margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:#c0392b;margin-bottom:8px;">⏳ India e-Visas — Still needed (${applyNeeded.length})</div>
+        ${applyNeeded.map(v=>`
           <div style="background:#fff8f6;border:1px solid #f5c6b8;border-radius:12px;padding:12px 14px;margin-bottom:8px;">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
               <span style="font-size:14px;font-weight:700;color:var(--deep)">${v.traveler}</span>
@@ -927,7 +1100,8 @@ function renderVisaPanel(){
           </div>
         `).join('')}
       </div>
-    ` : '<div style="text-align:center;padding:12px;color:var(--good);font-weight:700;">🎉 All 6 India e-Visas confirmed!</div>'}
+    ` : ''}
+    ${(uploadNeeded.length + applyNeeded.length) === 0 ? '<div style="text-align:center;padding:12px;color:var(--good);font-weight:700;">🎉 All 6 India e-Visas confirmed!</div>' : ''}
     <div style="background:#fff8e6;border-left:3px solid var(--saffron);border-radius:0 8px 8px 0;padding:10px 12px;font-size:12px;color:var(--muted);margin-top:4px;">
       <b style="color:var(--ink);">⚠️ e-Arrival card required:</b> Fill online within 72 hours before arriving in India at <a href="https://indianvisaonline.gov.in/earrival" target="_blank" style="color:var(--saffron)">indianvisaonline.gov.in/earrival</a> or via the Su-Swagatam Mobile App. Do this for all 6 travellers on <b>Jul 30–31</b>.
     </div>
