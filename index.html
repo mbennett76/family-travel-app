@@ -142,6 +142,8 @@
     <button data-tab="prearrival"><span class="ic">📋</span>Pre-Arrival</button>
     <button data-tab="guides"><span class="ic">📍</span>Guides</button>
     <button data-tab="tours"><span class="ic">🎧</span>Tours</button>
+    <button data-tab="weather"><span class="ic">🌤️</span>Weather</button>
+    <button data-tab="dipali"><span class="ic">💛</span>Dipali</button>
     <button data-tab="info"><span class="ic">ℹ️</span>Info</button>
   </nav>
 </div>
@@ -182,6 +184,19 @@ const CONFIRMED_FLIGHTS = [
       { flight:"AC1040",              from:"Denver (DEN)",         to:"Toronto (YYZ)",  departs:"Aug 1 · 11:25am", arrives:"Aug 1 · 4:35pm",  duration:"3h 10m" },
       { flight:"AC42",                from:"Toronto (YYZ)",        to:"Delhi (DEL)",    departs:"Aug 1 · 7:40pm",  arrives:"Aug 2 · 7:50pm",  duration:"14h 40m", note:"Same flight as Calgary group from YYZ" }
     ]
+  },
+  {
+    group: "All 6 — Delhi to Cairo (via Dubai Sharjah)",
+    groupIds: ["marc","natasha","courtney","milo","scarlett","jordyn"],
+    avionRef: "816234573",
+    airlineRef: "816234573 (Kiwi.com)",
+    airline: "Air Arabia",
+    paid: "Kiwi.com Booking #816 234 573 · Saver Ticket",
+    legs: [
+      { flight:"G9466 (Air Arabia)", from:"New Delhi (DEL)", to:"Dubai Sharjah (SHJ)", departs:"Sun Aug 9 · 6:35pm", arrives:"Sun Aug 9 · 9:05pm", duration:"4h", note:"Seats 11-A, 11-B, 11-C, 11-F, 11-E, 11-D · Passenger details required in Kiwi app" },
+      { flight:"G9620 (Air Arabia)", from:"Dubai Sharjah (SHJ)", to:"Cairo (CAI)", departs:"Sun Aug 9 · 10:45pm", arrives:"Mon Aug 10 · 1:30am", duration:"3h 45m", note:"Seats 3-A, 3-B, 3-C, 3-D, 3-E, 3-F · Arrives Cairo early morning Aug 10" }
+    ],
+    baggage: "Each passenger: 1× personal item (33×25×20cm, 3kg) + 1× cabin (55×40×20cm, 7kg) + 1× checked (78×52×28cm, 20kg)"
   },
   {
     group: "Calgary group (Marc, Natasha, Scarlett, Milo) — Cairo to Calgary",
@@ -340,7 +355,7 @@ const INDIA_VISAS = [
   {
     traveler: "Natasha Louise Bennett",
     id: "natasha",
-    status: "PENDING — apply now",
+    status: "APPLIED — awaiting approval",
     appId: "—",
     etaNumber: "—",
     passport: "—",
@@ -349,12 +364,12 @@ const INDIA_VISAS = [
     entries: "—",
     type: "e-Tourist Visa 1 year (e-T1 V)",
     nationality: "Canada",
-    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+    notes: "Applied Jul 23 — typically approved within 3–5 business days"
   },
   {
     traveler: "Courtney Bea Bennett",
     id: "courtney",
-    status: "PENDING — apply now",
+    status: "APPLIED — awaiting approval",
     appId: "—",
     etaNumber: "—",
     passport: "—",
@@ -363,12 +378,12 @@ const INDIA_VISAS = [
     entries: "—",
     type: "e-Tourist Visa 1 year (e-T1 V)",
     nationality: "Canada",
-    notes: "Apply at indianvisaonline.gov.in — allow 3–5 business days"
+    notes: "Applied Jul 23 — typically approved within 3–5 business days"
   },
   {
     traveler: "Jordyn Kathleen Bennett",
     id: "jordyn",
-    status: "PENDING — apply now",
+    status: "APPLIED — awaiting approval",
     appId: "—",
     etaNumber: "—",
     passport: "—",
@@ -395,6 +410,26 @@ const INDIA_VISAS = [
   }
 ];
 
+
+const DIPALI = {
+  name: "Dipali Kumari",
+  age: "approximately 10 years old",
+  location: "Rising Star Outreach campus, Bihar, India",
+  sponsoredBy: "Bennett Family",
+  description: "Dipali Kumari is the young girl the Bennett family sponsors through Rising Star Outreach. She lives in the leprosy-affected community in Bihar that the family will be serving during their August 3–8 visit. Meeting Dipali in person is one of the most meaningful moments of this trip.",
+  rsoInfo: "Rising Star Outreach works with leprosy-affected communities in Bihar, providing education, medical care, and colony development. Dipali is part of the children's educational program at the campus.",
+  photoNote: "Photo taken July 22, 2026"
+};
+
+const ARCHER_WETU = {
+  company: "Archer Luxury Travel",
+  contact: "hdawson@archerluxurytravel.com",
+  phone: "+1 317-697-3286",
+  website: "https://archerluxurytravel.com",
+  itineraryUrl: "https://wetu.com/Itinerary/Landing/a07b5ba2-6343-43a0-b707-5d08e9f03ccd",
+  itineraryName: "Bennett Family — Iconic Taj Experience"
+};
+
 const ITINERARY = [
   {date:"2026-08-01", title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
   {date:"2026-08-02", title:"Arrive Delhi", loc:"Delhi (DEL)", details:"Land in Delhi and transfer to the hotel. Overnight in Delhi (Aug 2–3) to rest before heading to Bihar.", tips:["Use the e-Visa immigration line at DEL, not the regular foreign-national line.","Book an official prepaid/airport taxi or hotel pickup — avoid unlicensed touts.","It's monsoon season: expect heat, humidity, and possible rain showers."]},
@@ -405,7 +440,7 @@ const ITINERARY = [
   {date:"2026-08-07", title:"Bihar — Humanitarian Work (Day 5)", loc:"Sunderpur region, Bihar", details:"Final day of service work — wrap-up, farewells, and travel back toward Patna.", tips:["Reconfirm the Patna → Delhi flight for tomorrow.","Repack — separate \"Bihar clothes\" from clean clothes for Agra/Cairo."]},
   {date:"2026-08-08", title:"Patna → Delhi → Agra (Archer Transport)", loc:"Patna (PAT) → Delhi (DEL T3) → Agra", details:"Depart RSO campus early morning (~6am), arrive Patna by noon. IndiGo 6E 5121 departs Patna at 3:50pm, arriving Delhi T3 at 5:40pm. Archer Luxury Travel picks up the group at Delhi airport and transports everyone to Agra. Check in to Hotel Taj Resorts at the Taj Mahal East Gate.", tips:["✈ Flight: 6E 5121 · Departs PAT 3:50pm → Arrives DEL T3 5:40pm · PNR: SCF2QT","Check-in closes 2:50pm — be at Patna airport by 2:20pm","🚗 Archer Luxury Travel pickup at Delhi T3 → transport to Agra (USD $114/person — see Hotels tab)","🏨 Hotel Taj Resorts · East Gate Taj Mahal · Check-in from 1pm (arriving late — advise hotel) · +91 (562) 2230160","Booking: Hotels.com #73496731391848 · CA$141.43 paid","Breakfast NOT included — dinner near hotel tonight","Tomorrow starts at 5:30am — set alarms, get to bed early!"]},
   {date:"2026-08-09", title:"Taj Mahal sunrise → Delhi Church → Fly to Egypt ✈", loc:"Agra → Delhi (Church) → Cairo (CAI)", details:"Walk to the Taj Mahal East Gate at 5:30am for sunrise entry at 6:00am. Allow 2.5–3 hours. Archer Luxury Travel transports the group back to Delhi, stopping at the LDS Church in Vasant Vihar for 1pm sacrament meeting, then drops everyone at IGI Airport T3 for the Egypt flight. Arrive Cairo and check in to Mazaya Pyramids View Inn in Giza.", tips:["🌅 Taj Mahal opens 6:00am — arrive East Gate by 5:30am for first entry","Foreign-visitor ticket: ₹1,100/person + ₹200 mausoleum interior — book online (asi.payumoney.com)","Taj is closed Fridays — August 9 is Sunday ✓","No tripods, drones, food, or large bags inside Taj security","🚗 Archer Luxury Travel drives group Agra → Delhi (included in USD $114/person)","Hotel Taj Resorts checkout by 11:00am","⛪ Church: F-48 Poorvi Marg, Vasant Vihar, New Delhi · 1:00pm Sacrament Meeting · 011-46026152","🚗 Archer drops family at IGI Airport T3 after church","🏨 Cairo arrival: Mazaya Pyramids View Inn · Booking.com #6280005341 · Check-in from 12pm · Breakfast included · +20 100 888 8479","Pay at Cairo hotel in foreign currency (USD/CAD/EUR) — Egyptian law"]},
-  {date:"2026-08-10", title:"Arrive Cairo & begin touring", loc:"Cairo, Egypt", details:"Arrive in Cairo (the flight may leave the night of the 9th or the morning of the 10th, depending on availability). Begin 2–3 days touring the Pyramids of Giza, the Great Sphinx, and the Nile.", tips:["Confirm your Egypt entry method — e-Visa (apply online ahead) or visa-on-arrival (both Canadian and US passports qualify).","Most Egyptian attractions are now card-only — bring a Visa/Mastercard, not just cash.","Passport should be valid 6+ months past arrival in Egypt."]},
+  {date:"2026-08-10", title:"Arrive Cairo 1:30am → Check in → First day in Giza", loc:"Cairo, Egypt", details:"Arrive Cairo International Airport at 1:30am on Air Arabia G9620. Transfer to Mazaya Pyramids View Inn, Giza (Booking.com #6280005341 — check-in from 12pm, but coordinate late-night arrival with hotel). Rest in the morning. Afternoon: explore the area around the Pyramids as energy allows.", tips:["✈ Arrives Cairo 1:30am — arrange airport transfer to Mazaya hotel in advance","🏨 Mazaya Pyramids View Inn · +20 100 888 8479 · Advise hotel of very late arrival","Egypt entry: Canadian & US passports qualify for visa-on-arrival (EGP fee) or pre-approved e-Visa","Most Egyptian tourist sites are now card-only — Visa/Mastercard. Bring some USD for tips.","Get rest in the morning — Giza sightseeing begins Aug 11 with fresh energy"]},
   {date:"2026-08-11", title:"Giza Pyramids & Great Sphinx", loc:"Giza Plateau, Cairo", details:"A full day exploring the Giza Plateau: the Great Pyramid of Khufu, Khafre, Menkaure, and the Great Sphinx.", tips:["General plateau admission is about 700 EGP/adult; going inside Khufu's pyramid is a separate ~1,500 EGP ticket.","Politely decline unsolicited camel/horse offers, or agree on a firm price up front.","Go early — August in Cairo is dry and can top 38°C (100°F) by midday."]},
   {date:"2026-08-12", title:"Nile & Cairo highlights", loc:"Cairo / Nile River", details:"Enjoy the Nile — a felucca sail or river cruise — plus any remaining Cairo sights (Egyptian Museum, Old Cairo, local markets).", tips:["A sunset felucca (traditional sailboat) ride is a highlight — agree on price and duration before boarding.","Stay hydrated and carry bottled water.","Modest dress recommended, especially near mosques."]},
   {date:"2026-08-13", title:"Cairo → London → Calgary — All 6 Home! 🇨🇦", loc:"Cairo (CAI) → London (LHR) → Calgary (YYC)", details:"Early start — be at Cairo International Airport by 3:00am for the 5:25am EgyptAir MS783 to London Heathrow. Arrive LHR at 8:40am with a 1h 35min layover, then board Air Canada AC851 to Calgary arriving 12:50pm. All 6 on the same flights home. Courtney and Jordyn will connect onward to SLC from Calgary separately.", tips:["⏰ 5:25am departure — be at Cairo airport by 3:00am","✈ EgyptAir MS783 CAI→LHR · Departs 5:25am · Arrives 8:40am (Comfort)", "✈ Air Canada AC851 LHR→YYC · Departs 10:15am · Arrives 12:50pm (Comfort)","Avion refs: P-AN5BOM (Marc/Natasha/Scarlett/Milo) · P-AN6I8D (Courtney/Jordyn)","All 6 arrive Calgary YYC together 🎉 — Courtney & Jordyn connect to SLC from YYC separately","Safe travels — welcome home!"]}
@@ -643,6 +678,8 @@ function render(){
   if(activeTab==='prearrival') return renderPreArrival(main);
   if(activeTab==='guides') return renderDestGuides(main);
   if(activeTab==='tours') return renderTours(main);
+  if(activeTab==='weather') return renderWeather(main);
+  if(activeTab==='dipali') return renderDipali(main);
   if(activeTab==='info') return renderInfo(main);
 }
 
@@ -680,6 +717,8 @@ function renderHome(main){
       ${quickLink('🗂️','Visas, passports, tickets & docs','docs')}
       ${quickLink('📍','Destination guides & visas','guides')}
       ${quickLink('🎧','Virtual tours & YouTube videos','tours')}
+      ${quickLink('💛','Dipali Kumari — our sponsored girl','dipali')}
+      ${quickLink('🌤️','Live weather — all destinations','weather')}
       ${quickLink('✅','Packing checklist & emergency info','info')}
     </div>
     <h2 class="section-title">🛂 India e-Visa status</h2>
@@ -687,7 +726,7 @@ function renderHome(main){
       ${INDIA_VISAS.map(v=>`
         <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--line);">
           <span style="font-size:13px;color:var(--deep);font-weight:500;">${v.traveler.split(' ')[0]}</span>
-          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;${v.status.includes('GRANTED') ? 'color:#1a7a3c;background:#d4f5e1;' : v.status.includes('upload') ? 'color:#b07d00;background:#fff3cd;' : 'color:#c0392b;background:#fde8e3;'}">${v.status.includes('GRANTED') ? '✓ Granted' : v.status.includes('upload') ? '📎 Upload ETA' : '⏳ Needed'}</span>
+          <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;${v.status.includes('GRANTED') ? 'color:#1a7a3c;background:#d4f5e1;' : v.status.includes('APPLIED') ? 'color:#b07d00;background:#fff3cd;' : v.status.includes('upload') ? 'color:#b07d00;background:#fff3cd;' : 'color:#c0392b;background:#fde8e3;'}">${v.status.includes('GRANTED') ? '✓ Granted' : v.status.includes('APPLIED') ? '⏳ Applied' : v.status.includes('upload') ? '📎 Upload ETA' : '⏳ Needed'}</span>
         </div>
       `).join('')}
       <div style="text-align:right;margin-top:8px;"><button class="btn ghost" style="font-size:12px;" onclick="document.querySelector('[data-tab=docs]').click()">View all visas →</button></div>
@@ -881,6 +920,127 @@ function renderPreArrival(main){
   };
 }
 
+/* ============ DIPALI ============ */
+function renderDipali(main){
+  main.innerHTML = `
+    <div style="background:linear-gradient(135deg,#f5a623,#e8731a);border-radius:16px;padding:20px;margin-bottom:16px;text-align:center;color:#fff;">
+      <div style="font-size:32px;margin-bottom:8px;">💛</div>
+      <div style="font-size:22px;font-weight:800;letter-spacing:.3px;margin-bottom:4px;">${DIPALI.name}</div>
+      <div style="font-size:13px;opacity:.9;">Our sponsored girl · Rising Star Outreach · Bihar, India</div>
+    </div>
+
+    <!-- Photo placeholder with warm message -->
+    <div class="card" style="text-align:center;padding:24px 16px;margin-bottom:14px;background:#fff9f0;border:2px dashed #f5a623;">
+      <div style="font-size:48px;margin-bottom:12px;">📸</div>
+      <div style="font-size:14px;font-weight:700;color:var(--deep);margin-bottom:6px;">Dipali's photo is saved on your device</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">The photos you took on July 22, 2026 are in your iPhone Camera Roll.<br>You'll meet her in person on <b style="color:var(--deep)">August 3rd</b> 💛</div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;border-left:4px solid #f5a623;">
+      <div style="font-size:15px;font-weight:800;color:var(--deep);margin-bottom:10px;">About Dipali</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;">
+        <div style="margin-bottom:6px;">📍 <b style="color:var(--ink)">Location:</b> ${DIPALI.location}</div>
+        <div style="margin-bottom:6px;">👨‍👩‍👧‍👦 <b style="color:var(--ink)">Sponsored by:</b> ${DIPALI.sponsoredBy}</div>
+        <div style="margin-bottom:10px;">📅 <b style="color:var(--ink)">Meeting date:</b> August 3, 2026</div>
+        <div style="background:#fff9f0;border-radius:10px;padding:12px 14px;font-size:13px;color:var(--ink);line-height:1.7;">${DIPALI.description}</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:8px;">About Rising Star Outreach</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7;">${DIPALI.rsoInfo}</div>
+      <a href="https://risingstaredu.org" target="_blank" style="display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:#fff;background:#f5a623;padding:8px 16px;border-radius:8px;text-decoration:none;">Visit risingstaredu.org ↗</a>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;background:#fff9f0;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:8px;">🗺️ Archer Luxury Travel — Taj Experience</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.8;">
+        <div>📞 ${ARCHER_WETU.phone}</div>
+        <div>✉️ <a href="mailto:${ARCHER_WETU.contact}" style="color:var(--saffron)">${ARCHER_WETU.contact}</a></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">
+        <a href="${ARCHER_WETU.website}" target="_blank" style="text-align:center;padding:10px;background:var(--saffron);color:#fff;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;">Website ↗</a>
+        <a href="${ARCHER_WETU.itineraryUrl}" target="_blank" style="text-align:center;padding:10px;background:var(--deep);color:#fff;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;">Taj Itinerary ↗</a>
+      </div>
+    </div>
+
+    <div class="banner" style="background:#fff9f0;border-color:#f5a623;color:#7a4500;">
+      <b>A note for the family:</b> Meeting Dipali will be one of the most meaningful moments of this entire trip. The Bennett family's sponsorship gives her access to education and care through Rising Star Outreach. Come ready to give, love, and be changed.
+    </div>
+  `;
+}
+
+/* ============ WEATHER ============ */
+const WEATHER_LOCATIONS = [
+  { name:"Delhi", label:"Delhi (Arrival & Departure)", emoji:"🕌", lat:28.6139, lon:77.2090, dates:"Aug 2–3 & Aug 9", metUrl:"https://mausam.imd.gov.in/", skyUrl:"https://www.skymetweather.com/content/weather-forecast-and-reports/weather-forecast-for-new-delhi/" },
+  { name:"Patna", label:"Patna (Bihar)", emoji:"🚉", lat:25.5941, lon:85.1376, dates:"Aug 3 & Aug 8", metUrl:"https://mausam.imd.gov.in/patna/", skyUrl:"https://www.skymetweather.com/content/weather-forecast-and-reports/weather-forecast-for-patna/" },
+  { name:"Bihar RSO Campus", label:"RSO Campus — Sunderpur Region", emoji:"🏕️", lat:25.8000, lon:85.5000, dates:"Aug 3–8 (service week)", metUrl:"https://mausam.imd.gov.in/patna/", skyUrl:"https://www.skymetweather.com/content/weather-forecast-and-reports/weather-forecast-for-patna/", note:"Use Patna forecasts as nearest reference — campus is ~2hrs from Patna" },
+  { name:"Agra", label:"Agra (Taj Mahal)", emoji:"🕌", lat:27.1767, lon:78.0081, dates:"Aug 8–9", metUrl:"https://mausam.imd.gov.in/", skyUrl:"https://www.skymetweather.com/content/weather-forecast-and-reports/weather-forecast-for-agra/" },
+  { name:"Cairo", label:"Cairo & Giza, Egypt", emoji:"🐫", lat:30.0444, lon:31.2357, dates:"Aug 9–13", metUrl:"https://weather.com/eg/cairo/city/cairo/tenday", skyUrl:"https://www.skymetweather.com/", cairoUrl:"https://weather.com/eg/cairo/city/cairo/tenday" }
+];
+
+function renderWeather(main){
+  main.innerHTML = `
+    <h2 class="section-title">🌤️ Weather — All Destinations</h2>
+    <div class="banner" style="margin-bottom:14px;">
+      Live forecasts open directly in your browser. Tap any location card to view the current forecast from India Met or Weather.com.
+    </div>
+
+    ${WEATHER_LOCATIONS.map(loc=>`
+      <div class="card" style="margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--deep);">${loc.emoji} ${loc.label}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px;">📅 ${loc.dates}</div>
+          </div>
+        </div>
+        ${loc.note ? `<div style="font-size:11.5px;color:var(--saffron);font-weight:600;margin-bottom:8px;">ℹ ${loc.note}</div>` : ''}
+        <div style="background:#f8f5ef;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:12.5px;color:var(--muted);">
+          ${loc.name === 'Cairo' ?
+            '<b style="color:var(--ink)">August in Cairo:</b> 35–42°C (95–108°F), dry, sunny. Sightseeing best before 10am or after 4pm. Hydrate constantly.' :
+            '<b style="color:var(--ink)">August in Bihar/India:</b> Monsoon season — 28–36°C (82–97°F), high humidity, afternoon rain showers likely. Pack lightweight rain jacket.'}
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <a href="${loc.metUrl}" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;background:var(--deep);color:#fff;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;text-align:center;">
+            🌐 ${loc.name === 'Cairo' ? 'Weather.com' : 'India Met Dept'} ↗
+          </a>
+          <a href="${loc.skyUrl}" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;background:var(--saffron);color:#fff;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;text-align:center;">
+            🌤 Skymet ↗
+          </a>
+        </div>
+        ${loc.name === 'Cairo' && loc.cairoUrl ? `
+          <a href="${loc.cairoUrl}" target="_blank" rel="noopener"
+            style="display:block;margin-top:8px;text-align:center;padding:10px;background:#1D9E75;color:#fff;border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;">
+            📅 10-Day Cairo Forecast ↗
+          </a>` : ''}
+      </div>
+    `).join('')}
+
+    <div class="card" style="margin-top:4px;background:#fff9f0;">
+      <div style="font-size:13px;font-weight:800;color:var(--deep);margin-bottom:8px;">🌧️ India Monsoon — What to expect</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.8;">
+        <div>• Bihar in August is peak monsoon — expect daily afternoon/evening showers</div>
+        <div>• Temperatures 28–36°C with 70–85% humidity — feels hotter than the numbers suggest</div>
+        <div>• Pack lightweight moisture-wicking clothes, a packable rain jacket, and sandals that dry fast</div>
+        <div>• Rural Bihar roads can flood — factor extra travel time on Aug 3 and Aug 8</div>
+        <div>• Delhi is also monsoon season — same applies for Aug 2–3 and Aug 9</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:10px;background:#f0f7ff;">
+      <div style="font-size:13px;font-weight:800;color:var(--deep);margin-bottom:8px;">☀️ Egypt Heat — What to expect</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.8;">
+        <div>• Cairo and Giza in August: 35–42°C (95–108°F), zero rain, full sun</div>
+        <div>• Visit pyramids and sphinx before 10am or after 4pm — midday is brutal</div>
+        <div>• Sunscreen SPF50+, wide-brim hats, and 2+ litres of water per person per day</div>
+        <div>• Loose, light-coloured, breathable cotton clothing recommended</div>
+        <div>• Hotel (Mazaya) has A/C — plan to rest midday and sightsee in morning/evening</div>
+      </div>
+    </div>
+  `;
+}
+
 /* ============ HOTELS ============ */
 function renderHotels(main){
   main.innerHTML = `
@@ -1049,8 +1209,9 @@ function renderDocs(main){
 function renderVisaPanel(){
   const card = document.getElementById('docListCard'); if(!card) return;
   const granted = INDIA_VISAS.filter(v=>v.status.includes('GRANTED'));
+  const applied = INDIA_VISAS.filter(v=>v.status.includes('APPLIED'));
   const uploadNeeded = INDIA_VISAS.filter(v=>v.status.includes('upload'));
-  const applyNeeded = INDIA_VISAS.filter(v=>v.status.includes('apply'));
+  const applyNeeded = INDIA_VISAS.filter(v=>v.status.includes('apply now'));
   card.innerHTML = `
     <div style="margin-bottom:12px;">
       <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--good);margin-bottom:8px;">✅ India e-Visas — Granted (${granted.length}/6)</div>
@@ -1101,7 +1262,7 @@ function renderVisaPanel(){
         `).join('')}
       </div>
     ` : ''}
-    ${(uploadNeeded.length + applyNeeded.length) === 0 ? '<div style="text-align:center;padding:12px;color:var(--good);font-weight:700;">🎉 All 6 India e-Visas confirmed!</div>' : ''}
+    ${(uploadNeeded.length + applyNeeded.length + applied.length) === 0 ? '<div style="text-align:center;padding:12px;color:var(--good);font-weight:700;">🎉 All 6 India e-Visas confirmed!</div>' : ''}
     <div style="background:#fff8e6;border-left:3px solid var(--saffron);border-radius:0 8px 8px 0;padding:10px 12px;font-size:12px;color:var(--muted);margin-top:4px;">
       <b style="color:var(--ink);">⚠️ e-Arrival card required:</b> Fill online within 72 hours before arriving in India at <a href="https://indianvisaonline.gov.in/earrival" target="_blank" style="color:var(--saffron)">indianvisaonline.gov.in/earrival</a> or via the Su-Swagatam Mobile App. Do this for all 6 travellers on <b>Jul 30–31</b>.
     </div>
