@@ -145,6 +145,7 @@
     <button data-tab="tours"><span class="ic">🎧</span>Tours</button>
     <button data-tab="weather"><span class="ic">🌤️</span>Weather</button>
     <button data-tab="dipali"><span class="ic">💛</span>Dipali</button>
+    <button data-tab="arrival"><span class="ic">🛬</span>Arrival</button>
     <button data-tab="info"><span class="ic">ℹ️</span>Info</button>
   </nav>
 </div>
@@ -446,7 +447,7 @@ const VISA_PDFS = {
 
 const ITINERARY = [
   {date:"2026-08-01", title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
-  {date:"2026-08-02", title:"Arrive Delhi", loc:"Delhi (DEL)", details:"Land in Delhi and transfer to the hotel. Overnight in Delhi (Aug 2–3) to rest before heading to Bihar.", tips:["Use the e-Visa immigration line at DEL, not the regular foreign-national line.","Book an official prepaid/airport taxi or hotel pickup — avoid unlicensed touts.","It's monsoon season: expect heat, humidity, and possible rain showers."]},
+  {date:"2026-08-02", title:"Arrive Delhi — All 6 Together 🎉", loc:"Indira Gandhi International Airport → Holiday Inn Aerocity", details:"AC42 arrives Delhi 7:50pm. Clear immigration, collect luggage, and exit arrivals where your Daytrip driver will be waiting with a sign. Short 14-minute transfer to Holiday Inn Aerocity. Overnight and breakfast before heading to the airport for the Patna flight.", schedule:[{time:"7:50pm",act:"✈ AC42 arrives Delhi (DEL) · All 6 together from YYZ"},{time:"7:50–8:20pm",act:"🛂 Clear immigration (e-Visa lane) · Collect 6 bags · Clear customs"},{time:"8:30pm",act:"🚗 Daytrip driver waiting at arrivals with sign · Ref: DLNS9MWU · MPV for 6 + all bags"},{time:"~8:44pm",act:"🏨 Arrive Holiday Inn Aerocity · Check in · Rest"}], tips:["Purpose on immigration forms: TOURIST · If asked where you're going: Northern India","Have PRINTED e-Visa ETA and flight itinerary ready for immigration — phone screen not accepted","If the Daytrip driver is not visible at 8:30pm: WhatsApp Claire Tempest +1 801 618 8442","🏨 Holiday Inn Aerocity · +91 11 4222 2000 · Breakfast included next morning","⚡ Charge all devices overnight — early start tomorrow","📲 See the Arrival tab for the full step-by-step guide"]},
   {date:"2026-08-03", title:"Travel Day — Delhi → Patna → RSO Campus", loc:"Delhi (DEL) → Patna (PAT) → Bihar Campus", details:"Travel day to Rising Star Outreach campus. Fly Delhi to Patna then RSOI drives the group to campus, arriving evening for orientation.", schedule:[{time:"8:00am",act:"Breakfast at Delhi hotel (pre-paid)"},{time:"11:10am",act:"✈ IndiGo 6E 2373 departs Delhi T2 → Patna"},{time:"12:45pm",act:"Arrive Patna Airport · RSOI pickup at 1:00pm"},{time:"12:30pm",act:"Lunch at Pizza Hut en route (pay own)"},{time:"6:30pm",act:"Arrive RSO campus · Student welcome"},{time:"7:00pm",act:"Guest house tour & settle into rooms"},{time:"7:30pm",act:"Dinner in guest house"},{time:"8:15pm",act:"Orientation & FRRO registration"},{time:"9:00pm",act:"Free time"}], tips:["✈ Flight: 6E 2373 · Departs DEL T2 11:10am → Arrives PAT 12:45pm · PNR: SCF2QT","Check-in closes 10:10am — be at domestic terminal T2 by 9:30am","All 11 participants on same IndiGo flight (Tew, Hopkins, Finklea, Clayson & Bennett families)","Room 1: Courtney, Marc, Natasha, Scarlett, Milo, Jordyn Bennett","ATM stop available in Raxaul on Day 2 — bring USD/CAD to convert","Bring extra cash — ATMs very scarce once on campus"]},
   {date:"2026-08-04", title:"Community Development & Micro-Grant Tour Day", loc:"Sundapur Colony & RSO Campus, Bihar", details:"Visit the Sundapur Colony for a full community development day including silk weaving, the Leprosy Hospital, colony tour, and the Nepal border crossing. ATM stop and STAR Store shopping in Raxaul on the way back.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"School assembly — be ready to give a hello message!"},{time:"9:15am",act:"Depart to Sundapur Colony"},{time:"9:45am",act:"Tour silk weaving khadi · Little Flower Leprosy Hospital · Colony tour · Nepal border crossing"},{time:"12:45pm",act:"Depart back to campus · ATM stop · STAR Store shopping in Raxaul"},{time:"2:00pm",act:"Lunch in guest house"},{time:"2:30pm",act:"Free time"},{time:"3:15pm",act:"STAR Store delivery & campus tour with Suku"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time"}], tips:["Bring the hello/welcome message you've prepared for school assembly","Get cash at the ATM in Raxaul today — last reliable ATM until you leave campus","STAR Store: RSO's social enterprise — great place to pick up gifts","Nepal border crossing is a highlight — passports not required for brief visit","Drink only bottled water; insect repellent and sunscreen daily"]},
   {date:"2026-08-05", title:"Medical Day — Marjadwa Colony", loc:"Marjadwa Colony, Bihar", details:"Medical outreach day at Marjadwa colony — washing and oiling of hands and feet, colony tour, and activities with residents including nail polish, books, and games.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"Depart to Marjadwa"},{time:"9:45am",act:"Arrive at colony · Washing & oiling · Colony tour · Nail polish · Books & games"},{time:"12:00pm",act:"Return to campus"},{time:"12:30pm",act:"Lunch in guest house"},{time:"1:00pm",act:"Free time"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time"}], tips:["Bring nail polish (any colours) — a simple joy for the women of the colony","Approach every interaction with gentleness and dignity","Debrief as a family each evening — this work is emotionally rich for kids and adults","Sunscreen + insect repellent every day even on cloudy monsoon days"]},
@@ -895,6 +896,7 @@ function render(){
   if(activeTab==='tours') return renderTours(main);
   if(activeTab==='weather') return renderWeather(main);
   if(activeTab==='dipali') return renderDipali(main);
+  if(activeTab==='arrival') return renderArrival(main);
   if(activeTab==='info') return renderInfo(main);
 }
 
@@ -928,6 +930,7 @@ function renderHome(main){
       ${quickLink('🗓️','Full itinerary','itinerary')}
       ${quickLink('✈️','Confirmed flights & bookings','flights')}
       ${quickLink('🏨','Hotels, tours & church','hotels')}
+      ${quickLink('🛬','India arrival guide — step by step','arrival')}
       ${quickLink('📋','Pre-arrival forms — e-Arrival & Health','prearrival')}
       ${quickLink('🗂️','Visas, passports, tickets & docs','docs')}
       ${quickLink('📍','Destination guides & visas','guides')}
@@ -1980,6 +1983,247 @@ function updatePlayIcon(){
 }
 
 /* ============ INFO (checklist, emergency, backup) ============ */
+/* ============ ARRIVAL GUIDE ============ */
+const ARRIVAL_DATA = {
+  contacts: [
+    { name:"Claire Tempest", role:"Director, RSO Abroad", phone:"+1 801 618 8442", note:"WhatsApp preferred — contact for any pre/during travel questions", email:"claire@risingstaroutreach.org" },
+    { name:"Suku Thankappan", role:"RSO Bihar Campus Lead", phone:"+91 97116 88115", note:"WhatsApp — your contact on the ground in Bihar" },
+  ],
+  embassies: [
+    { name:"U.S. Embassy — New Delhi", phone:"+91 11 2419 8000", address:"Shantipath, Chanakyapuri, New Delhi 110021" },
+    { name:"U.S. Consulate — Mumbai", phone:"+91 22 2672 4000", address:"C-49, G-Block, Bandra Kurla Complex, Bandra East, Mumbai 400051" },
+    { name:"U.S. Consulate — Chennai", phone:"+91 44 2857 4000", address:"Gemini Circle, Gopalapuram, Chennai 600006" },
+    { name:"U.S. Consulate — Hyderabad", phone:"+91 22 6201 1000", address:"Paigah Palace, Begumpet, Secunderabad 500003" },
+  ],
+  canadianMissionsIndia: [
+    { name:"High Commission of Canada — New Delhi ⭐", phone:"+91 11 4178 2000", address:"7/8 Shantipath, Chanakyapuri, New Delhi 110 021", email:"india.consular@international.gc.ca", note:"IN-PERSON services available here. Emergency consular assistance 24/7." },
+    { name:"Consulate General of Canada — Mumbai", phone:"+91 22 6749 4444", address:"One International Center, Tower 2, 21st Floor, Senapati Bapat Marg, Elphinstone Road West, Mumbai 400 013", note:"⚠️ In-person services temporarily suspended — contact New Delhi High Commission instead." },
+    { name:"Consulate General of Canada — Bengaluru", phone:"+91 80 4924 7000", address:"World Trade Center, 22nd Floor, 26/1, Dr. Rajkumar Road, Malleshwaram West, Bengaluru 560055", note:"⚠️ In-person services temporarily suspended — contact New Delhi High Commission instead." },
+    { name:"Emergency Watch & Response Centre (Ottawa)", phone:"+1 613 996 8885", address:"Available 24/7 from anywhere in the world", note:"Call collect if needed. For any emergency when you cannot reach a local mission." },
+  ],
+  canadianMissionsEgypt: [
+    { name:"Embassy of Canada — Cairo", phone:"+20 2 2461 2200", address:"Nile City Towers, 2005 (A) Corniche El Nile, South Tower, 18th Floor, Cairo 11221", email:"cairo.consular@international.gc.ca", note:"Only Canadian representation in Egypt. Emergency consular assistance available 24/7. Open Mon–Fri by appointment." },
+    { name:"Emergency Watch & Response Centre (Ottawa)", phone:"+1 613 996 8885", address:"Available 24/7 from anywhere in the world", note:"Call collect if needed. For any emergency when you cannot reach the Cairo embassy." },
+  ],
+  hotel: {
+    name:"Holiday Inn New Delhi International Airport (Aerocity)",
+    address:"Asset Area 12, Hospitality District, Aerocity, New Delhi",
+    phone:"+91 11 4222 2000",
+    night:"August 2, 2026 (1 night)",
+    transport:"Daytrip · Booking ref: DLNS9MWU · MPV for 6 · Pick-up IGI Airport 8:30pm → Hotel est. 8:44pm",
+    included:"6 check-in bags + 6 carry-on bags · Lead passenger: Marc Bennett",
+  },
+  steps: [
+    {
+      phase:"ON THE PLANE — Before you land",
+      icon:"✈️",
+      items:[
+        "Complete your e-Arrival form (indianvisaonline.gov.in/earrival) within 72 hours of arrival if you haven't already",
+        "Have your printed documents ready to hand: passport, Indian e-Visa, full flight itinerary, e-Arrival form",
+        "Indian airport security requires a PRINTED outbound flight itinerary to enter the airport — don't rely on your phone screen alone",
+        "Purpose on all immigration forms: TOURIST",
+        "If asked where you're travelling: 'Northern India'",
+        "If asked did you pack your own bag: YES",
+      ]
+    },
+    {
+      phase:"STEP 1 — Clear immigration",
+      icon:"🛂",
+      items:[
+        "Head to the immigration queue — have passport and e-Visa ETA document ready",
+        "Your biometrics will be captured at immigration — this is mandatory for e-Visa holders",
+        "If asked about purpose of visit: TOURIST. If asked where you're going: Northern India",
+        "Note: you are entering as tourists. RSO volunteer work is done under tourist visa — do not mention RSO or volunteer work to immigration officers",
+      ]
+    },
+    {
+      phase:"STEP 2 — Collect luggage",
+      icon:"🧳",
+      items:[
+        "Collect all 6 checked bags from baggage claim",
+        "If luggage is delayed or lost — this can happen for several days. If it occurs, make sure each person has their medications, underwear, toothbrush, electronics, and critical items in their carry-on",
+        "File a lost baggage report at the airport before leaving if needed",
+      ]
+    },
+    {
+      phase:"STEP 3 — Clear customs & exit terminal",
+      icon:"🚪",
+      items:[
+        "Pass through customs (nothing to declare for personal items)",
+        "Exit through the arrival doors into the pick-up area",
+        "Security personnel may check your vehicle entering the hotel property — this is completely normal in India",
+      ]
+    },
+    {
+      phase:"STEP 4 — Daytrip driver to Holiday Inn",
+      icon:"🚗",
+      items:[
+        "Look for a driver holding a sign with your name or 'Holiday Inn' / 'Bennett'",
+        "Daytrip booking ref: DLNS9MWU · Pick-up at 8:30pm from IGI Airport",
+        "Vehicle: 1× MPV (people carrier) for 6 passengers + 6 check-in + 6 carry-on bags",
+        "Drive to Holiday Inn Aerocity takes approximately 14 minutes",
+        "Marc Bennett is the point of contact on the Daytrip reservation",
+        "If the driver is not visible: call Daytrip or contact Claire Tempest on WhatsApp (+1 801 618 8442)",
+      ]
+    },
+    {
+      phase:"STEP 5 — Holiday Inn Aerocity (overnight Aug 2)",
+      icon:"🏨",
+      items:[
+        "Holiday Inn New Delhi International Airport · +91 11 4222 2000",
+        "Asset Area 12, Hospitality District, Aerocity, New Delhi",
+        "Check in, get settled, get a good night's rest",
+        "Breakfast at the hotel is included the following morning (pre-paid per RSO confirmation)",
+      ]
+    },
+    {
+      phase:"STEP 6 — Morning of Aug 3: to the airport",
+      icon:"🌅",
+      items:[
+        "Enjoy breakfast at the hotel",
+        "Driver picks up the group and takes you back to IGI Airport domestic terminal (T2)",
+        "IndiGo 6E 2373 departs Delhi T2 at 11:10am → Patna 12:45pm · PNR: SCF2QT",
+        "Check-in closes 10:10am — be at T2 by 9:30am at the latest",
+      ]
+    },
+    {
+      phase:"STEP 7 — Patna arrival & RSO campus transfer",
+      icon:"🏕️",
+      items:[
+        "Arrive Patna Airport 12:45pm",
+        "Look for an RSO driver welcoming you — they will be expecting you",
+        "Drive to RSO campus (Sunderpur/Raxaul area, ~5.5 hours including lunch stop at Pizza Hut and any breaks needed)",
+        "Contact if needed: Suku Thankappan (WhatsApp) +91 97116 88115",
+        "Arrive campus ~6:30pm for student welcome",
+      ]
+    },
+  ]
+};
+
+function renderArrival(main){
+  main.innerHTML = `
+    <h2 class="section-title">🛬 India Arrival Guide</h2>
+    <p class="muted" style="margin:-4px 0 14px;font-size:13px;">Step-by-step from landing in Delhi to arriving at the RSO campus.</p>
+
+    <!-- Key contacts banner -->
+    <div style="background:var(--deep);border-radius:14px;padding:14px 16px;margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.6);margin-bottom:10px;">📞 Key contacts — save to WhatsApp now</div>
+      ${ARRIVAL_DATA.contacts.map(c=>`
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#fff;">${c.name}</div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,.65);margin-top:1px;">${c.role}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;">${c.note}</div>
+          </div>
+          <a href="tel:${c.phone.replace(/\s/g,'')}" style="font-size:13px;font-weight:700;color:var(--saffron);text-decoration:none;white-space:nowrap;padding-left:10px;">${c.phone}</a>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- Documents to print -->
+    <div class="card" style="margin-bottom:14px;border-left:4px solid #c0392b;">
+      <div style="font-size:14px;font-weight:800;color:#c0392b;margin-bottom:8px;">🖨️ Print before you fly — mandatory</div>
+      <div style="font-size:12.5px;color:var(--ink);line-height:2;">
+        ${["Passport copy (photo page)","Indian e-Visa / ETA for each person","Full flight itinerary (Indian airport security requires this to enter the airport — phone screen not accepted)","Completed e-Arrival form for each person (fill within 72hrs of departure)"].map(i=>`
+          <div style="display:flex;gap:8px;align-items:flex-start;">
+            <span style="color:#c0392b;font-weight:800;flex-shrink:0;">✓</span>
+            <span>${i}</span>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <!-- Step by step -->
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:10px;">Step-by-step arrival</div>
+    ${ARRIVAL_DATA.steps.map((s,i)=>`
+      <div class="card" style="margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="font-size:20px;">${s.icon}</div>
+          <div style="font-size:13px;font-weight:800;color:var(--deep);">${s.phase}</div>
+        </div>
+        <div style="border-left:2px solid var(--saffron);padding-left:12px;">
+          ${s.items.map(item=>`
+            <div style="font-size:12.5px;color:var(--ink);line-height:1.5;padding:4px 0;border-bottom:0.5px solid var(--line);">${item}</div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('')}
+
+    <!-- Hotel summary -->
+    <div class="card" style="margin-bottom:14px;background:#fff9f0;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:8px;">🏨 Delhi hotel — Aug 2 night</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.9;">
+        <div><b style="color:var(--ink)">${ARRIVAL_DATA.hotel.name}</b></div>
+        <div>📍 ${ARRIVAL_DATA.hotel.address}</div>
+        <div>📞 <a href="tel:+911142222000" style="color:var(--saffron)">${ARRIVAL_DATA.hotel.phone}</a></div>
+        <div>📅 ${ARRIVAL_DATA.hotel.night}</div>
+        <div>🚗 ${ARRIVAL_DATA.hotel.transport}</div>
+        <div>🧳 ${ARRIVAL_DATA.hotel.included}</div>
+      </div>
+    </div>
+
+    <!-- Immigration tips -->
+    <div class="card" style="margin-bottom:14px;background:#fff8f6;">
+      <div style="font-size:14px;font-weight:800;color:#c0392b;margin-bottom:8px;">⚠️ Immigration tips</div>
+      <div style="font-size:12.5px;color:var(--ink);line-height:1.9;">
+        <div>• Purpose of visit on all forms: <b>TOURIST</b></div>
+        <div>• If asked where you're travelling: <b>"Northern India"</b></div>
+        <div>• If asked did you pack your own bag: <b>YES</b></div>
+        <div>• Do not mention RSO or volunteer activities to immigration officers</div>
+        <div>• Have printed ETA document ready — biometrics will be captured at immigration</div>
+      </div>
+    </div>
+
+    <!-- Flight delay note -->
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:8px;">✈️ If your flight is delayed</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.7;">If you miss a connection, immediately contact your airline's area manager with: airline name, flight number, new arrival date and time. Then WhatsApp <b style="color:var(--ink)">Suku Thankappan (+91 97116 88115)</b> and <b style="color:var(--ink)">Claire Tempest (+1 801 618 8442)</b> — transportation will be adjusted accordingly.</div>
+    </div>
+
+    <!-- Canadian Embassies India -->
+    <div class="card" style="margin-bottom:10px;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:10px;">🍁 Canadian Missions in India</div>
+      <div style="background:#fff3cd;border-radius:8px;padding:8px 10px;font-size:12px;color:#856404;margin-bottom:10px;">
+        <b>Note:</b> In-person consular services are currently only available at the New Delhi High Commission. Mumbai and Bengaluru consulates have temporarily suspended in-person operations.
+      </div>
+      ${ARRIVAL_DATA.canadianMissionsIndia.map(e=>`
+        <div style="padding:8px 0;border-bottom:0.5px solid var(--line);">
+          <div style="font-size:13px;font-weight:700;color:var(--ink);">${e.name}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">📍 ${e.address}</div>
+          ${e.email ? `<div style="font-size:12px;color:var(--muted);">✉️ ${e.email}</div>` : ''}
+          <div style="font-size:11.5px;color:${e.note.includes('⚠️') ? '#c0392b' : e.note.includes('24/7') ? '#1a7a3c' : 'var(--muted)'};margin-top:2px;">${e.note}</div>
+          <a href="tel:${e.phone.replace(/\s/g,'')}" style="font-size:12px;font-weight:700;color:var(--saffron);text-decoration:none;">📞 ${e.phone}</a>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- Canadian Embassy Egypt -->
+    <div class="card" style="margin-bottom:10px;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:10px;">🍁 Canadian Mission in Egypt</div>
+      ${ARRIVAL_DATA.canadianMissionsEgypt.map(e=>`
+        <div style="padding:8px 0;border-bottom:0.5px solid var(--line);">
+          <div style="font-size:13px;font-weight:700;color:var(--ink);">${e.name}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">📍 ${e.address}</div>
+          ${e.email ? `<div style="font-size:12px;color:var(--muted);">✉️ ${e.email}</div>` : ''}
+          <div style="font-size:11.5px;color:${e.note.includes('24/7') ? '#1a7a3c' : 'var(--muted)'};margin-top:2px;">${e.note}</div>
+          <a href="tel:${e.phone.replace(/\s/g,'')}" style="font-size:12px;font-weight:700;color:var(--saffron);text-decoration:none;">📞 ${e.phone}</a>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- US Embassies India -->
+    <div class="card" style="margin-bottom:4px;">
+      <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:10px;">🇺🇸 U.S. Embassies & Consulates in India</div>
+      ${ARRIVAL_DATA.embassies.map(e=>`
+        <div style="padding:8px 0;border-bottom:0.5px solid var(--line);">
+          <div style="font-size:13px;font-weight:700;color:var(--ink);">${e.name}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">📍 ${e.address}</div>
+          <a href="tel:${e.phone.replace(/\s/g,'')}" style="font-size:12px;font-weight:700;color:var(--saffron);text-decoration:none;">📞 ${e.phone}</a>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
 function renderInfo(main){
   main.innerHTML = `
     <h2 class="section-title">Packing checklist</h2>
