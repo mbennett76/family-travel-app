@@ -309,7 +309,8 @@ const HOTELS = [
     phone: "+91 11 4222 2000",
     paid: "US$297.52 · Fully paid · Agency payment",
     notes: "Breakfast included for 2 adults per room. Children 12+ must pay breakfast on-site. Extra adult (3rd guest) bedding charge payable at hotel. Car parking included. Non-modifiable rate.",
-    transport: "Daytrip transfer · Ref: DLNS9MWU · IGI Airport 8:30pm → Hotel est. 8:44pm · 1× MPV + 1× sedan · US$85 prepaid · Lead: Marc Bennett",
+    transport: "Daytrip transfer · Ref: DLNS9MWU · IGI Airport 8:30pm → Hotel est. 8:44pm · US$85 prepaid · Lead: Marc Bennett",
+    drivers: [{name:"Budh S.", phone:"+919982327603", vehicle:"White Suzuki Ertiga", plate:"HR84A0475"},{name:"Shreyas S.", phone:"+919987592469", vehicle:"White Suzuki Ertiga", plate:"HR55AX8516"}],
     bookedBy: "Marc Bennett via Archer Luxury Travel"
   },
   {
@@ -470,7 +471,7 @@ const VISA_PDFS = {
 
 const ITINERARY = [
   {date:"2026-08-01", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
-  {date:"2026-08-02", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], hotelRef:"Holiday Inn New Delhi Aerocity", title:"Arrive Delhi — All 6 Together 🎉", loc:"Indira Gandhi International Airport → Holiday Inn Aerocity", details:"AC42 arrives Delhi 7:50pm. Clear immigration, collect luggage, and exit arrivals where your Daytrip driver will be waiting with a sign. Short 14-minute transfer to Holiday Inn Aerocity. Overnight and breakfast before heading to the airport for the Patna flight.", schedule:[{time:"7:50pm",act:"✈ AC42 arrives Delhi (DEL) · All 6 together from YYZ"},{time:"7:50–8:20pm",act:"🛂 Clear immigration (e-Visa lane) · Collect 6 bags · Clear customs"},{time:"8:30pm",act:"🚗 Daytrip driver waiting at arrivals with sign · Ref: DLNS9MWU · MPV for 6 + all bags"},{time:"~8:44pm",act:"🏨 Arrive Holiday Inn Aerocity · Check in · Rest"}], tips:["Purpose on immigration forms: TOURIST · If asked where you're going: Northern India","Have PRINTED e-Visa ETA and flight itinerary ready for immigration — phone screen not accepted","If the Daytrip driver is not visible at 8:30pm: WhatsApp Claire Tempest +1 801 618 8442","🏨 Holiday Inn Aerocity · +91 11 4222 2000 · Breakfast included next morning","⚡ Charge all devices overnight — early start tomorrow","📲 See the Arrival tab for the full step-by-step guide"]},
+  {date:"2026-08-02", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], hotelRef:"Holiday Inn New Delhi Aerocity", title:"Arrive Delhi — All 6 Together 🎉", loc:"Indira Gandhi International Airport → Holiday Inn Aerocity", details:"AC42 arrives Delhi 7:50pm. Clear immigration, collect luggage, and exit arrivals where your Daytrip driver will be waiting with a sign. Short 14-minute transfer to Holiday Inn Aerocity. Overnight and breakfast before heading to the airport for the Patna flight.", schedule:[{time:"7:50pm",act:"✈ AC42 arrives Delhi (DEL) · All 6 together from YYZ"},{time:"7:50–8:20pm",act:"🛂 Clear immigration (e-Visa lane) · Collect 6 bags · Clear customs"},{time:"8:30pm",act:"🚗 TWO Daytrip drivers waiting at arrivals · Ref: DLNS9MWU · Budh S. (+91 9982327603) white Suzuki HR84A0475 + Shreyas S. (+91 9987592469) white Suzuki HR55AX8516"},{time:"~8:44pm",act:"🏨 Arrive Holiday Inn Aerocity · Check in · Rest"}], tips:["Purpose on immigration forms: TOURIST · If asked where you're going: Northern India","Have PRINTED e-Visa ETA and flight itinerary ready for immigration — phone screen not accepted","If the Daytrip driver is not visible at 8:30pm: WhatsApp Claire Tempest +1 801 618 8442","🏨 Holiday Inn Aerocity · +91 11 4222 2000 · Breakfast included next morning","⚡ Charge all devices overnight — early start tomorrow","📲 See the Arrival tab for the full step-by-step guide"]},
   {date:"2026-08-03", flightRefs:["All 6 — Delhi to Patna"], title:"Travel Day — Delhi → Patna → RSO Campus", loc:"Delhi (DEL) → Patna (PAT) → Bihar Campus", details:"Travel day to Rising Star Outreach campus. Fly Delhi to Patna then RSOI drives the group to campus, arriving evening for orientation.", schedule:[{time:"8:00am",act:"Breakfast at Delhi hotel (pre-paid)"},{time:"11:10am",act:"✈ IndiGo 6E 2373 departs Delhi T2 → Patna"},{time:"12:45pm",act:"Arrive Patna Airport · RSOI pickup at 1:00pm"},{time:"12:30pm",act:"Lunch at Pizza Hut en route (pay own)"},{time:"6:30pm",act:"Arrive RSO campus · Student welcome"},{time:"7:00pm",act:"Guest house tour & settle into rooms"},{time:"7:30pm",act:"Dinner in guest house"},{time:"8:15pm",act:"Orientation & FRRO registration"},{time:"9:00pm",act:"Free time"}], tips:["✈ Flight: 6E 2373 · Departs DEL T2 11:10am → Arrives PAT 12:45pm · PNR: SCF2QT","Check-in closes 10:10am — be at domestic terminal T2 by 9:30am","All 11 participants on same IndiGo flight (Tew, Hopkins, Finklea, Clayson & Bennett families)","Room 1: Courtney, Marc, Natasha, Scarlett, Milo, Jordyn Bennett","ATM stop available in Raxaul on Day 2 — bring USD/CAD to convert","Bring extra cash — ATMs very scarce once on campus"]},
   {date:"2026-08-04", title:"Community Development & Micro-Grant Tour Day", loc:"Sundapur Colony & RSO Campus, Bihar", details:"Visit the Sundapur Colony for a full community development day including silk weaving, the Leprosy Hospital, colony tour, and the Nepal border crossing. ATM stop and STAR Store shopping in Raxaul on the way back.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"School assembly — be ready to give a hello message!"},{time:"9:15am",act:"Depart to Sundapur Colony"},{time:"9:45am",act:"Tour silk weaving khadi · Little Flower Leprosy Hospital · Colony tour · Nepal border crossing"},{time:"12:45pm",act:"Depart back to campus · ATM stop · STAR Store shopping in Raxaul"},{time:"2:00pm",act:"Lunch in guest house"},{time:"2:30pm",act:"Free time"},{time:"3:15pm",act:"STAR Store delivery & campus tour with Suku"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time"}], tips:["Bring the hello/welcome message you've prepared for school assembly","Get cash at the ATM in Raxaul today — last reliable ATM until you leave campus","STAR Store: RSO's social enterprise — great place to pick up gifts","Nepal border crossing is a highlight — passports not required for brief visit","Drink only bottled water; insect repellent and sunscreen daily"]},
   {date:"2026-08-05", title:"Medical Day — Marjadwa Colony", loc:"Marjadwa Colony, Bihar", details:"Medical outreach day at Marjadwa colony — washing and oiling of hands and feet, colony tour, and activities with residents including nail polish, books, and games.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"Depart to Marjadwa"},{time:"9:45am",act:"Arrive at colony · Washing & oiling · Colony tour · Nail polish · Books & games"},{time:"12:00pm",act:"Return to campus"},{time:"12:30pm",act:"Lunch in guest house"},{time:"1:00pm",act:"Free time"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time"}], tips:["Bring nail polish (any colours) — a simple joy for the women of the colony","Approach every interaction with gentleness and dignity","Debrief as a family each evening — this work is emotionally rich for kids and adults","Sunscreen + insect repellent every day even on cloudy monsoon days"]},
@@ -1024,8 +1025,23 @@ function flightModalHtml(groupName){
 
 function hotelModalHtml(hotelName){
   const h = HOTELS.find(x=>x.name===hotelName); if(!h) return '<p>Not found</p>';
-  return `
-    <div style="font-size:12.5px;color:var(--muted);line-height:1.9;">
+  const driverHtml = h.drivers ? `
+    <div style="background:var(--deep,#1a2e4a);border-radius:12px;padding:12px 14px;margin-bottom:12px;">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.6);margin-bottom:10px;">🚗 Your Daytrip drivers — look for these vehicles</div>
+      ${h.drivers.map(d=>`
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#fff;">${d.name}</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.65);">${d.vehicle} · <b style="color:#fff;">${d.plate}</b></div>
+          </div>
+          <a href="tel:${d.phone}" style="font-size:13px;font-weight:700;color:var(--saffron,#e8731a);text-decoration:none;">${d.phone}</a>
+        </div>
+      `).join('')}
+      <div style="font-size:11.5px;color:rgba(255,255,255,.5);margin-top:8px;">Ref: DLNS9MWU · Both cars depart IGI Airport 8:30pm · If not visible, call drivers directly</div>
+    </div>
+  ` : '';
+  return driverHtml + `
+    <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.9;">
       <div>📍 ${h.address}</div>
       <div>📞 <a href="tel:${h.phone.replace(/\s/g,'')}" style="color:var(--saffron)">${h.phone}</a></div>
       <div>🔖 ${h.confirmation}</div>
@@ -2302,15 +2318,16 @@ const ARRIVAL_DATA = {
       ]
     },
     {
-      phase:"STEP 4 — Daytrip driver to Holiday Inn",
+      phase:"STEP 4 — Daytrip drivers to Holiday Inn",
       icon:"🚗",
       items:[
-        "Look for a driver holding a sign with your name or 'Holiday Inn' / 'Bennett'",
-        "Daytrip booking ref: DLNS9MWU · Pick-up at 8:30pm from IGI Airport",
-        "Vehicle: 1× MPV (people carrier) for 6 passengers + 6 check-in + 6 carry-on bags",
-        "Drive to Holiday Inn Aerocity takes approximately 14 minutes",
+        "TWO vehicles will meet you — look for white Suzuki Ertigas or a sign with 'Bennett' / 'Holiday Inn'",
+        "🧑 Driver 1: Budh S. · +91 9982327603 · White Suzuki Ertiga · Plate HR84A0475",
+        "🧑 Driver 2: Shreyas S. · +91 9987592469 · White Suzuki Ertiga · Plate HR55AX8516",
+        "Daytrip booking ref: DLNS9MWU · Pick-up 8:30pm · IGI Airport arrivals hall",
+        "Drive to Holiday Inn Aerocity is approximately 14 minutes",
         "Marc Bennett is the point of contact on the Daytrip reservation",
-        "If the driver is not visible: call Daytrip or contact Claire Tempest on WhatsApp (+1 801 618 8442)",
+        "If drivers are not visible: call directly using the numbers above, or WhatsApp Claire Tempest (+1 801 618 8442)",
       ]
     },
     {
