@@ -136,13 +136,8 @@
   <nav class="tabs" id="tabs">
     <button data-tab="home" class="active"><span class="ic">🏠</span>Home</button>
     <button data-tab="itinerary"><span class="ic">🗓️</span>Itinerary</button>
-    <button data-tab="flights"><span class="ic">✈️</span>Flights</button>
-    <button data-tab="hotels"><span class="ic">🏨</span>Hotels</button>
     <button data-tab="docs"><span class="ic">🗂️</span>Docs</button>
-    <button data-tab="prearrival"><span class="ic">📋</span>Pre-Arrival</button>
-    <button data-tab="tourinfo"><span class="ic">🗺️</span>Tour Info</button>
-    <button data-tab="guides"><span class="ic">📍</span>Guides</button>
-    <button data-tab="tours"><span class="ic">🎧</span>Tours</button>
+    <button data-tab="explore"><span class="ic">🗺️</span>Explore</button>
     <button data-tab="weather"><span class="ic">🌤️</span>Weather</button>
     <button data-tab="dipali"><span class="ic">💛</span>Dipali</button>
     <button data-tab="arrival"><span class="ic">🛬</span>Arrival</button>
@@ -302,6 +297,22 @@ const HOTELS = [
     bookedBy: "Marc Bennett"
   },
   {
+    name: "Holiday Inn New Delhi Aerocity",
+    location: "New Delhi, India",
+    emoji: "🏨",
+    address: "Asset Area 12, Hospitality District, Aerocity, New Delhi 110037",
+    checkin: "Sun, Aug 2 · from 3:00am (late night arrival)",
+    checkout: "Mon, Aug 3 · by 12:00pm",
+    nights: "1 night",
+    rooms: "3 × 2 Twin Bed Standard Non-Smoking (3 adults, 3 children aged 16, 16, 16)",
+    confirmation: "Bedsonline Ref: 270-2938530 · Agency Ref: RSOA (Archer Luxury Travel)",
+    phone: "+91 11 4222 2000",
+    paid: "US$297.52 · Fully paid · Agency payment",
+    notes: "Breakfast included for 2 adults per room. Children 12+ must pay breakfast on-site. Extra adult (3rd guest) bedding charge payable at hotel. Car parking included. Non-modifiable rate.",
+    transport: "Daytrip transfer · Ref: DLNS9MWU · IGI Airport 8:30pm → Hotel est. 8:44pm · 1× MPV + 1× sedan · US$85 prepaid · Lead: Marc Bennett",
+    bookedBy: "Marc Bennett via Archer Luxury Travel"
+  },
+  {
     name: "Mazaya Pyramids View Inn",
     location: "Giza, Egypt",
     emoji: "🐫",
@@ -458,19 +469,19 @@ const VISA_PDFS = {
 };
 
 const ITINERARY = [
-  {date:"2026-08-01", title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
-  {date:"2026-08-02", title:"Arrive Delhi — All 6 Together 🎉", loc:"Indira Gandhi International Airport → Holiday Inn Aerocity", details:"AC42 arrives Delhi 7:50pm. Clear immigration, collect luggage, and exit arrivals where your Daytrip driver will be waiting with a sign. Short 14-minute transfer to Holiday Inn Aerocity. Overnight and breakfast before heading to the airport for the Patna flight.", schedule:[{time:"7:50pm",act:"✈ AC42 arrives Delhi (DEL) · All 6 together from YYZ"},{time:"7:50–8:20pm",act:"🛂 Clear immigration (e-Visa lane) · Collect 6 bags · Clear customs"},{time:"8:30pm",act:"🚗 Daytrip driver waiting at arrivals with sign · Ref: DLNS9MWU · MPV for 6 + all bags"},{time:"~8:44pm",act:"🏨 Arrive Holiday Inn Aerocity · Check in · Rest"}], tips:["Purpose on immigration forms: TOURIST · If asked where you're going: Northern India","Have PRINTED e-Visa ETA and flight itinerary ready for immigration — phone screen not accepted","If the Daytrip driver is not visible at 8:30pm: WhatsApp Claire Tempest +1 801 618 8442","🏨 Holiday Inn Aerocity · +91 11 4222 2000 · Breakfast included next morning","⚡ Charge all devices overnight — early start tomorrow","📲 See the Arrival tab for the full step-by-step guide"]},
-  {date:"2026-08-03", title:"Travel Day — Delhi → Patna → RSO Campus", loc:"Delhi (DEL) → Patna (PAT) → Bihar Campus", details:"Travel day to Rising Star Outreach campus. Fly Delhi to Patna then RSOI drives the group to campus, arriving evening for orientation.", schedule:[{time:"8:00am",act:"Breakfast at Delhi hotel (pre-paid)"},{time:"11:10am",act:"✈ IndiGo 6E 2373 departs Delhi T2 → Patna"},{time:"12:45pm",act:"Arrive Patna Airport · RSOI pickup at 1:00pm"},{time:"12:30pm",act:"Lunch at Pizza Hut en route (pay own)"},{time:"6:30pm",act:"Arrive RSO campus · Student welcome"},{time:"7:00pm",act:"Guest house tour & settle into rooms"},{time:"7:30pm",act:"Dinner in guest house"},{time:"8:15pm",act:"Orientation & FRRO registration"},{time:"9:00pm",act:"Free time"}], tips:["✈ Flight: 6E 2373 · Departs DEL T2 11:10am → Arrives PAT 12:45pm · PNR: SCF2QT","Check-in closes 10:10am — be at domestic terminal T2 by 9:30am","All 11 participants on same IndiGo flight (Tew, Hopkins, Finklea, Clayson & Bennett families)","Room 1: Courtney, Marc, Natasha, Scarlett, Milo, Jordyn Bennett","ATM stop available in Raxaul on Day 2 — bring USD/CAD to convert","Bring extra cash — ATMs very scarce once on campus"]},
+  {date:"2026-08-01", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
+  {date:"2026-08-02", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], hotelRef:"Holiday Inn New Delhi Aerocity", title:"Arrive Delhi — All 6 Together 🎉", loc:"Indira Gandhi International Airport → Holiday Inn Aerocity", details:"AC42 arrives Delhi 7:50pm. Clear immigration, collect luggage, and exit arrivals where your Daytrip driver will be waiting with a sign. Short 14-minute transfer to Holiday Inn Aerocity. Overnight and breakfast before heading to the airport for the Patna flight.", schedule:[{time:"7:50pm",act:"✈ AC42 arrives Delhi (DEL) · All 6 together from YYZ"},{time:"7:50–8:20pm",act:"🛂 Clear immigration (e-Visa lane) · Collect 6 bags · Clear customs"},{time:"8:30pm",act:"🚗 Daytrip driver waiting at arrivals with sign · Ref: DLNS9MWU · MPV for 6 + all bags"},{time:"~8:44pm",act:"🏨 Arrive Holiday Inn Aerocity · Check in · Rest"}], tips:["Purpose on immigration forms: TOURIST · If asked where you're going: Northern India","Have PRINTED e-Visa ETA and flight itinerary ready for immigration — phone screen not accepted","If the Daytrip driver is not visible at 8:30pm: WhatsApp Claire Tempest +1 801 618 8442","🏨 Holiday Inn Aerocity · +91 11 4222 2000 · Breakfast included next morning","⚡ Charge all devices overnight — early start tomorrow","📲 See the Arrival tab for the full step-by-step guide"]},
+  {date:"2026-08-03", flightRefs:["All 6 — Delhi to Patna"], title:"Travel Day — Delhi → Patna → RSO Campus", loc:"Delhi (DEL) → Patna (PAT) → Bihar Campus", details:"Travel day to Rising Star Outreach campus. Fly Delhi to Patna then RSOI drives the group to campus, arriving evening for orientation.", schedule:[{time:"8:00am",act:"Breakfast at Delhi hotel (pre-paid)"},{time:"11:10am",act:"✈ IndiGo 6E 2373 departs Delhi T2 → Patna"},{time:"12:45pm",act:"Arrive Patna Airport · RSOI pickup at 1:00pm"},{time:"12:30pm",act:"Lunch at Pizza Hut en route (pay own)"},{time:"6:30pm",act:"Arrive RSO campus · Student welcome"},{time:"7:00pm",act:"Guest house tour & settle into rooms"},{time:"7:30pm",act:"Dinner in guest house"},{time:"8:15pm",act:"Orientation & FRRO registration"},{time:"9:00pm",act:"Free time"}], tips:["✈ Flight: 6E 2373 · Departs DEL T2 11:10am → Arrives PAT 12:45pm · PNR: SCF2QT","Check-in closes 10:10am — be at domestic terminal T2 by 9:30am","All 11 participants on same IndiGo flight (Tew, Hopkins, Finklea, Clayson & Bennett families)","Room 1: Courtney, Marc, Natasha, Scarlett, Milo, Jordyn Bennett","ATM stop available in Raxaul on Day 2 — bring USD/CAD to convert","Bring extra cash — ATMs very scarce once on campus"]},
   {date:"2026-08-04", title:"Community Development & Micro-Grant Tour Day", loc:"Sundapur Colony & RSO Campus, Bihar", details:"Visit the Sundapur Colony for a full community development day including silk weaving, the Leprosy Hospital, colony tour, and the Nepal border crossing. ATM stop and STAR Store shopping in Raxaul on the way back.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"School assembly — be ready to give a hello message!"},{time:"9:15am",act:"Depart to Sundapur Colony"},{time:"9:45am",act:"Tour silk weaving khadi · Little Flower Leprosy Hospital · Colony tour · Nepal border crossing"},{time:"12:45pm",act:"Depart back to campus · ATM stop · STAR Store shopping in Raxaul"},{time:"2:00pm",act:"Lunch in guest house"},{time:"2:30pm",act:"Free time"},{time:"3:15pm",act:"STAR Store delivery & campus tour with Suku"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time"}], tips:["Bring the hello/welcome message you've prepared for school assembly","Get cash at the ATM in Raxaul today — last reliable ATM until you leave campus","STAR Store: RSO's social enterprise — great place to pick up gifts","Nepal border crossing is a highlight — passports not required for brief visit","Drink only bottled water; insect repellent and sunscreen daily"]},
   {date:"2026-08-05", title:"Medical Day — Marjadwa Colony", loc:"Marjadwa Colony, Bihar", details:"Medical outreach day at Marjadwa colony — washing and oiling of hands and feet, colony tour, and activities with residents including nail polish, books, and games.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"Depart to Marjadwa"},{time:"9:45am",act:"Arrive at colony · Washing & oiling · Colony tour · Nail polish · Books & games"},{time:"12:00pm",act:"Return to campus"},{time:"12:30pm",act:"Lunch in guest house"},{time:"1:00pm",act:"Free time"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time"}], tips:["Bring nail polish (any colours) — a simple joy for the women of the colony","Approach every interaction with gentleness and dignity","Debrief as a family each evening — this work is emotionally rich for kids and adults","Sunscreen + insect repellent every day even on cloudy monsoon days"]},
   {date:"2026-08-06", title:"Education Day — School Day at RSO Campus", loc:"RSO Campus School, Bihar", details:"A full school day alongside RSO students — 7 periods of classes, tea break with the Principal, and an afternoon with sponsor students in the Medical Office.", schedule:[{time:"7:00am",act:"Breakfast"},{time:"7:30am",act:"Morning circle"},{time:"7:50am",act:"School assembly — may be asked to speak"},{time:"8:00am",act:"Period 1 (8:00–8:45)"},{time:"8:45am",act:"Period 2 (8:45–9:30)"},{time:"9:30am",act:"Period 3 (9:30–10:15)"},{time:"10:15am",act:"Tea break with Principal"},{time:"10:35am",act:"Period 4 (10:35–11:20)"},{time:"11:20am",act:"Period 5 (11:20–12:05)"},{time:"12:05pm",act:"Period 6 (12:05–12:50)"},{time:"12:50pm",act:"Lunch"},{time:"1:40pm",act:"Period 7 (1:40–2:20)"},{time:"2:20pm",act:"Free time"},{time:"3:30pm",act:"Visit sponsor students in Medical Office — origami, books, games"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"}], tips:["Prepare something to say at school assembly — even a few words means the world","Sponsor student visit at 3:30pm — this is the highlight of Education Day","Bring origami paper, small books, or simple games for the Medical Office visit","Note: RSO sponsor student for Bennett family is listed as TBD on the schedule","Charge all devices tonight — power can be intermittent"]},
   {date:"2026-08-07", title:"Medical Day — Chauradano Colony & Farewell Evening", loc:"Chauradano Colony & RSO Campus, Bihar", details:"Final colony visit day at Chauradano, followed by packing and a farewell evening with the RSO students.", schedule:[{time:"8:00am",act:"Breakfast"},{time:"8:45am",act:"Morning circle"},{time:"9:00am",act:"Depart to Chauradano Colony"},{time:"10:00am",act:"Arrive at colony · Washing & oiling · Colony tour · Nail polish · Books & games"},{time:"12:00pm",act:"Return to campus"},{time:"1:30pm",act:"Lunch in guest house"},{time:"2:00pm",act:"Free time"},{time:"4:00pm",act:"Playtime with the students"},{time:"6:00pm",act:"Free time"},{time:"6:45pm",act:"Dinner with highs & lows"},{time:"8:00pm",act:"Bedtime stories with the students"},{time:"9:00pm",act:"Free time & PACKING"}], tips:["Tonight is packing night — separate Bihar clothes from Agra/Cairo clothes","Early start tomorrow: depart campus at 8:00am","Reconfirm IndiGo 6E 5121 for tomorrow (Patna → Delhi 3:50pm)","Take a moment tonight to reflect as a family on the week — these memories last a lifetime","Leave generous tips for campus staff if you feel moved to do so"]},
-  {date:"2026-08-08", title:"Patna → Delhi → Agra (Archer Transport)", loc:"Patna (PAT) → Delhi (DEL T3) → Agra", details:"Depart RSO campus early morning (~6am), arrive Patna by noon. IndiGo 6E 5121 departs Patna at 3:50pm, arriving Delhi T3 at 5:40pm. Archer Luxury Travel picks up the group at Delhi airport and transports everyone to Agra. Check in to Hotel Taj Resorts at the Taj Mahal East Gate.", tips:["✈ Flight: 6E 5121 · Departs PAT 3:50pm → Arrives DEL T3 5:40pm · PNR: SCF2QT","🕗 Depart RSO campus 8:00am sharp · Stop for snacks & restroom ~10:00am · Arrive Patna airport ~1:30pm","Check-in closes 2:50pm — arrival by 1:30pm gives good buffer","🚗 Archer Luxury Travel pickup at Delhi T3 → transport to Agra (USD $114/person — see Hotels tab)","🏨 Hotel Taj Resorts · East Gate Taj Mahal · Check-in from 1pm (arriving late — advise hotel) · +91 (562) 2230160","Booking: Hotels.com #73496731391848 · CA$141.43 paid","Breakfast NOT included — dinner near hotel tonight","Tomorrow starts at 5:30am — set alarms, get to bed early!"]},
-  {date:"2026-08-09", title:"Taj Mahal sunrise → Delhi Church → Fly to Egypt ✈", loc:"Agra → Delhi (Church) → Cairo (CAI)", details:"Walk to the Taj Mahal East Gate at 5:30am for sunrise entry at 6:00am. Allow 2.5–3 hours. Archer Luxury Travel transports the group back to Delhi, stopping at the LDS Church in Vasant Vihar for 1pm sacrament meeting, then drops everyone at IGI Airport T3 for the Egypt flight. Arrive Cairo and check in to Mazaya Pyramids View Inn in Giza.", tips:["🌅 Taj Mahal opens 6:00am — arrive East Gate by 5:30am for first entry","Foreign-visitor ticket: ₹1,100/person + ₹200 mausoleum interior — book online (asi.payumoney.com)","Taj is closed Fridays — August 9 is Sunday ✓","No tripods, drones, food, or large bags inside Taj security","🚗 Archer Luxury Travel drives group Agra → Delhi (included in USD $114/person)","Hotel Taj Resorts checkout by 11:00am","⛪ Church: F-48 Poorvi Marg, Vasant Vihar, New Delhi · 1:00pm Sacrament Meeting · 011-46026152","🚗 Archer drops family at IGI Airport T3 after church","🏨 Cairo arrival: Mazaya Pyramids View Inn · Booking.com #6280005341 · Check-in from 12pm · Breakfast included · +20 100 888 8479","Pay at Cairo hotel in foreign currency (USD/CAD/EUR) — Egyptian law"]},
-  {date:"2026-08-10", title:"Arrive Cairo + Grand Egyptian Museum & Nile Cruise Dinner", loc:"Cairo International Airport → Giza → Cairo", details:"Arrive Cairo at 1:30am, transfer to Mazaya Pyramids View Inn. Rest morning. At 9am the tour begins: Grand Egyptian Museum including King Tutankhamun treasures and the Papyrus Institute, then Coptic Cairo churches in the afternoon, finishing with a Nile sunset cruise dinner with tanoura show.", schedule:[{time:"1:30am",act:"✈ Arrive Cairo Airport (Air Arabia G9620) · Airport transfer to Mazaya hotel"},{time:"2:00am",act:"🏨 Check in to Mazaya Pyramids View Inn (late night arrival — pre-advise hotel)"},{time:"Morning",act:"Rest and breakfast at hotel"},{time:"9:00am",act:"🚗 Tour pickup from hotel"},{time:"9:00–1pm",act:"🏛️ Grand Egyptian Museum — treasures of ancient Egypt · King Tutankhamun collection · Papyrus Institute"},{time:"1:00pm",act:"🥗 Lunch (optional)"},{time:"2:00pm",act:"🕍 Coptic Cairo — explore the ancient Coptic churches of Old Cairo"},{time:"5:30pm",act:"🌙 Sunset Nile Cruise dinner with tanoura (whirling dervish) show & entertainment"},{time:"8:30pm",act:"🏨 Drop off at hotel"}], tips:["✈ Flight arrives 1:30am — pre-arrange airport transfer, hotel is advised of late check-in","Egypt entry: e-Visa or visa-on-arrival available at CAI (bring USD $25 each)","Most Egyptian sites are card-only — Visa/Mastercard. Keep USD for tips & markets","The Grand Egyptian Museum is enormous — comfortable shoes are essential","Tanoura show on the Nile cruise is spectacular — worth staying awake for!","Breakfast included at Mazaya hotel each morning"]},
+  {date:"2026-08-08", flightRefs:["All 6 — Patna to Delhi"], hotelRef:"Hotel Taj Resorts", title:"Patna → Delhi → Agra (Archer Transport)", loc:"Patna (PAT) → Delhi (DEL T3) → Agra", details:"Depart RSO campus early morning (~6am), arrive Patna by noon. IndiGo 6E 5121 departs Patna at 3:50pm, arriving Delhi T3 at 5:40pm. Archer Luxury Travel picks up the group at Delhi airport and transports everyone to Agra. Check in to Hotel Taj Resorts at the Taj Mahal East Gate.", tips:["✈ Flight: 6E 5121 · Departs PAT 3:50pm → Arrives DEL T3 5:40pm · PNR: SCF2QT","🕗 Depart RSO campus 8:00am sharp · Stop for snacks & restroom ~10:00am · Arrive Patna airport ~1:30pm","Check-in closes 2:50pm — arrival by 1:30pm gives good buffer","🚗 Archer Luxury Travel pickup at Delhi T3 → transport to Agra (USD $114/person — see Hotels tab)","🏨 Hotel Taj Resorts · East Gate Taj Mahal · Check-in from 1pm (arriving late — advise hotel) · +91 (562) 2230160","Booking: Hotels.com #73496731391848 · CA$141.43 paid","Breakfast NOT included — dinner near hotel tonight","Tomorrow starts at 5:30am — set alarms, get to bed early!"]},
+  {date:"2026-08-09", flightRefs:["All 6 — Delhi to Cairo (via Dubai Sharjah)"], title:"Taj Mahal sunrise → Delhi Church → Fly to Egypt ✈", loc:"Agra → Delhi (Church) → Cairo (CAI)", details:"Walk to the Taj Mahal East Gate at 5:30am for sunrise entry at 6:00am. Allow 2.5–3 hours. Archer Luxury Travel transports the group back to Delhi, stopping at the LDS Church in Vasant Vihar for 1pm sacrament meeting, then drops everyone at IGI Airport T3 for the Egypt flight. Arrive Cairo and check in to Mazaya Pyramids View Inn in Giza.", tips:["🌅 Taj Mahal opens 6:00am — arrive East Gate by 5:30am for first entry","Foreign-visitor ticket: ₹1,100/person + ₹200 mausoleum interior — book online (asi.payumoney.com)","Taj is closed Fridays — August 9 is Sunday ✓","No tripods, drones, food, or large bags inside Taj security","🚗 Archer Luxury Travel drives group Agra → Delhi (included in USD $114/person)","Hotel Taj Resorts checkout by 11:00am","⛪ Church: F-48 Poorvi Marg, Vasant Vihar, New Delhi · 1:00pm Sacrament Meeting · 011-46026152","🚗 Archer drops family at IGI Airport T3 after church","🏨 Cairo arrival: Mazaya Pyramids View Inn · Booking.com #6280005341 · Check-in from 12pm · Breakfast included · +20 100 888 8479","Pay at Cairo hotel in foreign currency (USD/CAD/EUR) — Egyptian law"]},
+  {date:"2026-08-10", hotelRef:"Mazaya Pyramids View Inn", title:"Arrive Cairo + Grand Egyptian Museum & Nile Cruise Dinner", loc:"Cairo International Airport → Giza → Cairo", details:"Arrive Cairo at 1:30am, transfer to Mazaya Pyramids View Inn. Rest morning. At 9am the tour begins: Grand Egyptian Museum including King Tutankhamun treasures and the Papyrus Institute, then Coptic Cairo churches in the afternoon, finishing with a Nile sunset cruise dinner with tanoura show.", schedule:[{time:"1:30am",act:"✈ Arrive Cairo Airport (Air Arabia G9620) · Airport transfer to Mazaya hotel"},{time:"2:00am",act:"🏨 Check in to Mazaya Pyramids View Inn (late night arrival — pre-advise hotel)"},{time:"Morning",act:"Rest and breakfast at hotel"},{time:"9:00am",act:"🚗 Tour pickup from hotel"},{time:"9:00–1pm",act:"🏛️ Grand Egyptian Museum — treasures of ancient Egypt · King Tutankhamun collection · Papyrus Institute"},{time:"1:00pm",act:"🥗 Lunch (optional)"},{time:"2:00pm",act:"🕍 Coptic Cairo — explore the ancient Coptic churches of Old Cairo"},{time:"5:30pm",act:"🌙 Sunset Nile Cruise dinner with tanoura (whirling dervish) show & entertainment"},{time:"8:30pm",act:"🏨 Drop off at hotel"}], tips:["✈ Flight arrives 1:30am — pre-arrange airport transfer, hotel is advised of late check-in","Egypt entry: e-Visa or visa-on-arrival available at CAI (bring USD $25 each)","Most Egyptian sites are card-only — Visa/Mastercard. Keep USD for tips & markets","The Grand Egyptian Museum is enormous — comfortable shoes are essential","Tanoura show on the Nile cruise is spectacular — worth staying awake for!","Breakfast included at Mazaya hotel each morning"]},
   {date:"2026-08-11", title:"Giza Plateau, Sphinx, Citadel & Khan El-Khalili Bazaar", loc:"Giza Plateau → Citadel of Salah El-Din → Khan El-Khalili", details:"The big adventure day — inside the Great Pyramid, the Sphinx and Valley Temple, camel rides in the desert, then the iconic Citadel of Salah El-Din with Mohamed Ali Mosque, and an afternoon at the legendary Khan El-Khalili bazaar.", schedule:[{time:"7:00am",act:"🚗 Tour pickup from hotel"},{time:"7:00–12pm",act:"🏜️ Giza Plateau — Enter the Great Pyramid from inside · Sphinx & Valley Temple · 🐪 Camel ride in the desert"},{time:"12:00pm",act:"🥗 Lunch (optional)"},{time:"1:00pm",act:"🕌 Citadel of Salah El-Din & Mohamed Ali Mosque — iconic Ottoman fortress and mosque"},{time:"2:00pm",act:"🛍️ Khan El-Khalili Bazaar — Cairo's legendary medieval market"},{time:"4:00pm",act:"🏨 Drop off at hotel"}], tips:["Go inside the Great Pyramid — a once-in-a-lifetime experience. Buy the inner pyramid ticket separately (~1,500 EGP)","Agree on camel ride price BEFORE mounting — negotiate firmly, USD $5–10 is fair","Early start at 7am means you beat the worst of the heat on the plateau","Mohamed Ali Mosque has stunning views over Cairo — one of the city's most beautiful buildings","Khan El-Khalili: bargaining is expected and part of the fun. Start at 30% of asking price","Comfortable closed-toe shoes for the Giza sand and stone","No photography fee inside the Great Pyramid — cameras allowed"]},
   {date:"2026-08-12", title:"El Fayoum — Whales Valley, Magic Lake & Waterfalls", loc:"El Fayoum Oasis, Egypt (UNESCO World Heritage)", details:"A full-day adventure to El Fayoum — sandboarding in the desert, Wadi El Hitan (Whales Valley) UNESCO World Heritage Site, the Magic Lake, lunch, Wadi El Rayan waterfalls, and Tunis Village.", schedule:[{time:"6:30am",act:"🚗 Tour pickup from hotel"},{time:"Drive",act:"🏜️ Desert drive — passing Christian and Islamic tombs (no stop)"},{time:"8:30am",act:"Arrive El Fayoum · Board 4-wheel drive vehicle"},{time:"9:00am",act:"🏂 Sandboarding (~30 minutes)"},{time:"10:30am",act:"🐋 Wadi El Hitan (Whales Valley) — UNESCO World Heritage Site · Ancient whale fossils in the desert"},{time:"12:30pm",act:"✨ The Magic Lake"},{time:"1:00pm",act:"🥗 Lunch"},{time:"2:00pm",act:"💧 Wadi El Rayan Waterfalls"},{time:"3:00pm",act:"🏡 Tunis Village"},{time:"4:00pm",act:"Head back to Cairo"},{time:"6:00pm",act:"🏨 Drop off at hotel"}], tips:["6:30am pickup — earliest start of the trip. Set multiple alarms!","Sandboarding is a highlight — boards provided, just bring your enthusiasm","Wadi El Hitan is one of Egypt's most unique sites — whale fossils in the middle of the desert","The Magic Lake changes colour throughout the day — spectacular","Pack water, snacks, sunscreen and hats — this is a full desert day","Comfortable closed shoes or hiking sandals — lots of sand and walking","Don't forget: EgyptAir MS783 departs Cairo at 5:25am TOMORROW — pack bags tonight!","🧳 Packing night — lay everything out before bed for 3:00am airport departure"]},
-  {date:"2026-08-13", title:"Cairo → London → Calgary — All 6 Home! 🇨🇦", loc:"Cairo (CAI) → London (LHR) → Calgary (YYC)", details:"Early start — be at Cairo International Airport by 3:00am for the 5:25am EgyptAir MS783 to London Heathrow. Arrive LHR at 8:40am with a 1h 35min layover, then board Air Canada AC851 to Calgary arriving 12:50pm. All 6 on the same flights home. Courtney and Jordyn will connect onward to SLC from Calgary separately.", tips:["⏰ 5:25am departure — be at Cairo airport by 3:00am","🚗 Tour pickup from hotel to airport this morning (confirmed in Cairo tour schedule)","✈ Courtney + Jordyn onward YYC→SEA→SLC · Delta GNEZ2P · Departs YYC 5:50pm → Arrives SLC 10:55pm","Pack the night before (Aug 12) — bags must be ready before bed","✈ EgyptAir MS783 CAI→LHR · Departs 5:25am · Arrives 8:40am (Comfort)", "✈ Air Canada AC851 LHR→YYC · Departs 10:15am · Arrives 12:50pm (Comfort)","Avion refs: P-AN5BOM (Marc/Natasha/Scarlett/Milo) · P-AN6I8D (Courtney/Jordyn)","All 6 arrive Calgary YYC together 🎉 — Courtney & Jordyn connect to SLC from YYC separately","Safe travels — welcome home!"]}
+  {date:"2026-08-13", flightRefs:["Calgary group (Marc, Natasha, Scarlett, Milo) — Cairo to Calgary", "Courtney + Jordyn — Cairo to Calgary", "Courtney + Jordyn — Calgary to Salt Lake City"], title:"Cairo → London → Calgary — All 6 Home! 🇨🇦", loc:"Cairo (CAI) → London (LHR) → Calgary (YYC)", details:"Early start — be at Cairo International Airport by 3:00am for the 5:25am EgyptAir MS783 to London Heathrow. Arrive LHR at 8:40am with a 1h 35min layover, then board Air Canada AC851 to Calgary arriving 12:50pm. All 6 on the same flights home. Courtney and Jordyn will connect onward to SLC from Calgary separately.", tips:["⏰ 5:25am departure — be at Cairo airport by 3:00am","🚗 Tour pickup from hotel to airport this morning (confirmed in Cairo tour schedule)","✈ Courtney + Jordyn onward YYC→SEA→SLC · Delta GNEZ2P · Departs YYC 5:50pm → Arrives SLC 10:55pm","Pack the night before (Aug 12) — bags must be ready before bed","✈ EgyptAir MS783 CAI→LHR · Departs 5:25am · Arrives 8:40am (Comfort)", "✈ Air Canada AC851 LHR→YYC · Departs 10:15am · Arrives 12:50pm (Comfort)","Avion refs: P-AN5BOM (Marc/Natasha/Scarlett/Milo) · P-AN6I8D (Courtney/Jordyn)","All 6 arrive Calgary YYC together 🎉 — Courtney & Jordyn connect to SLC from YYC separately","Safe travels — welcome home!"]}
 ];
 
 const DEST_GUIDES = [
@@ -899,13 +910,8 @@ function render(){
   const main = document.getElementById('main');
   if(activeTab==='home') return renderHome(main);
   if(activeTab==='itinerary') return renderItinerary(main);
-  if(activeTab==='flights') return renderFlights(main);
-  if(activeTab==='hotels') return renderHotels(main);
   if(activeTab==='docs') return renderDocs(main);
-  if(activeTab==='prearrival') return renderPreArrival(main);
-  if(activeTab==='tourinfo') return renderTourInfo(main);
-  if(activeTab==='guides') return renderDestGuides(main);
-  if(activeTab==='tours') return renderTours(main);
+  if(activeTab==='explore') return renderExplore(main);
   if(activeTab==='weather') return renderWeather(main);
   if(activeTab==='dipali') return renderDipali(main);
   if(activeTab==='arrival') return renderArrival(main);
@@ -939,17 +945,12 @@ function renderHome(main){
     </div>
     <h2 class="section-title">Quick links</h2>
     <div class="card" style="display:flex;flex-direction:column;gap:0;padding:6px 4px;">
-      ${quickLink('🗓️','Full itinerary','itinerary')}
-      ${quickLink('✈️','Confirmed flights & bookings','flights')}
-      ${quickLink('🏨','Hotels, tours & church','hotels')}
+      ${quickLink('🗓️','Full itinerary — flights & hotels included','itinerary')}
+      ${quickLink('🗂️','Docs, visas & pre-arrival checklist','docs')}
       ${quickLink('🛬','India arrival guide — step by step','arrival')}
-      ${quickLink('📋','Pre-arrival forms — e-Arrival & Health','prearrival')}
-      ${quickLink('🗂️','Visas, passports, tickets & docs','docs')}
-      ${quickLink('📍','Destination guides & visas','guides')}
-      ${quickLink('🎧','Virtual tours & YouTube videos','tours')}
-      ${quickLink('🗺️','Tour info — history & fascinating facts','tourinfo')}
-      ${quickLink('💛','Dipali Kumari — our sponsored girl','dipali')}
+      ${quickLink('🗺️','Explore — tours, history & videos','explore')}
       ${quickLink('🌤️','Live weather — all destinations','weather')}
+      ${quickLink('💛','Dipali Kumari — our sponsored girl','dipali')}
       ${quickLink('✅','Packing checklist & emergency info','info')}
     </div>
     <h2 class="section-title">🛂 India e-Visa status</h2>
@@ -981,13 +982,109 @@ function goTab(tab){
 }
 
 /* ============ ITINERARY ============ */
+/* ── Modal helper ─────────────────────────────────────────────────────────── */
+function showModal(titleText, contentHtml){
+  const ex = document.getElementById('appModal'); if(ex) ex.remove();
+  const m = document.createElement('div');
+  m.id = 'appModal';
+  m.style.cssText = 'position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;background:rgba(0,0,0,.45);';
+  m.innerHTML = `
+    <div style="flex:1;min-height:60px;" onclick="document.getElementById('appModal').remove()"></div>
+    <div style="background:var(--color-background-primary,#fff);border-radius:20px 20px 0 0;max-height:82vh;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;border-bottom:1px solid var(--line,#e0ddd5);flex-shrink:0;">
+        <span style="font-size:15px;font-weight:800;color:var(--deep,#1a2e4a);">${titleText}</span>
+        <button onclick="document.getElementById('appModal').remove()" style="background:var(--color-background-secondary,#f8f5ef);border:none;border-radius:50%;width:28px;height:28px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+      </div>
+      <div style="overflow-y:auto;padding:14px 16px;-webkit-overflow-scrolling:touch;">${contentHtml}</div>
+    </div>`;
+  document.body.appendChild(m);
+}
+
+function flightModalHtml(groupName){
+  const f = CONFIRMED_FLIGHTS.find(b=>b.group===groupName); if(!f) return '<p>Not found</p>';
+  return `
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.8;">
+      <b>Avion/booking ref:</b> ${f.avionRef} &nbsp;·&nbsp; <b>Airline ref:</b> ${f.airlineRef}<br>
+      <b>Airline:</b> ${f.airline} &nbsp;·&nbsp; <b>Paid:</b> ${f.paid}
+    </div>
+    ${f.legs.map((leg,i)=>`
+      <div style="background:var(--color-background-secondary,#f8f5ef);border-radius:12px;padding:10px 12px;margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;color:var(--saffron,#e8731a);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">Flight ${i+1} · ${leg.flight} · ${leg.duration}</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:var(--deep)">${leg.from}</div><div style="font-size:12px;color:var(--muted)">${leg.departs}</div></div>
+          <div style="color:var(--saffron);">→</div>
+          <div style="flex:1;text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--deep)">${leg.to}</div><div style="font-size:12px;color:var(--muted)">${leg.arrives}</div></div>
+        </div>
+        ${leg.note?`<div style="font-size:11.5px;color:#1a7a3c;margin-top:4px;">ℹ ${leg.note}</div>`:''}
+      </div>
+    `).join('')}
+    ${f.seats?`<div style="margin-top:6px;"><div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;">Seat assignments</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">${f.seats.map(s=>`<div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 8px;"><div style="font-size:12px;font-weight:700;color:var(--deep)">${s.name} · <span style="color:var(--saffron)">${s.seat}</span></div><div style="font-size:11px;color:var(--muted)">${s.meal}</div></div>`).join('')}</div></div>`:''}
+    ${f.baggage?`<div style="font-size:12px;color:var(--muted);margin-top:8px;">🧳 ${f.baggage}</div>`:''}`;
+}
+
+function hotelModalHtml(hotelName){
+  const h = HOTELS.find(x=>x.name===hotelName); if(!h) return '<p>Not found</p>';
+  return `
+    <div style="font-size:12.5px;color:var(--muted);line-height:1.9;">
+      <div>📍 ${h.address}</div>
+      <div>📞 <a href="tel:${h.phone.replace(/\s/g,'')}" style="color:var(--saffron)">${h.phone}</a></div>
+      <div>🔖 ${h.confirmation}</div>
+      <div>💳 ${h.paid}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;">
+      <div style="background:var(--color-background-secondary,#f8f5ef);border-radius:10px;padding:10px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;">Check-in</div>
+        <div style="font-size:13px;font-weight:700;color:var(--deep)">${h.checkin}</div>
+      </div>
+      <div style="background:var(--color-background-secondary,#f8f5ef);border-radius:10px;padding:10px 12px;">
+        <div style="font-size:10px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;">Check-out</div>
+        <div style="font-size:13px;font-weight:700;color:var(--deep)">${h.checkout}</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--ink);margin-bottom:6px;"><b>Rooms:</b> ${h.rooms}</div>
+    ${h.transport?`<div style="font-size:12px;color:var(--ink);margin-bottom:6px;">🚗 <b>Transfer:</b> ${h.transport}</div>`:''}
+    <div style="background:#fff8e6;border-left:3px solid var(--saffron);border-radius:0 8px 8px 0;padding:8px 10px;font-size:12px;color:var(--muted);">${h.notes}</div>`;
+}
+
+window.openFlightModal = function(groupName){ showModal('✈️ ' + groupName, flightModalHtml(groupName)); };
+window.openHotelModal  = function(hotelName){  showModal('🏨 ' + hotelName,  hotelModalHtml(hotelName));  };
+
+/* ── Itinerary ────────────────────────────────────────────────────────────── */
 function renderItinerary(main){
   main.innerHTML = `<h2 class="section-title">Day by day</h2><div id="dayList"></div>`;
   const list = document.getElementById('dayList');
   list.innerHTML = ITINERARY.map(d=>{
     const isToday = d.date===todayISO();
 
-    // Build schedule timeline if present
+    // Flight/hotel inline banners
+    const flightBanners = (d.flightRefs||[]).map(grp=>{
+      const f = CONFIRMED_FLIGHTS.find(b=>b.group===grp);
+      if(!f) return '';
+      const leg0 = f.legs[0], legN = f.legs[f.legs.length-1];
+      const summary = `${leg0.from.split('(')[0].trim()} → ${legN.to.split('(')[0].trim()} · ${leg0.departs.split('·')[1]?.trim()||leg0.departs}`;
+      return `<button onclick="openFlightModal(${JSON.stringify(grp)})" style="display:flex;align-items:center;gap:8px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer;text-align:left;">
+        <span style="font-size:16px;">✈️</span>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:12px;font-weight:700;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${summary}</div>
+          <div style="font-size:11px;color:var(--muted);">${f.airline} · tap for details</div>
+        </div>
+        <span style="color:var(--saffron);font-size:14px;">›</span>
+      </button>`;
+    }).join('');
+
+    const hotelBanner = d.hotelRef ? (()=>{
+      const h = HOTELS.find(x=>x.name===d.hotelRef);
+      if(!h) return '';
+      return `<button onclick="openHotelModal(${JSON.stringify(d.hotelRef)})" style="display:flex;align-items:center;gap:8px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer;text-align:left;">
+        <span style="font-size:16px;">🏨</span>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:12px;font-weight:700;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${h.name}</div>
+          <div style="font-size:11px;color:var(--muted);">Check-in ${h.checkin.split('·')[1]?.trim()||h.checkin} · tap for details</div>
+        </div>
+        <span style="color:var(--saffron);font-size:14px;">›</span>
+      </button>`;
+    })() : '';
+
     const scheduleHtml = d.schedule ? `
       <div style="margin:10px 0 4px;">
         <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--saffron);margin-bottom:8px;">📅 Day Schedule</div>
@@ -999,21 +1096,20 @@ function renderItinerary(main){
             </div>
           `).join('')}
         </div>
-      </div>
-    ` : '';
+      </div>` : '';
 
     const tipsHtml = d.tips && d.tips.length ? `
       <div style="margin-top:8px;">
         <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:6px;">💡 Tips & reminders</div>
         <ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
-      </div>
-    ` : '';
+      </div>` : '';
 
     return `<div class="card day-card" style="${isToday?'border-color:var(--saffron);border-width:2px;':''}">
       <div class="date">${fmtDate(d.date)}${isToday?' · TODAY':''}</div>
       <h3>${d.title}</h3>
       <div class="loc">📍 ${d.loc}</div>
-      <p style="margin-bottom:${d.schedule?'4px':'0'}">${d.details}</p>
+      <p style="margin-bottom:${(flightBanners||hotelBanner)?'8px':'0'}">${d.details}</p>
+      ${flightBanners}${hotelBanner}
       ${scheduleHtml}
       ${tipsHtml}
     </div>`;
@@ -1470,32 +1566,74 @@ function renderFlights(main){
 
 /* ============ DOCS ============ */
 let docsTravelerFilter = TRAVELERS[0].id;
-let docsCatFilter = 'visa';
+let docsCatFilter = 'passport';
+let docsSection = 'visas';
 
 function renderDocs(main){
   main.innerHTML = `
-    <h2 class="section-title">Travel documents</h2>
-    <div class="chips" id="catChips">${DOC_CATEGORIES.map(c=>`<button class="chip ${c.key===docsCatFilter?'active':''}" data-c="${c.key}">${c.icon} ${c.label}</button>`).join('')}</div>
-    ${docsCatFilter === 'visa' ? '' : `<div class="chips" id="travelerChips">${TRAVELERS.map(t=>`<button class="chip ${t.id===docsTravelerFilter?'active':''}" data-t="${t.id}">${t.name}</button>`).join('')}</div>`}
-    <div class="card" id="docListCard"></div>
-    ${docsCatFilter !== 'visa' ? `<button class="btn block" id="addDocBtn" style="margin-top:4px;">+ Add ${catInfo(docsCatFilter).label} for ${travelerName(docsTravelerFilter)}</button>` : ''}
+    <h2 class="section-title">🗂️ Documents & Pre-Arrival</h2>
+    <div class="chips" style="margin-bottom:14px;">
+      <button class="chip ${docsSection==='visas'?'active':''}" onclick="docsSection='visas';renderDocs(document.getElementById('main'))">🛂 Visas</button>
+      <button class="chip ${docsSection==='prearrival'?'active':''}" onclick="docsSection='prearrival';renderDocs(document.getElementById('main'))">📋 Pre-Arrival</button>
+      <button class="chip ${docsSection==='other'?'active':''}" onclick="docsSection='other';renderDocs(document.getElementById('main'))">📄 Other Docs</button>
+    </div>
+    <div id="docsSectionContent"></div>
   `;
-  document.getElementById('catChips').addEventListener('click', e=>{
-    const b = e.target.closest('button[data-c]'); if(!b) return;
-    docsCatFilter = b.dataset.c; renderDocs(main);
-  });
-  if(docsCatFilter !== 'visa'){
-    document.getElementById('travelerChips').addEventListener('click', e=>{
-      const b = e.target.closest('button[data-t]'); if(!b) return;
-      docsTravelerFilter = b.dataset.t; renderDocs(main);
-    });
-    document.getElementById('addDocBtn').addEventListener('click', ()=>openDocForm(null));
-  }
-  if(docsCatFilter === 'visa'){
-    renderVisaPanel();
-  } else {
-    renderDocList();
-  }
+  const target = document.getElementById('docsSectionContent');
+  if(docsSection==='visas') renderVisaPanel(target);
+  else if(docsSection==='prearrival') renderPreArrivalInline(target);
+  else renderOtherDocs(target);
+}
+
+function renderPreArrivalInline(target){
+  const now = new Date();
+  const arrivalMs = PRE_ARRIVAL_CONFIG.arrivalIndia.getTime();
+  const windowOpenMs = arrivalMs - (PRE_ARRIVAL_CONFIG.windowHours*3600000);
+  const windowOpen = now >= windowOpenMs;
+  const msUntilWindow = windowOpenMs - now;
+  const hUntil = Math.floor(msUntilWindow/3600000);
+  const mUntil = Math.floor((msUntilWindow%3600000)/60000);
+  if(!state.preArrival) state.preArrival={};
+  const total = PRE_ARRIVAL_CONFIG.portals.length*6;
+  const done = PRE_ARRIVAL_CONFIG.portals.reduce((a,p)=>a+TRAVELERS.filter(t=>state.preArrival[p.key+'_'+t.id]).length,0);
+  const allDone = done===total;
+  target.innerHTML = `
+    <div class="card" style="${allDone?'border:2px solid #1a7a3c;':''}margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="font-size:14px;font-weight:800;color:var(--deep);">${allDone?'🎉 All done!':done+' of '+total+' complete'}</span>
+        <span style="font-size:13px;font-weight:700;${allDone?'color:#1a7a3c;':'color:var(--saffron);'}">${Math.round(done/total*100)}%</span>
+      </div>
+      <div style="background:var(--line);border-radius:99px;height:8px;overflow:hidden;">
+        <div style="height:100%;width:${Math.round(done/total*100)}%;background:${allDone?'#1a7a3c':'var(--saffron)'};border-radius:99px;"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:12px;background:${windowOpen?'#f0faf4':'#fff8e6'};border:2px solid ${windowOpen?'#1a7a3c':'var(--saffron)'};">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:22px;">${windowOpen?'🟢':'🟡'}</span>
+        <div>
+          <div style="font-size:13px;font-weight:800;color:${windowOpen?'#1a7a3c':'var(--deep)'};">${windowOpen?'Submission window NOW OPEN ✓':'Window opens in '+hUntil+'h '+mUntil+'m'}</div>
+          <div style="font-size:11.5px;color:var(--muted);">AC42 arrives Delhi Aug 2 7:50pm IST · Window: Jul 30 ~8:20am MDT</div>
+        </div>
+      </div>
+    </div>
+    ${PRE_ARRIVAL_CONFIG.portals.map(p=>{
+      const pd = TRAVELERS.every(t=>state.preArrival[p.key+'_'+t.id]);
+      return '<div class="card" style="margin-bottom:12px;'+( pd?'border:1.5px solid #1a7a3c;':'')+'"><div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:4px;">'+p.icon+' '+p.name+(pd?' ✅':'')+'</div><div style="font-size:12px;color:var(--muted);margin-bottom:8px;">'+p.desc+'</div><a href="'+p.url+'" target="_blank" style="display:block;text-align:center;padding:10px;background:'+(windowOpen?'#1a7a3c':'#e8e6df')+';color:'+(windowOpen?'#fff':'var(--deep)')+';border-radius:10px;font-size:12px;font-weight:700;text-decoration:none;margin-bottom:10px;">🌐 '+p.url.replace('https://','')+' '+(windowOpen?'— OPEN NOW ↗':'↗')+'</a><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">'+TRAVELERS.map(t=>{const td=!!state.preArrival[p.key+'_'+t.id];return '<button onclick="preArrivalToggle(\''+p.key+'\',\''+t.id+'\',document.getElementById(\'docsSectionContent\'))" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1.5px solid '+(td?'#1a7a3c':'var(--line)')+';background:'+(td?'#f0faf4':'var(--color-background-secondary,#f8f5ef)')+';cursor:pointer;text-align:left;"><span>'+(td?'✅':'⬜')+'</span><div><div style="font-size:12px;font-weight:700;color:'+(td?'#1a7a3c':'var(--deep)')+';">'+t.name+'</div><div style="font-size:10.5px;color:var(--muted);">'+(td?'Done ✓':'Not yet')+'</div></div></button>';}).join('')+'</div></div>';
+    }).join('')}`;
+  window.preArrivalToggle = function(pk,tid,tgt){
+    if(!state.preArrival)state.preArrival={};
+    state.preArrival[pk+'_'+tid]=!state.preArrival[pk+'_'+tid];
+    saveState(); renderPreArrivalInline(tgt);
+  };
+}
+
+function renderOtherDocs(target){
+  const cats = DOC_CATEGORIES.filter(c=>c.key!=='visa');
+  target.innerHTML = '<div class="chips" id="catChips2" style="margin-bottom:10px;">'+cats.map(c=>'<button class="chip '+(c.key===docsCatFilter?'active':'')+'" data-c="'+c.key+'">'+c.icon+' '+c.label+'</button>').join('')+'</div><div class="chips" id="travelerChips2" style="margin-bottom:10px;">'+TRAVELERS.map(t=>'<button class="chip '+(t.id===docsTravelerFilter?'active':'')+'" data-t="'+t.id+'">'+t.name+'</button>').join('')+'</div><div class="card" id="docListCard"></div><button class="btn block" id="addDocBtn2" style="margin-top:4px;">+ Add '+catInfo(docsCatFilter).label+' for '+travelerName(docsTravelerFilter)+'</button>';
+  target.querySelector('#catChips2').addEventListener('click',e=>{const b=e.target.closest('button[data-c]');if(b){docsCatFilter=b.dataset.c;renderOtherDocs(target);}});
+  target.querySelector('#travelerChips2').addEventListener('click',e=>{const b=e.target.closest('button[data-t]');if(b){docsTravelerFilter=b.dataset.t;renderOtherDocs(target);}});
+  target.querySelector('#addDocBtn2').addEventListener('click',()=>openDocForm(null));
+  renderDocList();
 }
 
 /* ============ IN-APP PDF VIEWER ============ */
@@ -1624,8 +1762,8 @@ function openPDFViewer(id, label){
   });
 }
 
-function renderVisaPanel(){
-  const card = document.getElementById('docListCard'); if(!card) return;
+function renderVisaPanel(targetEl){
+  const card = targetEl || document.getElementById('docListCard'); if(!card) return;
   const granted = INDIA_VISAS.filter(v=>v.status.includes('GRANTED'));
   const applied = INDIA_VISAS.filter(v=>v.status.includes('APPLIED'));
   const uploadNeeded = INDIA_VISAS.filter(v=>v.status.includes('upload'));
@@ -1851,6 +1989,102 @@ function renderTourDetail(main, info){
 }
 
 /* ============ DESTINATION GUIDES ============ */
+
+/* ============ EXPLORE (unified Tour Info + Guides + Tours) ============ */
+let exploreKey = null;
+let exploreSection = 'info'; // 'info' | 'tips' | 'tours'
+
+function renderExplore(main){
+  if(exploreKey){
+    const info = TOUR_INFO.find(t=>t.key===exploreKey);
+    if(info) return renderExploreDetail(main, info);
+  }
+  main.innerHTML = `
+    <h2 class="section-title">🗺️ Explore</h2>
+    <p class="muted" style="margin:-4px 0 14px;font-size:13px;">History, destination tips, audio tours and YouTube videos — tap any destination.</p>
+    ${TOUR_INFO.map(t=>`
+      <div class="card" style="cursor:pointer;margin-bottom:10px;" onclick="exploreKey='${t.key}';exploreSection='info';renderExplore(document.getElementById('main'))">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div style="flex:1;">
+            <div style="font-size:16px;font-weight:800;color:var(--deep);margin-bottom:3px;">${t.emoji} ${t.title}</div>
+            <div style="font-size:12px;color:var(--muted);">📍 ${t.location} &nbsp;·&nbsp; 📅 ${t.date}</div>
+          </div>
+          <span style="font-size:18px;color:var(--muted);padding-left:8px;">›</span>
+        </div>
+      </div>
+    `).join('')}
+  `;
+}
+
+function renderExploreDetail(main, info){
+  // Find matching DEST_GUIDES entry, GUIDES audio stops, and GUIDE_VIDEOS
+  const destGuide = DEST_GUIDES.find(g=>g.key===info.key || (info.key==='giza'&&g.key==='cairo') || (info.key==='gem'&&g.key==='cairo') || (info.key==='coptic'&&g.key==='cairo') || (info.key==='citadel'&&g.key==='cairo') || (info.key==='khan'&&g.key==='cairo') || (info.key==='fayoum'&&g.key==='cairo') || (info.key==='nile'&&g.key==='cairo') || (info.key==='rso'&&g.key==='bihar') || (info.key==='taj'&&g.key==='agra'));
+  const audioGuide = GUIDES.find(g=>g.key===info.key);
+  const videos = GUIDE_VIDEOS[info.key]||[];
+
+  main.innerHTML = `
+    <button onclick="exploreKey=null;renderExplore(document.getElementById('main'))"
+      style="display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--saffron);font-size:14px;font-weight:700;cursor:pointer;padding:0;margin-bottom:14px;">
+      ← All destinations
+    </button>
+    <div style="background:linear-gradient(135deg,var(--deep),#2a4a6a);border-radius:16px;padding:20px;margin-bottom:14px;">
+      <div style="font-size:28px;margin-bottom:6px;">${info.emoji}</div>
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;">${info.title}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.7);">📍 ${info.location} &nbsp;·&nbsp; 📅 ${info.date}</div>
+    </div>
+    <div class="chips" style="margin-bottom:14px;">
+      <button class="chip ${exploreSection==='info'?'active':''}" onclick="exploreSection='info';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='${info.key}'))">📖 History</button>
+      ${destGuide?`<button class="chip ${exploreSection==='tips'?'active':''}" onclick="exploreSection='tips';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='${info.key}'))">📍 Tips</button>`:''}
+      ${(audioGuide||videos.length)?`<button class="chip ${exploreSection==='tours'?'active':''}" onclick="exploreSection='tours';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='${info.key}'))">🎧 Tours & Videos</button>`:''}
+    </div>
+
+    ${exploreSection==='info' ? info.sections.map(s=>`
+      <div class="card" style="margin-bottom:12px;">
+        <div style="font-size:14px;font-weight:800;color:var(--deep);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--line);">${s.heading}</div>
+        <div style="font-size:13.5px;color:var(--ink);line-height:1.75;">${s.content}</div>
+      </div>`).join('') : ''}
+
+    ${exploreSection==='tips' && destGuide ? `
+      <div class="card" style="margin-bottom:12px;">
+        <div class="info-block">${destGuide.sections.map(s=>`<h4>${s.h}</h4><p>${s.t}</p>`).join('')}</div>
+      </div>` : ''}
+
+    ${exploreSection==='tours' ? `
+      ${audioGuide ? `
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:8px;">🎧 Audio Walking Tour · ${audioGuide.minutes}</div>
+        <div class="card" style="cursor:pointer;margin-bottom:14px;" onclick="openGuide('${audioGuide.key}')">
+          <div style="font-size:14px;font-weight:700;color:var(--deep);">${audioGuide.emoji} ${audioGuide.title}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:3px;">📍 ${audioGuide.loc} · ${audioGuide.stops.length} stops · Tap to start</div>
+        </div>` : ''}
+      ${videos.length ? `
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:8px;">▶ YouTube Videos</div>
+        ${videos.map(v=>`
+          <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" style="text-decoration:none;display:block;margin-bottom:10px;">
+            <div class="card" style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;cursor:pointer;">
+              <div style="position:relative;flex:none;width:100px;height:64px;border-radius:8px;overflow:hidden;background:#111;">
+                <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                  <div style="width:28px;height:28px;background:rgba(255,0,0,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <span style="color:#fff;font-size:11px;margin-left:2px;">▶</span>
+                  </div>
+                </div>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13px;font-weight:700;color:var(--deep);line-height:1.3;margin-bottom:3px;">${v.title}</div>
+                <div style="font-size:11.5px;color:var(--muted);line-height:1.4;">${v.desc}</div>
+                <div style="font-size:11px;color:var(--saffron);margin-top:4px;font-weight:600;">${v.duration} · YouTube ↗</div>
+              </div>
+            </div>
+          </a>`).join('')}` : ''}
+    ` : ''}
+
+    <button onclick="exploreKey=null;renderExplore(document.getElementById('main'))"
+      style="width:100%;padding:13px;background:var(--deep);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;">
+      ← Back to all destinations
+    </button>
+  `;
+}
+
 function renderDestGuides(main){
   main.innerHTML = `<h2 class="section-title">Destination guides</h2>` + DEST_GUIDES.map(g=>`
     <div class="card">
