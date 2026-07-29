@@ -1078,7 +1078,8 @@ function renderItinerary(main){
       if(!f) return '';
       const leg0 = f.legs[0], legN = f.legs[f.legs.length-1];
       const summary = `${leg0.from.split('(')[0].trim()} → ${legN.to.split('(')[0].trim()} · ${leg0.departs.split('·')[1]?.trim()||leg0.departs}`;
-      return `<button onclick="openFlightModal(${JSON.stringify(grp)})" style="display:flex;align-items:center;gap:8px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer;text-align:left;">
+      const escapedGrp = grp.replace(/'/g, "\\'");
+      return `<button onclick="openFlightModal('${escapedGrp}')" style="display:flex;align-items:center;gap:8px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer;text-align:left;">
         <span style="font-size:16px;">✈️</span>
         <div style="flex:1;min-width:0;">
           <div style="font-size:12px;font-weight:700;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${summary}</div>
@@ -1091,7 +1092,8 @@ function renderItinerary(main){
     const hotelBanner = d.hotelRef ? (()=>{
       const h = HOTELS.find(x=>x.name===d.hotelRef);
       if(!h) return '';
-      return `<button onclick="openHotelModal(${JSON.stringify(d.hotelRef)})" style="display:flex;align-items:center;gap:8px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer;text-align:left;">
+      const escapedHotel = d.hotelRef.replace(/'/g, "\\'");
+      return `<button onclick="openHotelModal('${escapedHotel}')" style="display:flex;align-items:center;gap:8px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer;text-align:left;">
         <span style="font-size:16px;">🏨</span>
         <div style="flex:1;min-width:0;">
           <div style="font-size:12px;font-weight:700;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${h.name}</div>
