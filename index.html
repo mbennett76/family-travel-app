@@ -138,6 +138,7 @@
     <button data-tab="itinerary"><span class="ic">🗓️</span>Itinerary</button>
     <button data-tab="docs"><span class="ic">🗂️</span>Docs</button>
     <button data-tab="explore"><span class="ic">🗺️</span>Explore</button>
+    <button data-tab="journal"><span class="ic">📓</span>Journal</button>
     <button data-tab="weather"><span class="ic">🌤️</span>Weather</button>
     <button data-tab="dipali"><span class="ic">💛</span>Dipali</button>
     <button data-tab="arrival"><span class="ic">🛬</span>Arrival</button>
@@ -531,6 +532,155 @@ const ARRIVAL_DOCS = {
   },
 };
 
+const JOURNAL_DATA = [
+  {
+    date: "2026-08-01",
+    title: "Departure Day",
+    emoji: "✈️",
+    questions: [
+      "As you left home today, what was going through your mind?",
+      "Describe the moment the family reunited at the airport or on the plane.",
+      "What are you most excited about? What are you most nervous about?",
+      "Write a one-sentence prayer or intention for this trip."
+    ]
+  },
+  {
+    date: "2026-08-02",
+    title: "Arrive Delhi",
+    emoji: "🇮🇳",
+    questions: [
+      "What was your first impression of India as you stepped off the plane?",
+      "Describe one sight, sound, or smell from your first moments in Delhi.",
+      "How did it feel to finally arrive after months of planning?",
+      "What surprised you most about the airport or the drive to the hotel?"
+    ]
+  },
+  {
+    date: "2026-08-03",
+    title: "Travel to RSO Campus",
+    emoji: "🚌",
+    questions: [
+      "What did you see on the drive from Patna to the campus that you won't forget?",
+      "Describe the student welcome when you arrived at the RSO campus tonight.",
+      "What was your first impression of the campus and guest house?",
+      "How did orientation make you feel about the week ahead?"
+    ]
+  },
+  {
+    date: "2026-08-04",
+    title: "Community Development Day — Sundapur Colony",
+    emoji: "🤝",
+    questions: [
+      "Describe the moment you arrived at Sundapur Colony — what did you see first?",
+      "What was it like to give a hello message at school assembly this morning?",
+      "During the colony tour, what interaction or face will stay with you?",
+      "What did the Nepal border crossing feel like — standing between two countries?",
+      "Tonight at dinner, what were your highs and lows?"
+    ]
+  },
+  {
+    date: "2026-08-05",
+    title: "Medical Day — Ghorasahan Colony",
+    emoji: "🩺",
+    questions: [
+      "Describe the act of washing and oiling someone's hands and feet today. What did it feel like — for you and for them?",
+      "Was there a particular person at Ghorasahan Colony whose face or story you want to remember?",
+      "What did you learn today about leprosy, stigma, or resilience that surprised you?",
+      "How has your understanding of 'service' changed after today?"
+    ]
+  },
+  {
+    date: "2026-08-06",
+    title: "Education Day — School at RSO Campus",
+    emoji: "📚",
+    questions: [
+      "What was it like to sit in a classroom alongside RSO students today?",
+      "Did you speak at school assembly? What did you say — or wish you had said?",
+      "Describe your visit with the sponsor students in the Medical Office this afternoon.",
+      "What did the children teach you today — even without words?"
+    ]
+  },
+  {
+    date: "2026-08-07",
+    title: "Medical Day — Ramgarhwa Colony",
+    emoji: "💛",
+    questions: [
+      "This is your last colony visit. What felt different about today compared to the first one?",
+      "Write about one specific person from Ramgarhwa Colony.",
+      "What do you wish you had more time to do or say this week?",
+      "Tonight is packing night. As you pack your bag, what are you carrying home inside you that wasn't there before?"
+    ]
+  },
+  {
+    date: "2026-08-08",
+    title: "Leaving Bihar — Patna to Agra",
+    emoji: "🚶",
+    questions: [
+      "What was the hardest part about leaving the RSO campus this morning?",
+      "Describe the drive back to Patna — what were you thinking?",
+      "What moment from this week will you tell your grandchildren about someday?",
+      "What do you want to do differently in your life because of this week?"
+    ]
+  },
+  {
+    date: "2026-08-09",
+    title: "Taj Mahal at Sunrise & Delhi Church",
+    emoji: "🕌",
+    questions: [
+      "Describe your first sight of the Taj Mahal as it appeared through the main gate at sunrise.",
+      "What emotion hit you standing in front of the Taj — built from a man's grief for his wife?",
+      "How did it feel to attend sacrament meeting in Delhi today, straight from a week of service?",
+      "Compare this morning (one of the world's most beautiful monuments) with your week in the colonies. What do you make of that contrast?"
+    ]
+  },
+  {
+    date: "2026-08-10",
+    title: "Arrive Cairo — Grand Egyptian Museum & Nile Cruise",
+    emoji: "🏛️",
+    questions: [
+      "What was your first impression of Egypt — how does it compare to India?",
+      "At the Grand Egyptian Museum, which artefact or moment stopped you in your tracks?",
+      "Describe King Tutankhamun's collection — what struck you about a boy who became pharaoh at age 9?",
+      "What was it like to watch the Tanoura dancer spinning on the Nile at sunset?"
+    ]
+  },
+  {
+    date: "2026-08-11",
+    title: "Giza Plateau, Citadel & Khan El-Khalili",
+    emoji: "🐫",
+    questions: [
+      "Describe the moment you first saw the Great Pyramid from the road approaching Giza.",
+      "What was it like inside the Great Pyramid — the air, the stone, the silence?",
+      "Your camel ride — describe it honestly.",
+      "At Khan El-Khalili bazaar, what did you buy or almost buy? What was the best bargain moment?",
+      "Standing on the Citadel terrace looking over Cairo, what did you feel?"
+    ]
+  },
+  {
+    date: "2026-08-12",
+    title: "El Fayoum — Whale Valley, Magic Lake & Waterfalls",
+    emoji: "🐋",
+    questions: [
+      "What was sandboarding like — and how did you do?",
+      "Standing in Wadi El Hitan, surrounded by 40-million-year-old whale fossils in the middle of the desert — what went through your mind?",
+      "Describe the Magic Lake. Did it live up to its name?",
+      "Tonight you pack for the journey home. How do you feel right now?"
+    ]
+  },
+  {
+    date: "2026-08-13",
+    title: "Flying Home",
+    emoji: "🏠",
+    questions: [
+      "Looking out the window as Egypt disappeared below you, what did you feel?",
+      "What is the single most important thing this trip taught you?",
+      "Which moment from the entire trip will you remember when you are 80 years old?",
+      "Write a message to your future self — to open in one year and remember who you were on this trip.",
+      "What do you want to do differently because of what you experienced?"
+    ]
+  }
+];
+
 const ITINERARY = [
   {date:"2026-08-01", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], parkingRef:true, title:"Departure Day", loc:"Calgary (YYC) & Salt Lake City (SLC) → Toronto (YYZ)", details:"Marc, Natasha, Courtney, Scarlett & Milo depart Calgary. Jordyn departs Salt Lake City. Everyone connects through Toronto (YYZ) and continues overnight toward Delhi (DEL).", tips:["Confirm every traveler's India e-Visa shows \"Approved\" and save/print a copy before leaving home.","Pack passports + visa approvals + boarding passes into this app's Docs tab tonight.","Long travel day — charge devices, download offline entertainment/maps."]},
   {date:"2026-08-02", flightRefs:["Calgary group (Marc, Natasha, Courtney, Milo, Scarlett)", "Jordyn (SLC)"], hotelRef:"Holiday Inn New Delhi Aerocity", title:"Arrive Delhi — All 6 Together 🎉", loc:"Indira Gandhi International Airport → Holiday Inn Aerocity", details:"AC42 arrives Delhi 7:50pm. Clear immigration, collect luggage, and exit arrivals where your Daytrip driver will be waiting with a sign. Short 14-minute transfer to Holiday Inn Aerocity. Overnight and breakfast before heading to the airport for the Patna flight.", schedule:[{time:"7:50pm",act:"✈ AC42 arrives Delhi (DEL) · All 6 together from YYZ"},{time:"7:50–8:20pm",act:"🛂 Clear immigration (e-Visa lane) · Collect 6 bags · Clear customs"},{time:"8:30pm",act:"🚗 TWO Daytrip drivers waiting at arrivals · Ref: DLNS9MWU · Budh S. (+91 9982327603) white Suzuki HR84A0475 + Shreyas S. (+91 9987592469) white Suzuki HR55AX8516"},{time:"~8:44pm",act:"🏨 Arrive Holiday Inn Aerocity · Check in · Rest"}], tips:["Purpose on immigration forms: TOURIST · If asked where you're going: Northern India","Have PRINTED e-Visa ETA and flight itinerary ready for immigration — phone screen not accepted","If the Daytrip driver is not visible at 8:30pm: WhatsApp Claire Tempest +1 801 618 8442","🏨 Holiday Inn Aerocity · +91 11 4222 2000 · Breakfast included next morning","⚡ Charge all devices overnight — early start tomorrow","📲 See the Arrival tab for the full step-by-step guide"]},
@@ -885,7 +1035,7 @@ const PACKING = [
 
 /* ============ STATE ============ */
 let state = loadState();
-function defaultState(){ return { documents: [], checklist: {}, preArrival: {"earrival_marc": true, "earrival_natasha": true, "earrival_courtney": true, "earrival_jordyn": true, "earrival_scarlett": true, "earrival_milo": true, "airsuvidha_marc": true, "airsuvidha_natasha": true, "airsuvidha_courtney": true, "airsuvidha_jordyn": true, "airsuvidha_scarlett": true, "airsuvidha_milo": true}, seenWelcome:false }; }
+function defaultState(){ return { documents: [], checklist: {}, journal: {}, preArrival: {"earrival_marc": true, "earrival_natasha": true, "earrival_courtney": true, "earrival_jordyn": true, "earrival_scarlett": true, "earrival_milo": true, "airsuvidha_marc": true, "airsuvidha_natasha": true, "airsuvidha_courtney": true, "airsuvidha_jordyn": true, "airsuvidha_scarlett": true, "airsuvidha_milo": true}, seenWelcome:false }; }
 function loadState(){
   try{ const s = JSON.parse(localStorage.getItem('travelAppState')); return s || defaultState(); }
   catch(e){ return defaultState(); }
@@ -975,6 +1125,7 @@ function render(){
   if(activeTab==='itinerary') return renderItinerary(main);
   if(activeTab==='docs') return renderDocs(main);
   if(activeTab==='explore') return renderExplore(main);
+  if(activeTab==='journal') return renderJournal(main);
   if(activeTab==='weather') return renderWeather(main);
   if(activeTab==='dipali') return renderDipali(main);
   if(activeTab==='arrival') return renderArrival(main);
@@ -1008,6 +1159,7 @@ function renderHome(main){
     </div>
     <h2 class="section-title">Quick links</h2>
     <div class="card" style="display:flex;flex-direction:column;gap:0;padding:6px 4px;">
+      ${quickLink('📓','Trip journal — daily reflections','journal')}
       ${quickLink('🗓️','Full itinerary — flights & hotels included','itinerary')}
       ${quickLink('🗂️','Docs, visas & pre-arrival checklist','docs')}
       ${quickLink('🛬','India arrival guide — step by step','arrival')}
@@ -1476,6 +1628,170 @@ function renderDipali(main){
       <b>A note for the family:</b> Meeting Dipali will be one of the most meaningful moments of this entire trip. The Bennett family's sponsorship gives her access to education and care through Rising Star Outreach. Come ready to give, love, and be changed.
     </div>
   `;
+}
+
+/* ============ JOURNAL ============ */
+let journalPerson = null;
+let journalDayKey = null;
+
+function journalKey(person, date){ return 'journal_' + person + '_' + date; }
+function journalGet(person, date){ return state.journal && state.journal[journalKey(person,date)] || {}; }
+function journalSet(person, date, data){
+  if(!state.journal) state.journal = {};
+  state.journal[journalKey(person,date)] = data;
+  saveState();
+}
+function journalEntryCount(person, date){
+  const e = journalGet(person, date);
+  return Object.values(e).filter(v=>v && v.trim().length > 0).length;
+}
+
+function renderJournal(main){
+  // If no person selected, show person picker
+  if(!journalPerson){
+    main.innerHTML = `
+      <h2 class="section-title">📓 Trip Journal</h2>
+      <p class="muted" style="margin:-4px 0 16px;font-size:13px;line-height:1.6;">A personal space to capture thoughts, reflections, and memories from each day of the trip. Each family member has their own private entries.</p>
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:10px;">Who is writing?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        ${TRAVELERS.map(t=>`
+          <button onclick="journalPerson='${t.id}';journalDayKey=null;renderJournal(document.getElementById('main'))"
+            style="padding:18px 10px;background:var(--color-background-secondary,#f8f5ef);border:2px solid var(--line);border-radius:14px;cursor:pointer;text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">${{marc:'👨',natasha:'👩',courtney:'👩',jordyn:'👩',scarlett:'👧',milo:'👦'}[t.id]||'🧑'}</div>
+            <div style="font-size:14px;font-weight:800;color:var(--deep);">${t.name}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:3px;">${JOURNAL_DATA.reduce((n,d)=>n+(journalEntryCount(t.id,d.date)>0?1:0),0)} days written</div>
+          </button>
+        `).join('')}
+      </div>`;
+    return;
+  }
+
+  // If person selected but no day, show day list
+  if(!journalDayKey){
+    const traveler = TRAVELERS.find(t=>t.id===journalPerson);
+    main.innerHTML = `
+      <button onclick="journalPerson=null;renderJournal(document.getElementById('main'))"
+        style="display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--saffron);font-size:14px;font-weight:700;cursor:pointer;padding:0;margin-bottom:16px;">
+        ← Change person
+      </button>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-size:28px;">${{marc:'👨',natasha:'👩',courtney:'👩',jordyn:'👩',scarlett:'👧',milo:'👦'}[journalPerson]||'🧑'}</span>
+        <div>
+          <div style="font-size:18px;font-weight:800;color:var(--deep);">${traveler.name}'s Journal</div>
+          <div style="font-size:12px;color:var(--muted);">India & Egypt · August 2026</div>
+        </div>
+      </div>
+      ${JOURNAL_DATA.map(d=>{
+        const count = journalEntryCount(journalPerson, d.date);
+        const total = d.questions.length + 2; // questions + word + family
+        const pct = Math.round(count/total*100);
+        return `
+          <button onclick="journalDayKey='${d.date}';renderJournal(document.getElementById('main'))"
+            style="display:flex;align-items:center;gap:12px;width:100%;background:var(--color-background-secondary,#f8f5ef);border:1.5px solid ${count>0?'var(--saffron)':'var(--line)'};border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer;text-align:left;">
+            <span style="font-size:22px;flex-shrink:0;">${d.emoji}</span>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:13px;font-weight:700;color:var(--deep);">${fmtDate(d.date)}</div>
+              <div style="font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${d.title}</div>
+              ${count>0 ? `
+                <div style="margin-top:5px;background:var(--line);border-radius:99px;height:4px;overflow:hidden;">
+                  <div style="height:100%;width:${pct}%;background:var(--saffron);border-radius:99px;"></div>
+                </div>` :
+                `<div style="font-size:11px;color:var(--muted);margin-top:3px;">Tap to write</div>`}
+            </div>
+            <span style="color:var(--saffron);font-size:16px;flex-shrink:0;">${count>0?'✏️':'›'}</span>
+          </button>`;
+      }).join('')}`;
+    return;
+  }
+
+  // Day entry view
+  const day = JOURNAL_DATA.find(d=>d.date===journalDayKey);
+  const traveler = TRAVELERS.find(t=>t.id===journalPerson);
+  const entry = journalGet(journalPerson, journalDayKey);
+
+  function save(){
+    const data = {};
+    data['word'] = document.getElementById('j_word')?.value||'';
+    day.questions.forEach((_,i)=>{ data['q'+i] = document.getElementById('j_q'+i)?.value||''; });
+    data['free'] = document.getElementById('j_free')?.value||'';
+    data['family'] = document.getElementById('j_family')?.value||'';
+    journalSet(journalPerson, journalDayKey, data);
+    showToast('Entry saved ✓');
+  }
+
+  main.innerHTML = `
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <button onclick="journalDayKey=null;renderJournal(document.getElementById('main'))"
+        style="background:none;border:none;color:var(--saffron);font-size:14px;font-weight:700;cursor:pointer;padding:0;">
+        ← ${traveler.name}'s Journal
+      </button>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--deep),#2a4a6a);border-radius:16px;padding:16px 18px;margin-bottom:16px;">
+      <div style="font-size:24px;margin-bottom:4px;">${day.emoji}</div>
+      <div style="font-size:17px;font-weight:800;color:#fff;">${day.title}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:2px;">${fmtDate(day.date)} · ${traveler.name}'s entry</div>
+    </div>
+
+    <!-- One word -->
+    <div class="card" style="margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;">⭐ One word to describe today</div>
+      <input id="j_word" type="text" value="${entry.word||''}" placeholder="e.g. Overwhelming, Sacred, Alive..."
+        style="width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;font-weight:700;color:var(--deep);background:var(--color-background-primary,#fff);box-sizing:border-box;"
+        oninput="auto_save_journal()">
+    </div>
+
+    <!-- Guided questions -->
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin-bottom:8px;">🔍 Guided reflections</div>
+    ${day.questions.map((q,i)=>`
+      <div class="card" style="margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:700;color:var(--deep);margin-bottom:8px;line-height:1.4;">${q}</div>
+        <textarea id="j_q${i}" rows="3" placeholder="Write your thoughts here..."
+          style="width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink);background:var(--color-background-primary,#fff);resize:vertical;box-sizing:border-box;line-height:1.6;font-family:inherit;"
+          oninput="auto_save_journal()">${entry['q'+i]||''}</textarea>
+      </div>`).join('')}
+
+    <!-- Free write -->
+    <div class="card" style="margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;">💭 Your own thoughts</div>
+      <textarea id="j_free" rows="5" placeholder="Anything else on your mind — no questions, just your words..."
+        style="width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-size:13.5px;color:var(--ink);background:var(--color-background-primary,#fff);resize:vertical;box-sizing:border-box;line-height:1.6;font-family:inherit;"
+        oninput="auto_save_journal()">${entry['free']||''}</textarea>
+    </div>
+
+    <!-- Family highlight -->
+    <div class="card" style="margin-bottom:12px;background:#fff9f0;">
+      <div style="font-size:12px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">👨‍👩‍👧‍👦 Family highlight of the day</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-bottom:8px;">One moment worth sharing with the whole family</div>
+      <textarea id="j_family" rows="2" placeholder="The moment that made everyone smile, laugh, or cry today..."
+        style="width:100%;padding:10px 12px;border:1.5px solid var(--saffron);border-radius:10px;font-size:13.5px;color:var(--ink);background:#fff;resize:vertical;box-sizing:border-box;line-height:1.6;font-family:inherit;"
+        oninput="auto_save_journal()">${entry['family']||''}</textarea>
+    </div>
+
+    <button onclick="saveJournalEntry()" style="width:100%;padding:14px;background:var(--deep);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:6px;">
+      💾 Save entry
+    </button>
+    <button onclick="journalDayKey=null;renderJournal(document.getElementById('main'))"
+      style="width:100%;padding:12px;background:var(--color-background-secondary,#f8f5ef);color:var(--muted);border:1px solid var(--line);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;">
+      ← Back to ${traveler.name}'s days
+    </button>
+  `;
+
+  // Auto-save on input with debounce
+  let autoSaveTimer;
+  window.auto_save_journal = function(){
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(()=>{ saveJournalEntry(true); }, 1500);
+  };
+  window.saveJournalEntry = function(silent=false){
+    const data = {};
+    data['word'] = document.getElementById('j_word')?.value||'';
+    day.questions.forEach((_,i)=>{ data['q'+i] = document.getElementById('j_q'+i)?.value||''; });
+    data['free'] = document.getElementById('j_free')?.value||'';
+    data['family'] = document.getElementById('j_family')?.value||'';
+    journalSet(journalPerson, journalDayKey, data);
+    if(!silent) showToast('Entry saved ✓');
+  };
 }
 
 /* ============ WEATHER ============ */
