@@ -532,6 +532,37 @@ const ARRIVAL_DOCS = {
   },
 };
 
+
+const PHARAOH_LINEAGE = [
+  { name:"Narmer", dates:"c.3100 BC", era:"Early Dynastic", role:"Unified Upper & Lower Egypt. First pharaoh. Wore the double crown.", monument:"Narmer Palette", badge:"⚜️ Founder" },
+  { name:"Sneferu", dates:"c.2613–2589 BC", era:"Old Kingdom · 4th Dynasty", role:"Father of true pyramid building. Built three pyramids — Meidum, Bent, and Red — perfecting the smooth-sided form through trial and error.", monument:"Bent Pyramid & Red Pyramid, Dahshur", badge:"🔺 Pyramid Pioneer" },
+  { name:"Khufu (Cheops)", dates:"c.2589–2566 BC", era:"Old Kingdom · 4th Dynasty", role:"Built the Great Pyramid of Giza — the largest stone structure ever constructed. Only one tiny 7.5cm ivory figurine of him has ever been found. One of history's most powerful yet most mysterious men.", monument:"Great Pyramid, Giza", badge:"🏔️ Great Pyramid" },
+  { name:"Djedefre", dates:"c.2566–2558 BC", era:"Old Kingdom · 4th Dynasty", role:"Son of Khufu. Brief reign. Built his pyramid at Abu Rawash north of Giza, the northernmost royal pyramid in Egypt.", monument:"Pyramid at Abu Rawash", badge:"🔷 4th Dynasty" },
+  { name:"Khafre (Chephren)", dates:"c.2558–2532 BC", era:"Old Kingdom · 4th Dynasty", role:"Son of Khufu. Built the second Giza pyramid — slightly smaller but on higher ground, making it appear taller. Almost certainly commissioned the Great Sphinx from a natural limestone outcrop.", monument:"Second Pyramid & Great Sphinx, Giza", badge:"🦁 The Sphinx" },
+  { name:"Menkaure (Mycerinus)", dates:"c.2532–2503 BC", era:"Old Kingdom · 4th Dynasty", role:"Son of Khafre. Built the smallest of the three main Giza pyramids, finished in red Aswan granite. Marks the end of the great pyramid building era.", monument:"Third Pyramid, Giza", badge:"🔺 Third Pyramid" },
+  { name:"Hatshepsut", dates:"c.1507–1458 BC", era:"New Kingdom · 18th Dynasty", role:"Regent turned pharaoh. Wore the double crown and false beard. Ruled for ~20 years — one of Egypt's most successful pharaohs. Ordered erased from history by Thutmose III after her death. Rediscovered by modern scholars.", monument:"Mortuary Temple, Deir el-Bahari", badge:"👑 Queen Pharaoh" },
+  { name:"Thutmose III", dates:"c.1479–1425 BC", era:"New Kingdom · 18th Dynasty", role:"Stepson of Hatshepsut who tried to erase her legacy. Became Egypt's greatest military pharaoh — 17 campaigns, conquered from Nubia to Syria. Sometimes called the 'Napoleon of Egypt.'", monument:"Karnak Temple additions", badge:"⚔️ Warrior King" },
+  { name:"Akhenaten", dates:"c.1353–1336 BC", era:"New Kingdom · 18th Dynasty", role:"The 'Heretic Pharaoh.' Dismantled Egypt's entire religious system and replaced thousands of gods with one — the sun disc Aten. Moved the capital to Amarna. His revolution died with him.", monument:"Amarna (Akhetaten)", badge:"☀️ The Heretic" },
+  { name:"Nefertiti", dates:"c.1370–1330 BC", era:"New Kingdom · 18th Dynasty", role:"Great Royal Wife of Akhenaten, and possibly co-ruler or successor. Her famous painted limestone bust is one of the most copied works of ancient art. Her mummy has never been conclusively identified.", monument:"Bust at Neues Museum, Berlin", badge:"👸 The Beautiful One" },
+  { name:"Tutankhamun", dates:"c.1332–1323 BC", era:"New Kingdom · 18th Dynasty", role:"Born Tutankhaten. Became pharaoh at ~9, died at ~18–19. Restored the old religion, changed his name. Buried hastily in a small tomb — KV62 — which survived intact for 3,300 years until Howard Carter opened it in 1922.", monument:"KV62, Valley of the Kings · Treasures at Grand Egyptian Museum", badge:"💎 The Boy King" },
+  { name:"Ramesses II (the Great)", dates:"c.1279–1213 BC", era:"New Kingdom · 19th Dynasty", role:"Reigned 66 years — one of history's longest reigns. Built more monuments than any other pharaoh. His 83-tonne statue greets you at the Grand Egyptian Museum. Likely the pharaoh of the biblical Exodus.", monument:"Abu Simbel, Ramesseum, GEM statue", badge:"🏛️ The Great" },
+  { name:"Cleopatra VII", dates:"69–30 BC", era:"Ptolemaic Dynasty (Greek)", role:"Last pharaoh of Egypt. Macedonian Greek, not Egyptian. First Ptolemaic ruler to learn Egyptian. Allied with Julius Caesar and Mark Antony. Her death by asp (or poison) in 30 BC ended 3,000 years of pharaonic rule.", monument:"Alexandria (largely submerged)", badge:"🐍 The Last Pharaoh" },
+];
+
+const EGYPT_TIMELINE = [
+  { era:"Early Dynastic Period", dates:"c.3100–2686 BC", color:"#C9973A", desc:"Unification of Upper and Lower Egypt by Narmer. First pharaohs. Memphis founded as capital. Hieroglyphic writing develops." },
+  { era:"Old Kingdom", dates:"c.2686–2181 BC", color:"#C9973A", desc:"Age of pyramids. Khufu builds the Great Pyramid. Sphinx constructed. Egypt's first golden age of centralised power.", highlight:true },
+  { era:"First Intermediate Period", dates:"c.2181–2055 BC", color:"#888", desc:"Collapse of central authority. Regional rulers compete for power. Drought and famine." },
+  { era:"Middle Kingdom", dates:"c.2055–1650 BC", color:"#C9973A", desc:"Reunification. Egypt's classical literary age. Art and architecture flourish. Trade expanded.", highlight:true },
+  { era:"Second Intermediate Period", dates:"c.1650–1550 BC", color:"#888", desc:"Hyksos (western Asian people) invade and rule northern Egypt. Horse and chariot introduced to Egypt." },
+  { era:"New Kingdom", dates:"c.1550–1070 BC", color:"#C9973A", desc:"Egypt at its imperial peak. Hatshepsut, Akhenaten, Tutankhamun, Ramesses II. Empire stretches from Nubia to Syria.", highlight:true },
+  { era:"Third Intermediate & Late Period", dates:"c.1070–332 BC", color:"#888", desc:"Fragmentation, Nubian pharaohs, Assyrian and Persian invasions. Egypt's power wanes." },
+  { era:"Greek (Ptolemaic) Occupation", dates:"332–30 BC", color:"#185FA5", desc:"Alexander the Great conquers Egypt (332 BC). His general Ptolemy founds the Ptolemaic dynasty. Alexandria becomes world's greatest city. Cleopatra VII is the last ruler.", highlight:true },
+  { era:"Roman Occupation", dates:"30 BC–395 AD", color:"#8B1A1A", desc:"Egypt becomes a Roman province after Cleopatra's death. Bread basket of Rome. Christianity spreads. Egyptian temples gradually abandoned.", highlight:true },
+  { era:"Byzantine Period", dates:"395–641 AD", color:"#6A4C93", desc:"Eastern Roman Empire rules Egypt. Christianity is dominant. Coptic church established. Ancient Egyptian religion finally extinguished." },
+  { era:"Islamic Conquest", dates:"641 AD onward", color:"#1a7a3c", desc:"Arab armies under Amr ibn al-As conquer Egypt. Islam spreads rapidly. Arabic replaces Greek and Coptic as the language of administration. Cairo founded 969 AD.", highlight:true },
+];
+
 const JOURNAL_DATA = [
   {
     date: "2026-08-01",
@@ -763,7 +794,34 @@ const GUIDE_VIDEOS = {
 
 const TOUR_INFO = [
   {
-    key: "rso",
+    key: "pharaohs",
+    title: "Pharaohs & Ancient Egypt",
+    emoji: "👑",
+    date: "Aug 10–12",
+    location: "Giza & Cairo, Egypt",
+    sections: [
+      {
+        heading: "The Three Kingdoms — Egypt's great eras",
+        content: "Ancient Egyptian civilisation lasted roughly 3,000 years and is traditionally divided into three golden ages separated by periods of collapse and foreign rule. The <b>Old Kingdom</b> (c.2686–2181 BC) was the age of pyramid building — an era of extraordinary centralised power when pharaohs commanded tens of thousands of workers to construct monuments that still stand. The <b>Middle Kingdom</b> (c.2055–1650 BC) is considered Egypt's classical literary age — a time of political reunification, fine art, and the great funerary texts. The <b>New Kingdom</b> (c.1550–1070 BC) was Egypt at its imperial height — a military superpower stretching from Nubia to Syria, producing figures like Hatshepsut, Akhenaten, Tutankhamun, and Ramesses II. Between each golden age came intermediate periods of drought, civil war, and foreign invasion — reminders that even the most powerful civilisation on earth was never permanent."
+      },
+      {
+        heading: "The Pyramid Builders — the 4th Dynasty",
+        content: "<b>Sneferu</b> (c.2613–2589 BC) was the father of pyramid building — he constructed three pyramids including the Bent Pyramid and Red Pyramid at Dahshur, learning through trial and error how to build a true smooth-sided pyramid. His son <b>Khufu (Cheops)</b> (c.2589–2566 BC) took that knowledge and applied it at an almost incomprehensible scale — the Great Pyramid of Giza, the largest stone structure ever built, consisting of 2.3 million blocks and standing 146 metres tall. Khufu is paradoxically one of the most powerful men who ever lived yet one of the most mysterious — only a tiny 7.5cm ivory figurine of him has ever been found. His son <b>Djedefre</b> briefly ruled and built at Abu Rawash before his brother <b>Khafre (Chephren)</b> (c.2558–2532 BC) took the throne, built the second Giza pyramid — slightly smaller but on higher ground, making it appear taller — and almost certainly commissioned the Great Sphinx, carving it from a natural limestone outcrop to guard his valley temple. The smallest of the three Giza pyramids belongs to <b>Menkaure (Mycerinus)</b> (c.2532–2503 BC), Khafre's son — smaller in scale but finished in red granite, suggesting a shift in priorities or resources. These four kings — Khufu, Djedefre, Khafre, Menkaure — all ruled within a single century. The Giza plateau you walk on is essentially one family's legacy."
+      },
+      {
+        heading: "Tutankhamun — the boy with five names",
+        content: "He was born approximately 1341 BC, almost certainly the son of the heretic pharaoh <b>Akhenaten</b>, who had dismantled Egypt's entire religious system and replaced thousands of gods with one — the sun disc Aten. At birth the boy was named <b>Tutankhaten</b> — 'living image of Aten.' When Akhenaten died and the boy became pharaoh at approximately 9 years old, his advisors steered Egypt back to the old religion and changed his name to <b>Tutankhamun</b> — 'living image of Amun.' Like all pharaohs he carried a full royal titulary of five names: his Horus name, Two Ladies name, Golden Horus name, throne name (Nebkheperure), and birth name. He reigned for approximately 9 years and died around age 18–19 — cause still debated, with theories ranging from malaria and bone disease to chariot accident. He was buried hastily in a small tomb in the Valley of the Kings, KV62, which is precisely why it survived intact: robbers never found it, and later builders covered the entrance with rubble. When British archaeologist Howard Carter finally opened the sealed antechamber in November 1922, he described seeing 'wonderful things' — 5,398 objects packed into four small rooms, untouched for 3,300 years. His solid gold funerary mask, now at the Grand Egyptian Museum, weighs 10.23 kilograms and is one of the most recognisable objects ever made."
+      },
+      {
+        heading: "Hatshepsut — the Queen who became Pharaoh",
+        content: "<b>Hatshepsut</b> (c.1507–1458 BC) was one of the most remarkable figures in Egyptian history and one of its most successful pharaohs — male or female. Born a princess, she became the Great Royal Wife of Pharaoh Thutmose II. When he died young, the heir was his son Thutmose III — by a lesser wife — who was still a child. Hatshepsut became regent. Then, after a few years, she did something extraordinary: she declared herself pharaoh. She wore the double crown of Upper and Lower Egypt. She wore the ceremonial false beard. She had herself depicted in statues as male. For roughly 20 years she ruled Egypt — overseeing massive building campaigns, including her mortuary temple at Deir el-Bahari (one of the ancient world's most beautiful buildings), and a famous trade expedition to the land of Punt that returned with myrrh trees, ebony, and exotic animals. After her death, her stepson Thutmose III — who had waited decades in the wings — systematically defaced her image from monuments, chiselled out her name, and toppled her statues. It was arguably the most thorough erasure in history. For 3,000 years she was forgotten. It was only in the 19th century, as scholars began reading hieroglyphs again, that they noticed — in record after record — a female pharaoh they could not account for. Hatshepsut re-emerged from oblivion and is now recognised as one of ancient Egypt's greatest rulers."
+      },
+      {
+        heading: "Cleopatra VII — the last pharaoh",
+        content: "<b>Cleopatra VII Philopator</b> (69–30 BC) is the most famous ruler in Egyptian history — and one of the most misunderstood. She was not Egyptian. She was Macedonian Greek, the last ruler of the Ptolemaic dynasty founded by <b>Ptolemy I</b>, one of Alexander the Great's generals, who seized Egypt after Alexander's death in 323 BC. For nearly 300 years the Ptolemies ruled Egypt from Alexandria — speaking Greek, marrying siblings as per their tradition, and largely ignoring Egyptian culture. Cleopatra broke the pattern: she was reportedly the first Ptolemaic ruler to actually learn the Egyptian language, as well as nine others. She ruled as pharaoh in the Egyptian tradition and was deeply politically sophisticated — forging alliances first with Julius Caesar (with whom she had a son, Caesarion) and then with Mark Antony. Her death in 30 BC — by asp bite according to tradition, though the exact method remains disputed — ended 3,000 years of pharaonic rule. Egypt became a Roman province. The line from Narmer, who unified Upper and Lower Egypt around 3100 BC, to Cleopatra VII, who died in 30 BC, spans approximately 3,070 years — longer than the entire period from Cleopatra's death to today."
+      }
+    ]
+  },
     title: "Rising Star Outreach & Leprosy Colonies",
     emoji: "💛",
     date: "Aug 3–8",
@@ -2519,9 +2577,54 @@ function renderExploreDetail(main, info){
     </div>
     <div class="chips" style="margin-bottom:14px;">
       <button class="chip ${exploreSection==='info'?'active':''}" onclick="exploreSection='info';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='${info.key}'))">📖 History</button>
+      ${info.key==='pharaohs'?`<button class="chip ${exploreSection==='pharaohs'?'active':''}" onclick="exploreSection='pharaohs';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='pharaohs'))">👑 Lineage</button><button class="chip ${exploreSection==='timeline'?'active':''}" onclick="exploreSection='timeline';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='pharaohs'))">📅 Timeline</button>`:''}
       ${destGuide?`<button class="chip ${exploreSection==='tips'?'active':''}" onclick="exploreSection='tips';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='${info.key}'))">📍 Tips</button>`:''}
       ${(audioGuide||videos.length)?`<button class="chip ${exploreSection==='tours'?'active':''}" onclick="exploreSection='tours';renderExploreDetail(document.getElementById('main'),TOUR_INFO.find(t=>t.key==='${info.key}'))">🎧 Tours & Videos</button>`:''}
     </div>
+
+    ${exploreSection==='pharaohs' ? `
+      <div style="margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:12px;">Rulers of Ancient Egypt — chronological</div>
+        ${PHARAOH_LINEAGE.map((p,i)=>`
+          <div style="display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:24px;">
+              <div style="width:12px;height:12px;border-radius:50%;background:${p.badge.includes('Pyramid')||p.badge.includes('Sphinx')||p.badge.includes('Great')?'#C9973A':p.badge.includes('Queen')||p.badge.includes('Beautiful')?'#a855f7':p.badge.includes('Last')?'#8B1A1A':'#185FA5'};flex-shrink:0;margin-top:2px;"></div>
+              ${i<PHARAOH_LINEAGE.length-1?'<div style="width:2px;flex:1;min-height:40px;background:var(--line);margin-top:4px;"></div>':''}
+            </div>
+            <div class="card" style="flex:1;padding:10px 12px;margin-bottom:0;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;">
+                <div style="font-size:14px;font-weight:800;color:var(--deep);">${p.name}</div>
+                <span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:#fff9f0;color:var(--saffron);white-space:nowrap;margin-left:8px;">${p.badge}</span>
+              </div>
+              <div style="font-size:11px;color:var(--muted);margin-bottom:6px;">${p.dates} · ${p.era}</div>
+              <div style="font-size:12.5px;color:var(--ink);line-height:1.5;margin-bottom:6px;">${p.role}</div>
+              <div style="font-size:11.5px;color:var(--saffron);font-weight:600;">🏛 ${p.monument}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    ` : ''}
+
+    ${exploreSection==='timeline' ? `
+      <div style="margin-bottom:8px;">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:12px;">3,000 years of Egyptian history</div>
+        ${EGYPT_TIMELINE.map((t,i)=>`
+          <div style="display:flex;gap:12px;margin-bottom:6px;align-items:flex-start;">
+            <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:16px;">
+              <div style="width:14px;height:14px;border-radius:3px;background:${t.color};flex-shrink:0;margin-top:3px;"></div>
+              ${i<EGYPT_TIMELINE.length-1?`<div style="width:2px;flex:1;min-height:30px;background:${t.color};opacity:.3;margin-top:3px;"></div>`:''}
+            </div>
+            <div style="flex:1;background:${t.highlight?'var(--color-background-secondary,#f8f5ef)':'transparent'};border-radius:10px;padding:${t.highlight?'10px 12px':'4px 0'};margin-bottom:${t.highlight?'4px':'0'};">
+              <div style="font-size:13px;font-weight:800;color:${t.color};">${t.era}</div>
+              <div style="font-size:11.5px;font-weight:600;color:var(--muted);margin-bottom:4px;">${t.dates}</div>
+              <div style="font-size:12.5px;color:var(--ink);line-height:1.5;">${t.desc}</div>
+            </div>
+          </div>`).join('')}
+        <div style="background:#f0faf4;border-radius:12px;padding:12px 14px;margin-top:8px;">
+          <div style="font-size:12px;font-weight:800;color:#1a7a3c;margin-bottom:4px;">⏱ A sense of scale</div>
+          <div style="font-size:12.5px;color:var(--ink);line-height:1.6;">The Great Pyramid was already 2,500 years old when Cleopatra was born. Cleopatra lived closer in time to the Moon landing than to the building of the pyramids. The Islamic conquest of 641 AD is more recent than the time between Khufu and Cleopatra.</div>
+        </div>
+      </div>
+    ` : ''}
 
     ${exploreSection==='info' ? info.sections.map(s=>`
       <div class="card" style="margin-bottom:12px;">
