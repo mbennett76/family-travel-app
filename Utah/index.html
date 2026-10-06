@@ -50,6 +50,13 @@
   .chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;-webkit-overflow-scrolling:touch;}
   .chip{flex:none;padding:8px 13px;border-radius:20px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted);font-family:inherit;}
   .chip.active{background:var(--deep);color:#fff;border-color:var(--deep);}
+  .qr-card{background:#fff;border:2px solid var(--deep);border-radius:16px;padding:14px;text-align:center;margin-bottom:14px;}
+  .qr-label{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--saffron);margin-bottom:8px;}
+  .qr-box{width:220px;max-width:70vw;margin:0 auto;background:#fff;}
+  .qr-box svg{width:100%;height:auto;display:block;}
+  .qr-ref{font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:700;color:var(--deep);margin-top:6px;letter-spacing:1px;}
+  .wallet-btn{background:#000 !important;color:#fff !important;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+  a.btn.block.wallet-btn{display:flex;}
   .theme-opt{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-family:inherit;text-align:left;}
   .theme-opt.active{border:2px solid var(--saffron);}
   .theme-opt .sw{display:flex;flex:none;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.08);}
@@ -168,6 +175,8 @@ const BOOKINGS = {
     summary:"Value Park · Fri 1:00pm → Wed 9:00pm",
     sub:"Edmonton Airport · plate CSM2229",
     refs:[["Value Park reference","0PNFF"]],
+    qr:`<svg role="img" aria-label="Value Park QR code" version="1.1" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><path d="M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM14,2H15V3H14zM16,2H17V3H16zM17,2H18V3H17zM18,2H19V3H18zM19,2H20V3H19zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM2,3H3V4H2zM8,3H9V4H8zM10,3H11V4H10zM11,3H12V4H11zM12,3H13V4H12zM14,3H15V4H14zM16,3H17V4H16zM22,3H23V4H22zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM13,4H14V5H13zM16,4H17V5H16zM18,4H19V5H18zM19,4H20V5H19zM20,4H21V5H20zM22,4H23V5H22zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM13,5H14V6H13zM14,5H15V6H14zM16,5H17V6H16zM18,5H19V6H18zM19,5H20V6H19zM20,5H21V6H20zM22,5H23V6H22zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM11,6H12V7H11zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM19,6H20V7H19zM20,6H21V7H20zM22,6H23V7H22zM2,7H3V8H2zM8,7H9V8H8zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM16,7H17V8H16zM22,7H23V8H22zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM17,8H18V9H17zM18,8H19V9H18zM19,8H20V9H19zM20,8H21V9H20zM21,8H22V9H21zM22,8H23V9H22zM12,9H13V10H12zM13,9H14V10H13zM14,9H15V10H14zM2,10H3V11H2zM4,10H5V11H4zM6,10H7V11H6zM8,10H9V11H8zM11,10H12V11H11zM12,10H13V11H12zM13,10H14V11H13zM18,10H19V11H18zM21,10H22V11H21zM2,11H3V12H2zM4,11H5V12H4zM6,11H7V12H6zM16,11H17V12H16zM17,11H18V12H17zM21,11H22V12H21zM22,11H23V12H22zM4,12H5V13H4zM5,12H6V13H5zM7,12H8V13H7zM8,12H9V13H8zM9,12H10V13H9zM12,12H13V13H12zM14,12H15V13H14zM18,12H19V13H18zM2,13H3V14H2zM3,13H4V14H3zM5,13H6V14H5zM6,13H7V14H6zM16,13H17V14H16zM17,13H18V14H17zM19,13H20V14H19zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM2,14H3V15H2zM3,14H4V15H3zM5,14H6V15H5zM6,14H7V15H6zM7,14H8V15H7zM8,14H9V15H8zM9,14H10V15H9zM10,14H11V15H10zM12,14H13V15H12zM14,14H15V15H14zM16,14H17V15H16zM18,14H19V15H18zM19,14H20V15H19zM20,14H21V15H20zM10,15H11V16H10zM13,15H14V16H13zM15,15H16V16H15zM17,15H18V16H17zM20,15H21V16H20zM21,15H22V16H21zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM5,16H6V17H5zM6,16H7V17H6zM7,16H8V17H7zM8,16H9V17H8zM11,16H12V17H11zM12,16H13V17H12zM13,16H14V17H13zM15,16H16V17H15zM16,16H17V17H16zM18,16H19V17H18zM19,16H20V17H19zM2,17H3V18H2zM8,17H9V18H8zM11,17H12V18H11zM13,17H14V18H13zM14,17H15V18H14zM15,17H16V18H15zM18,17H19V18H18zM22,17H23V18H22zM2,18H3V19H2zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM8,18H9V19H8zM10,18H11V19H10zM12,18H13V19H12zM13,18H14V19H13zM15,18H16V19H15zM16,18H17V19H16zM22,18H23V19H22zM2,19H3V20H2zM4,19H5V20H4zM5,19H6V20H5zM6,19H7V20H6zM8,19H9V20H8zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM19,19H20V20H19zM21,19H22V20H21zM2,20H3V21H2zM4,20H5V21H4zM5,20H6V21H5zM6,20H7V21H6zM8,20H9V21H8zM10,20H11V21H10zM11,20H12V21H11zM14,20H15V21H14zM18,20H19V21H18zM20,20H21V21H20zM22,20H23V21H22zM2,21H3V22H2zM8,21H9V22H8zM12,21H13V22H12zM16,21H17V22H16zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM5,22H6V23H5zM6,22H7V23H6zM7,22H8V23H7zM8,22H9V23H8zM10,22H11V23H10zM11,22H12V23H11zM12,22H13V23H12zM14,22H15V23H14zM16,22H17V23H16zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM22,22H23V23H22z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg>`,
+    qrNote:"Scan at the Value Park gate to enter Friday and again to exit Wednesday. Turn your screen brightness up.",
     details:[
       ["Car park","Value Park, Edmonton International Airport"],
       ["Entry","Fri Oct 9 · 1:00pm"],
@@ -268,14 +277,16 @@ const BOOKINGS = {
       ["Venue","Black Box Theatre, Arts Building, BYU campus"],
       ["Tickets","6 × General Admission (5 + 1, two separate orders)"],
       ["Paid","US$90 total ($15 each)"],
-      ["Entry","Mobile passes — sign in to My Account on byutickets from your phone"]
+      ["Entry","Tickets are saved in Apple Wallet on Marc's iPhone — show them at the door"]
     ],
     alerts:[
       "General admission — no assigned seats. Arrive by about 7:00pm to sit together.",
+      "All 6 tickets are in Marc's Apple Wallet. Open them before you reach the door — Wallet works even without signal.",
       "The confirmation email for order 2 (the 6th ticket) is in Gmail Trash. The ticket is still valid — it will show in My Account."
     ],
+    wallet:true,
     links:[
-      ["Open my BYU tickets","https://byutickets.evenue.net/myaccount"],
+      ["Backup: BYU tickets account","https://byutickets.evenue.net/myaccount"],
       ["Show page","https://onstage.byu.edu/arts-entertainment/songs-for-a-new-world-2026-10-16"],
       ["Map: BYU Arts Building","https://maps.google.com/?q=BYU+Arts+Building+Provo+UT"]
     ]
@@ -344,7 +355,7 @@ const ITINERARY = [
      {t:"~7:00pm",a:"Arrive at the Black Box Theatre — general admission seating"},
      {t:"7:30pm", a:"Curtain"}
    ],
-   tips:["Load the mobile passes on your phone before you leave the hotel","Flowers for Jordyn 💐"]},
+   tips:["Tickets are in Marc's Apple Wallet — tap the show banner above, then “Open tickets in Apple Wallet”","Flowers for Jordyn 💐"]},
   {date:"2026-10-14", title:"Fly home 🇨🇦", loc:"Orem → SLC → Seattle → YEG",
    details:"Breakfast, check out, drive to SLC, refuel and return the car, then Alaska home through Seattle.",
    refs:["hotel","car","flightHome","parking"],
@@ -387,12 +398,12 @@ const JOURNAL_PROMPTS = {
 const CHECKLIST = [
   {id:"passports", t:"Passports for Marc, Natasha, Scarlett & Milo"},
   {id:"parkentry", t:"Consider moving Value Park exit later than 9:00pm Wednesday"},
-  {id:"parkqr",    t:"Value Park QR code saved on your phone (0PNFF)"},
+  {id:"parkqr",    t:"Value Park QR code — built into this app (Bookings → YEG Value Park)"},
   {id:"accheckin", t:"Air Canada check-in + choose seats (opens Thu Oct 8, 3:17pm)"},
   {id:"licence",   t:"Marc's driver's licence + credit card in his name for Thrifty"},
   {id:"voucher",   t:"GotRentalCars voucher saved / printed (584121097)"},
   {id:"bags",      t:"Decide on checked bags — not included on either airline"},
-  {id:"byupass",   t:"BYU mobile passes loaded on Marc's phone (all 6 tickets)"},
+  {id:"byupass",   t:"All 6 BYU tickets in Marc's Apple Wallet ✓"},
   {id:"church",    t:"Ask Courtney & Jordyn for Sunday ward + time"},
   {id:"flowers",   t:"Flowers / gift for Jordyn's opening night"},
   {id:"ascheckin", t:"Alaska check-in (opens Tue Oct 13, 3:02pm)"},
@@ -489,10 +500,21 @@ function bookingHtml(key){
      <div style="text-align:right"><div class="city">${l.to}</div><div class="tm">${l.arrives}</div></div></div>
      ${l.note?`<div style="font-size:11.5px;color:var(--good);margin-top:5px">ℹ ${l.note}</div>`:''}</div>`).join('');
   const alerts = (b.alerts||[]).map(a=>`<div class="alert"><b>Heads up:</b> ${a}</div>`).join('');
+  const qr = b.qr ? `<div class="qr-card"><div class="qr-label">Gate QR code</div><div class="qr-box">${b.qr}</div><div class="qr-ref">Ref ${b.refs[0][1]}</div><div class="muted" style="margin-top:6px">${b.qrNote||''}</div></div>` : '';
+  const wallet = b.wallet ? walletButton() : '';
   const kv = `<dl class="kv" style="margin:12px 0">${b.details.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>`;
   const phones = [b.phone,b.phone2].filter(Boolean).map(p=>`<a class="btn secondary block" style="margin-top:8px" href="${telLink(p[1])}">📞 ${p[0]} · ${p[1]}</a>`).join('');
   const links = (b.links||[]).map(l=>`<a class="btn block" style="margin-top:8px" href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join('');
-  return refs + legs + alerts + kv + links + phones;
+  return qr + wallet + refs + legs + alerts + kv + links + phones;
+}
+function walletButton(){
+  return `<a class="btn block wallet-btn" href="shoebox://" onclick="walletFallback()">
+    <span style="font-size:18px">🎟️</span> Open tickets in Apple Wallet</a>
+    <p class="muted" style="margin:6px 2px 12px;text-align:center">Opens the Wallet app on iPhone · tap the BYU Songs for a New World passes</p>`;
+}
+function walletFallback(){
+  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  if(!iOS) setTimeout(()=>toast('Apple Wallet only opens on iPhone — use the BYU tickets account link'), 300);
 }
 function openBooking(key){ const b=BOOKINGS[key]; showModal(b.icon + ' ' + b.title, bookingHtml(key)); }
 function bookingButton(key){
@@ -526,7 +548,7 @@ function renderHome(main){
       <div style="font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--gold)">Opening night · BYU OnStage</div>
       <div style="font-size:21px;font-weight:800;margin:4px 0 2px">Songs for a New World</div>
       <div style="font-size:13px;opacity:.9">Starring Jordyn ✨ · Tue Oct 13 · 7:30pm<br>Black Box Theatre, BYU Arts Building · 6 tickets</div>
-      <button class="btn" style="margin-top:12px;background:var(--saffron)" onclick="openBooking('show')">Tickets & details</button>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><a class="btn wallet-btn" href="shoebox://" onclick="walletFallback()">🎟️ Apple Wallet</a><button class="btn" style="background:var(--saffron)" onclick="openBooking('show')">Details</button></div>
     </div>
     <h2 class="section-title">Travellers</h2>
     <div class="traveler-grid">${TRAVELERS.map(t=>`<div class="traveler-card">${t.name}<div class="r">${t.from}</div></div>`).join('')}</div>
