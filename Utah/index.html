@@ -165,12 +165,12 @@ const TRAVELERS = [
 const BOOKINGS = {
   parking: {
     icon:"🅿️", title:"YEG Value Park", type:"Parking",
-    summary:"Value Park · Fri 1:30pm → Wed 9:00pm",
+    summary:"Value Park · Fri 1:00pm → Wed 9:00pm",
     sub:"Edmonton Airport · plate CSM2229",
     refs:[["Value Park reference","0PNFF"]],
     details:[
       ["Car park","Value Park, Edmonton International Airport"],
-      ["Entry","Fri Oct 9 · 1:30pm"],
+      ["Entry","Fri Oct 9 · 1:00pm"],
       ["Exit","Wed Oct 14 · by 9:00pm"],
       ["Vehicle","CSM2229 (AB)"],
       ["Paid","CA$64.00 incl. GST (AMA discount applied)"],
@@ -180,7 +180,7 @@ const BOOKINGS = {
       ["GST receipt","R128599776"]
     ],
     alerts:[
-      "Entry is booked for 1:30pm, but this is a US flight with US customs at YEG, and Air Canada check-in and bag drop close at 2:17pm. With the shuttle ride, 1:30pm is very tight. Use “Change my booking” in the confirmation email to move entry to about 12:00pm, or call Value Park to ask whether you can enter early.",
+      "Entry is 1:00pm. Plan to arrive about 12:30pm so you have time for the shuttle — Air Canada check-in and bag drop close at 2:17pm for US flights.",
       "Exit is booked for 9:00pm Wednesday and you land at 8:31pm. With customs and the shuttle you may reach the gate a little after 9:00pm. Consider moving the exit to 10:00pm."
     ],
     links:[],
@@ -310,7 +310,8 @@ const ITINERARY = [
    details:"The four of you fly Air Canada (United-operated) through Denver, pick up the Thrifty car at SLC, and drive about 45 minutes south to the hotel in Orem.",
    refs:["parking","flightOut","car","hotel"],
    schedule:[
-     {t:"1:30pm",  a:"Value Park entry (0PNFF) · scan QR code · shuttle to terminal — consider booking an earlier entry"},
+     {t:"12:00pm", a:"Marc done work · drive to YEG (about 30 min)"},
+     {t:"~12:30pm",a:"Arrive at Value Park (entry booked 1:00pm, ref 0PNFF) · scan QR code · shuttle to terminal"},
      {t:"by 2:15pm",a:"Check in & drop bags (closes 2:17pm) · then US customs at YEG"},
      {t:"3:17pm",  a:"AC 4159 departs Edmonton"},
      {t:"6:04pm",  a:"Land in Denver · grab dinner during the 1.5h connection"},
@@ -385,7 +386,7 @@ const JOURNAL_PROMPTS = {
 
 const CHECKLIST = [
   {id:"passports", t:"Passports for Marc, Natasha, Scarlett & Milo"},
-  {id:"parkentry", t:"Move Value Park entry earlier than 1:30pm (and exit later than 9:00pm)"},
+  {id:"parkentry", t:"Consider moving Value Park exit later than 9:00pm Wednesday"},
   {id:"parkqr",    t:"Value Park QR code saved on your phone (0PNFF)"},
   {id:"accheckin", t:"Air Canada check-in + choose seats (opens Thu Oct 8, 3:17pm)"},
   {id:"licence",   t:"Marc's driver's licence + credit card in his name for Thrifty"},
