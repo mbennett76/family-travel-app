@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover">
+<title>Utah Family Trip 2026</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Utah Trip">
+<meta name="theme-color" content="#002e5d">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23002e5d'/%3E%3Ctext x='50' y='66' font-size='54' text-anchor='middle'%3E%F0%9F%8E%AD%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23002e5d'/%3E%3Ctext x='50' y='66' font-size='54' text-anchor='middle'%3E%F0%9F%8E%AD%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --saffron:#0062b8; --gold:#8fb3d9; --deep:#002e5d; --deep2:#0a3f78;
+    --paper:#f5f8fb; --card:#ffffff; --ink:#22252b; --muted:#6b7280; --line:#d8e2ec;
+    --good:#2f7d5c; --danger:#b3452f; --radius:16px; --soft:#eef3f8; --tint:#e1ebf6; --hero2:#0062b8;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,var(--deep) 0%, var(--deep) 120px, var(--paper) 120px);color:var(--ink);min-height:100%;}
+  #app{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--paper);}
+  header.topbar{padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;color:#fff;background:linear-gradient(135deg,var(--deep),var(--deep2));position:sticky;top:0;z-index:20;}
+  header.topbar h1{margin:0;font-size:19px;font-weight:700;letter-spacing:.2px;}
+  header.topbar .sub{font-size:12.5px;opacity:.85;margin-top:3px;}
+  main{flex:1;padding:14px 14px calc(90px + var(--safe-bottom));}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;display:flex;background:#fff;border-top:1px solid var(--line);
+    padding-bottom:var(--safe-bottom);box-shadow:0 -4px 16px rgba(0,0,0,.06);z-index:30;}
+  nav.tabs button{flex:1;border:none;background:none;padding:9px 2px 8px;font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:600;font-family:inherit;}
+  nav.tabs button .ic{font-size:19px;}
+  nav.tabs button.active{color:var(--saffron);}
+  h2.section-title{font-size:17px;margin:18px 0 10px;color:var(--deep);}
+  h2.section-title:first-child{margin-top:2px;}
+  .card{background:var(--card);border-radius:var(--radius);padding:14px 15px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--line);}
+  .pill{display:inline-block;background:var(--tint);color:var(--saffron);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-right:6px;}
+  .pill.green{background:#e4f2ea;color:var(--good);}
+  .pill.blue{background:#e6eefc;color:#2454a3;}
+  .pill.red{background:#fde8e3;color:var(--danger);}
+  .muted{color:var(--muted);font-size:12.5px;}
+  .btn{border:none;background:var(--deep);color:#fff;padding:10px 14px;border-radius:12px;font-size:13.5px;font-weight:700;font-family:inherit;text-decoration:none;display:inline-block;text-align:center;}
+  .btn.secondary{background:#f0ece1;color:var(--deep);}
+  .btn.ghost{background:none;color:var(--saffron);padding:6px 8px;}
+  .btn.block{display:block;width:100%;}
+  .btn-row{display:flex;gap:8px;margin-top:10px;}
+  .btn-row .btn{flex:1;}
+  textarea{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff;color:var(--ink);font-family:inherit;resize:vertical;min-height:70px;}
+  .chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;-webkit-overflow-scrolling:touch;}
+  .chip{flex:none;padding:8px 13px;border-radius:20px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--muted);font-family:inherit;}
+  .chip.active{background:var(--deep);color:#fff;border-color:var(--deep);}
+  .theme-opt{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-family:inherit;text-align:left;}
+  .theme-opt.active{border:2px solid var(--saffron);}
+  .theme-opt .sw{display:flex;flex:none;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.08);}
+  .theme-opt .sw i{display:block;width:16px;height:30px;}
+  .theme-opt .nm{font-size:13.5px;font-weight:700;color:var(--ink);}
+  .theme-opt .ds{font-size:11.5px;color:var(--muted);}
+  .day-card .date{font-size:11.5px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.4px;}
+  .day-card h3{margin:2px 0 4px;font-size:15.5px;color:var(--deep);}
+  .day-card .loc{font-size:12.5px;color:var(--muted);margin-bottom:6px;}
+  .day-card p{font-size:13.5px;line-height:1.45;margin:6px 0;}
+  .tips{margin:8px 0 0;padding:0;list-style:none;}
+  .tips li{font-size:12.5px;line-height:1.4;padding:5px 0 5px 20px;position:relative;color:#3a3d44;}
+  .tips li:before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:900;}
+  .tips.warn li:before{content:"!";color:var(--danger);}
+  .label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--saffron);margin-bottom:8px;}
+  .sched{border-left:2px solid var(--saffron);padding-left:12px;}
+  .sched div.s{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;}
+  .sched div.s:last-child{margin-bottom:0;}
+  .sched .t{min-width:68px;font-size:11px;font-weight:700;color:var(--saffron);padding-top:1px;white-space:nowrap;}
+  .sched .a{font-size:12.5px;line-height:1.4;}
+  .bk{display:flex;align-items:center;gap:8px;width:100%;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;text-align:left;font-family:inherit;color:inherit;}
+  .bk .e{font-size:16px;}
+  .bk .b{flex:1;min-width:0;}
+  .bk .b1{font-size:12px;font-weight:700;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bk .b2{font-size:11px;color:var(--muted);}
+  .bk .go{color:var(--saffron);font-size:14px;}
+  .leg{background:var(--soft);border-radius:12px;padding:10px 12px;margin-bottom:8px;}
+  .leg .h{font-size:11px;font-weight:800;color:var(--saffron);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;}
+  .leg .r{display:flex;align-items:center;gap:8px;}
+  .leg .r > div{flex:1;}
+  .leg .city{font-size:13px;font-weight:700;color:var(--deep);}
+  .leg .tm{font-size:12px;color:var(--muted);}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;line-height:1.4;}
+  .kv dt{color:var(--muted);font-weight:600;}
+  .kv dd{margin:0;color:var(--ink);font-weight:600;word-break:break-word;}
+  .ref{font-family:ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.5px;background:var(--tint);color:var(--deep);padding:1px 6px;border-radius:6px;}
+  .alert{background:#fde8e3;border:1px solid #f2c3b8;border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;color:#6d2a1c;margin:8px 0;}
+  .alert b{color:var(--danger);}
+  .banner{background:#fff7ea;border:1px solid #f0dcae;border-radius:14px;padding:12px 14px;font-size:12.5px;line-height:1.5;margin-bottom:12px;color:#5a4a1f;}
+  .banner b{color:#8a5c0a;}
+  .traveler-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+  .traveler-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700;color:var(--deep);}
+  .traveler-card .r{font-weight:500;color:var(--muted);font-size:11.5px;}
+  .ql{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;padding:10px;font-size:14px;font-weight:600;color:var(--ink);text-align:left;border-radius:10px;font-family:inherit;}
+  .ql .x{margin-left:auto;color:var(--muted);}
+  .count{display:flex;gap:8px;margin:10px 0 2px;}
+  .count div{flex:1;background:var(--soft);border-radius:10px;padding:8px 4px;text-align:center;}
+  .count b{display:block;font-size:22px;color:var(--deep);}
+  .count span{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+  .checklist-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px;}
+  .checklist-item:first-child{border-top:none;}
+  .checklist-item input{width:19px;height:19px;flex:none;accent-color:var(--good);}
+  .checklist-item.checked span{text-decoration:line-through;color:var(--muted);}
+  .wx{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);}
+  .wx:first-child{border-top:none;}
+  .wx .d{width:78px;font-size:12.5px;font-weight:700;color:var(--deep);}
+  .wx .i{font-size:22px;width:30px;text-align:center;}
+  .wx .c{flex:1;font-size:12px;color:var(--muted);}
+  .wx .t{font-size:13px;font-weight:700;text-align:right;white-space:nowrap;}
+  .place h3{margin:0 0 2px;font-size:15px;color:var(--deep);}
+  .place p{font-size:13px;line-height:1.45;margin:6px 0 8px;}
+  .contact{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13px;gap:10px;}
+  .contact:first-child{border-top:none;}
+  .contact a{font-weight:700;white-space:nowrap;}
+  a{color:var(--saffron);}
+  .modal-bg{position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;background:rgba(0,0,0,.45);}
+  .modal-bg .spacer{flex:1;min-height:60px;}
+  .sheet{background:#fff;border-radius:20px 20px 0 0;max-height:85vh;display:flex;flex-direction:column;max-width:520px;width:100%;margin:0 auto;}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;border-bottom:1px solid var(--line);}
+  .sheet-head span{font-size:15px;font-weight:800;color:var(--deep);}
+  .sheet-head button{background:var(--soft);border:none;border-radius:50%;width:30px;height:30px;font-size:15px;}
+  .sheet-body{overflow-y:auto;padding:14px 16px calc(20px + var(--safe-bottom));-webkit-overflow-scrolling:touch;}
+  .toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:#22252b;color:#fff;padding:10px 18px;border-radius:30px;font-size:13px;z-index:9999;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <h1>Utah Family Trip 2026 🎭</h1>
+    <div class="sub">Oct 9 – Oct 14 · Orem & Provo · Jordyn in <i>Songs for a New World</i></div>
+  </header>
+  <main id="main"></main>
+  <nav class="tabs" id="tabs">
+    <button data-tab="home" class="active"><span class="ic">🏠</span>Home</button>
+    <button data-tab="itinerary"><span class="ic">🗓️</span>Itinerary</button>
+    <button data-tab="bookings"><span class="ic">🎟️</span>Bookings</button>
+    <button data-tab="explore"><span class="ic">🗺️</span>Explore</button>
+    <button data-tab="journal"><span class="ic">📓</span>Journal</button>
+    <button data-tab="weather"><span class="ic">🌤️</span>Weather</button>
+    <button data-tab="info"><span class="ic">ℹ️</span>Info</button>
+  </nav>
+</div>
+
+<script>
+window.onerror = function(msg, src, line, col, err){
+  var m = document.getElementById('main');
+  if(m) m.innerHTML = '<div class="card" style="border:2px solid #b3452f;font-family:monospace;font-size:12px"><b style="color:#b3452f">App error — please screenshot this</b><br><br>' + msg + '<br>Line ' + line + ':' + col + '</div>';
+  return false;
+};
+
+/* ============ TRIP DATA ============ */
+const TRIP = { start:"2026-10-09T15:17:00-06:00", end:"2026-10-14T20:31:00-06:00", show:"2026-10-13T19:30:00-06:00" };
+
+const TRAVELERS = [
+  {id:"marc",     name:"Marc",     from:"Edmonton (YEG)"},
+  {id:"natasha",  name:"Natasha",  from:"Edmonton (YEG)"},
+  {id:"scarlett", name:"Scarlett", from:"Edmonton (YEG)"},
+  {id:"milo",     name:"Milo",     from:"Edmonton (YEG)"},
+  {id:"courtney", name:"Courtney", from:"Provo · BYU"},
+  {id:"jordyn",   name:"Jordyn",   from:"Provo · BYU · on stage!"}
+];
+
+const BOOKINGS = {
+  parking: {
+    icon:"🅿️", title:"YEG Value Park", type:"Parking",
+    summary:"Value Park · Fri 1:30pm → Wed 9:00pm",
+    sub:"Edmonton Airport · plate CSM2229",
+    refs:[["Value Park reference","0PNFF"]],
+    details:[
+      ["Car park","Value Park, Edmonton International Airport"],
+      ["Entry","Fri Oct 9 · 1:30pm"],
+      ["Exit","Wed Oct 14 · by 9:00pm"],
+      ["Vehicle","CSM2229 (AB)"],
+      ["Paid","CA$64.00 incl. GST (AMA discount applied)"],
+      ["Getting in","Follow signs to Value Park · scan your reservation QR code at the gate"],
+      ["Shuttle","Park in the marked shuttle row and wait at your vehicle for pick-up"],
+      ["Coming home","Catch the shuttle at Door 7 · scan the same QR code to exit"],
+      ["GST receipt","R128599776"]
+    ],
+    alerts:[
+      "Entry is booked for 1:30pm, but this is a US flight with US customs at YEG, and Air Canada check-in and bag drop close at 2:17pm. With the shuttle ride, 1:30pm is very tight. Use “Change my booking” in the confirmation email to move entry to about 12:00pm, or call Value Park to ask whether you can enter early.",
+      "Exit is booked for 9:00pm Wednesday and you land at 8:31pm. With customs and the shuttle you may reach the gate a little after 9:00pm. Consider moving the exit to 10:00pm."
+    ],
+    links:[],
+    phone:["Value Park (YEG parking)","780-890-8527"]
+  },
+  flightOut: {
+    icon:"✈️", title:"Edmonton → Salt Lake City", type:"Flight",
+    summary:"Fri Oct 9 · YEG 3:17pm → SLC 9:11pm via Denver",
+    sub:"Air Canada (operated by United)",
+    refs:[["Air Canada ref","C48VJ4"],["United ref","F5PD0V"]],
+    legs:[
+      {flight:"AC 4159 · op. United · Boeing 737-800", from:"Edmonton (YEG)", to:"Denver (DEN)", departs:"Fri Oct 9 · 3:17pm", arrives:"6:04pm", duration:"2h 47m", note:"US customs is cleared at YEG before you board — allow extra time."},
+      {flight:"AC 4012 · op. United · Boeing 737-900", from:"Denver (DEN)", to:"Salt Lake City (SLC)", departs:"Fri Oct 9 · 7:35pm", arrives:"9:11pm", duration:"1h 36m", note:"1h 31m connection in Denver."}
+    ],
+    details:[
+      ["Travellers","Marc, Natasha, Scarlett, Milo"],
+      ["Fare","Economy Standard"],
+      ["Seats","None selected yet — pick at check-in"],
+      ["Check-in","Opens Thu Oct 8 at 3:17pm (24h before)"],
+      ["Check-in closes","60 min before departure (US-bound)"],
+      ["Bag drop closes","60 min before departure"],
+      ["Gate closes","15 min before departure"],
+      ["Checked bags","Not included · 1st bag CA$47.25, 2nd CA$63.00 · 23 kg max"],
+      ["Carry-on","1 personal item + 1 standard carry-on"],
+      ["Paid","CA$1,691.12 total (CA$422.78 each)"]
+    ],
+    links:[
+      ["Check in (Air Canada)","https://www.aircanada.com/ca/en/aco/home.html#/home:checkIn"],
+      ["Manage booking","https://book.aircanada.com/ACWebOnline/ManageBooking?ACTION=MODIFY&COUNTRY=CA&LANGUAGE=US&SITE=SAADSAAD&COUNTRYOFRESIDENCE=CA&EXTERNAL_ID=GUEST&BOOKING_REFERENCE=C48VJ4&LAST_NAME=BENNETT"]
+    ],
+    phone:["Air Canada Reservations","1-888-247-2262"]
+  },
+  car: {
+    icon:"🚙", title:"Thrifty rental car", type:"Car",
+    summary:"Nissan Rogue or similar · SLC Airport",
+    sub:"Pick up Fri 9:00pm · Return Wed by 3:00pm",
+    refs:[["GotRentalCars","584121097"],["Thrifty ref","L732EED81C9"]],
+    details:[
+      ["Driver","Marc Bennett"],
+      ["Pick-up","Fri Oct 9 · 9:00pm · SLC International Airport, 776 N Terminal Dr"],
+      ["Return","Wed Oct 14 · by 3:00pm · same location"],
+      ["Vehicle","Group IFAR — Nissan Rogue or similar · automatic · A/C · 5 doors · 5 seats"],
+      ["Mileage","Unlimited"],
+      ["Fuel","Return at the same level you picked it up"],
+      ["Paid","CA$282 prepaid · about US$148 local taxes/fees due at the counter"],
+      ["Bring","Original driver's licence + a credit card in Marc's name (security deposit hold)"],
+      ["Extras (optional, at desk)","Additional driver about US$73"]
+    ],
+    alerts:[
+      "Your flight lands at 9:11pm, after the 9:00pm pick-up time. That is normal — if you are delayed, call GotRentalCars so Thrifty holds the car.",
+      "The Rogue seats 5. With Courtney and Jordyn you are 6, so plan two cars or two trips when everyone is together.",
+      "Plan to return the car around 12:30pm Wednesday — your flight leaves at 3:02pm."
+    ],
+    links:[],
+    phone:["GotRentalCars","1-855-264-9782"]
+  },
+  hotel: {
+    icon:"🏨", title:"Hampton Inn & Suites Orem", type:"Hotel",
+    summary:"Hampton Inn & Suites Orem · 5 nights",
+    sub:"Oct 9 – 14 · breakfast included",
+    refs:[["trivago DEALS booking","13931726"]],
+    details:[
+      ["Check-in","Fri Oct 9 · from 3:00pm (late arrival is fine)"],
+      ["Check-out","Wed Oct 14 · by 11:00am"],
+      ["Room","Standard King, non-smoking, with sofa bed"],
+      ["Guests","3 adults, 1 child"],
+      ["Breakfast","Included"],
+      ["At check-in","Photo ID + card · US$20/night deposit for incidentals"],
+      ["Cancellation","Non-refundable now (free cancellation ended Oct 6)"],
+      ["Booked by","Marc Bennett"]
+    ],
+    alerts:[],
+    links:[["Directions","https://maps.google.com/?q=Hampton+Inn+%26+Suites+Orem+851+W+1250+S+Orem+UT"]],
+    phone:["Hotel front desk","801-426-8500"],
+    phone2:["trivago DEALS support (US)","1-475-251-4340"]
+  },
+  show: {
+    icon:"🎭", title:"Songs for a New World", type:"Show",
+    summary:"Tue Oct 13 · 7:30pm · Opening night",
+    sub:"BYU Arts Building · Black Box Theatre",
+    refs:[["Order 1 (5 tickets)","678406-FA26:19528"],["Order 2 (1 ticket)","678406-FA26:19558"]],
+    details:[
+      ["Show","Jason Robert Brown's song cycle — a BYU OnStage concert performance"],
+      ["Date","Tuesday, October 13, 2026 · 7:30pm"],
+      ["Venue","Black Box Theatre, Arts Building, BYU campus"],
+      ["Tickets","6 × General Admission (5 + 1, two separate orders)"],
+      ["Paid","US$90 total ($15 each)"],
+      ["Entry","Mobile passes — sign in to My Account on byutickets from your phone"]
+    ],
+    alerts:[
+      "General admission — no assigned seats. Arrive by about 7:00pm to sit together.",
+      "The confirmation email for order 2 (the 6th ticket) is in Gmail Trash. The ticket is still valid — it will show in My Account."
+    ],
+    links:[
+      ["Open my BYU tickets","https://byutickets.evenue.net/myaccount"],
+      ["Show page","https://onstage.byu.edu/arts-entertainment/songs-for-a-new-world-2026-10-16"],
+      ["Map: BYU Arts Building","https://maps.google.com/?q=BYU+Arts+Building+Provo+UT"]
+    ]
+  },
+  flightHome: {
+    icon:"✈️", title:"Salt Lake City → Edmonton", type:"Flight",
+    summary:"Wed Oct 14 · SLC 3:02pm → YEG 8:31pm via Seattle",
+    sub:"Alaska Airlines",
+    refs:[["Alaska confirmation","EUEVHZ"]],
+    legs:[
+      {flight:"AS 734 · Boeing 737-900", from:"Salt Lake City (SLC)", to:"Seattle (SEA)", departs:"Wed Oct 14 · 3:02pm", arrives:"4:17pm", duration:"2h 15m", note:"Times are local. Seattle is 1 hour behind Utah."},
+      {flight:"AS 1439 · Boeing 737-900", from:"Seattle (SEA)", to:"Edmonton (YEG)", departs:"Wed Oct 14 · 5:40pm", arrives:"8:31pm", duration:"1h 51m", note:"1h 23m connection in Seattle. Canadian customs at YEG."}
+    ],
+    details:[
+      ["Travellers","Marc, Natasha, Scarlett, Milo"],
+      ["Fare","Saver (Coach) · non-refundable"],
+      ["Seats","Assigned at the gate on travel day — may not be together"],
+      ["Check-in","Opens Tue Oct 13 at 3:02pm (24h before)"],
+      ["Bags","1 carry-on + 1 personal item · checked bags extra"],
+      ["Paid","US$1,672 total (US$418 each)"]
+    ],
+    alerts:["Saver fare: seats are given out at the gate. Check in as early as possible and ask the agent to seat the family together."],
+    links:[
+      ["Manage trip (Alaska)","https://www.alaskaair.com/booking/reservation-lookup"]
+    ],
+    phone:["Alaska Airlines","1-800-252-7522"]
+  }
+};
+
+const ITINERARY = [
+  {date:"2026-10-09", title:"Fly to Utah ✈️", loc:"Sherwood Park → YEG → Denver → SLC → Orem",
+   details:"The four of you fly Air Canada (United-operated) through Denver, pick up the Thrifty car at SLC, and drive about 45 minutes south to the hotel in Orem.",
+   refs:["parking","flightOut","car","hotel"],
+   schedule:[
+     {t:"1:30pm",  a:"Value Park entry (0PNFF) · scan QR code · shuttle to terminal — consider booking an earlier entry"},
+     {t:"by 2:15pm",a:"Check in & drop bags (closes 2:17pm) · then US customs at YEG"},
+     {t:"3:17pm",  a:"AC 4159 departs Edmonton"},
+     {t:"6:04pm",  a:"Land in Denver · grab dinner during the 1.5h connection"},
+     {t:"7:35pm",  a:"AC 4012 departs Denver"},
+     {t:"9:11pm",  a:"Land in SLC · follow signs to Rental Cars · Thrifty counter"},
+     {t:"~10:45pm",a:"Check in at Hampton Inn & Suites Orem"}
+   ],
+   tips:["Passports for all four — required to enter the US","Utah is on Mountain Time — same as Edmonton, no clock change","Eat in Denver — the SLC leg has no meal"]},
+  {date:"2026-10-10", title:"Saturday with Courtney & Jordyn", loc:"Provo · Orem",
+   details:"First full day together. Hotel breakfast, then a free day with the girls — see the Explore tab for ideas close to campus.",
+   refs:["hotel"],
+   schedule:[{t:"Morning", a:"Breakfast at the hotel (included)"},{t:"Day", a:"Free time with Courtney & Jordyn"}],
+   tips:["Remember the car seats 5 — with all 6 of you, plan two cars"]},
+  {date:"2026-10-11", title:"Sunday", loc:"Provo",
+   details:"Church with the girls, then a Sunday family dinner.",
+   refs:[],
+   schedule:[{t:"TBD", a:"Church — ask Courtney & Jordyn for their ward and meeting time"},{t:"Evening", a:"Family dinner"}],
+   tips:[]},
+  {date:"2026-10-12", title:"Monday — free day", loc:"Utah County",
+   details:"An open day. Mid-October is peak fall colour in the canyons — Provo Canyon and the Alpine Loop are close by.",
+   refs:[],
+   schedule:[{t:"Day", a:"Day trip or campus time — see Explore"}],
+   tips:["Jordyn likely has final rehearsals before opening night — check her schedule"]},
+  {date:"2026-10-13", title:"Opening night — Songs for a New World 🎭", loc:"BYU Arts Building · Black Box Theatre",
+   details:"Jordyn's show! 6 general admission tickets, 7:30pm. Arrive early to sit together.",
+   refs:["show"],
+   schedule:[
+     {t:"3:02pm", a:"Alaska check-in opens for tomorrow — check in right away"},
+     {t:"~5:30pm",a:"Early dinner"},
+     {t:"~7:00pm",a:"Arrive at the Black Box Theatre — general admission seating"},
+     {t:"7:30pm", a:"Curtain"}
+   ],
+   tips:["Load the mobile passes on your phone before you leave the hotel","Flowers for Jordyn 💐"]},
+  {date:"2026-10-14", title:"Fly home 🇨🇦", loc:"Orem → SLC → Seattle → YEG",
+   details:"Breakfast, check out, drive to SLC, refuel and return the car, then Alaska home through Seattle.",
+   refs:["hotel","car","flightHome","parking"],
+   schedule:[
+     {t:"Morning", a:"Breakfast · say goodbye to the girls"},
+     {t:"11:00am", a:"Check out of the hotel"},
+     {t:"~11:15am",a:"Drive to SLC (about 45 min) · fill the gas tank near the airport"},
+     {t:"~12:30pm",a:"Return the Thrifty car"},
+     {t:"~1:00pm", a:"Check bags · security"},
+     {t:"3:02pm",  a:"AS 734 departs SLC"},
+     {t:"4:17pm",  a:"Land in Seattle (Pacific Time)"},
+     {t:"5:40pm",  a:"AS 1439 departs Seattle"},
+     {t:"8:31pm",  a:"Land in Edmonton · Canadian customs"},
+     {t:"~9:00pm", a:"Value Park shuttle from Door 7 · scan QR code to exit"}
+   ],
+   tips:["The car is due at 3:00pm but your flight leaves at 3:02pm — return it by about 12:30pm","Ask the gate agent to seat the family together (Saver fare)"]}
+];
+
+const PLACES = [
+  {name:"BYU Creamery on Ninth", area:"Provo · BYU campus", emoji:"🍦", text:"The classic BYU stop — ice cream made on campus. An easy first outing with the girls.", q:"BYU Creamery on Ninth Provo UT"},
+  {name:"BYU Museum of Art", area:"Provo · BYU campus", emoji:"🖼️", text:"A large art museum on campus, usually free to enter. Good on a slow afternoon.", q:"BYU Museum of Art Provo"},
+  {name:"Monte L. Bean Life Science Museum", area:"Provo · BYU campus", emoji:"🦁", text:"Natural history museum on campus with wildlife exhibits; typically free.", q:"Monte L Bean Life Science Museum Provo"},
+  {name:"Provo City Center Temple", area:"Downtown Provo", emoji:"⛪", text:"Rebuilt from the historic Provo Tabernacle. The grounds are lovely in the evening.", q:"Provo City Center Temple"},
+  {name:"Bridal Veil Falls", area:"Provo Canyon · ~20 min", emoji:"💧", text:"A tall roadside waterfall with a paved trail along the river — beautiful with fall colours.", q:"Bridal Veil Falls Provo Canyon UT"},
+  {name:"Sundance & the Alpine Loop", area:"Provo Canyon · ~30 min", emoji:"🍁", text:"Scenic mountain drive through aspen and maple. Mid-October is usually peak colour. The loop road can close for weather — check before you go.", q:"Sundance Mountain Resort UT"},
+  {name:"Y Mountain Trail", area:"East of BYU", emoji:"🥾", text:"A steep switchback hike to the white 'Y' with a view over the whole valley. About 1–1.5 hours up.", q:"Y Mountain Trailhead Provo"},
+  {name:"Thanksgiving Point", area:"Lehi · ~25 min north", emoji:"🦕", text:"Museum of Natural Curiosity, a dinosaur museum and gardens — on the way toward Salt Lake.", q:"Thanksgiving Point Lehi UT"},
+  {name:"Temple Square", area:"Salt Lake City · ~50 min", emoji:"🏛️", text:"Visitors' centres, gardens and the Conference Center. Check current hours — the Salt Lake Temple has been under renovation.", q:"Temple Square Salt Lake City"}
+];
+
+const JOURNAL_PROMPTS = {
+  "2026-10-09":["What are you most looking forward to this week?","Best (or worst) moment of the travel day?"],
+  "2026-10-10":["What was it like to see Courtney and Jordyn again?","What did you do together today?"],
+  "2026-10-11":["What stood out to you at church today?","What did you talk about at dinner?"],
+  "2026-10-12":["Where did you go today, and what did you see?","Something new you learned about BYU or Utah?"],
+  "2026-10-13":["How did you feel watching Jordyn perform?","Which song stuck with you most?"],
+  "2026-10-14":["Favourite memory from the whole trip?","What do you want to remember about this week?"]
+};
+
+const CHECKLIST = [
+  {id:"passports", t:"Passports for Marc, Natasha, Scarlett & Milo"},
+  {id:"parkentry", t:"Move Value Park entry earlier than 1:30pm (and exit later than 9:00pm)"},
+  {id:"parkqr",    t:"Value Park QR code saved on your phone (0PNFF)"},
+  {id:"accheckin", t:"Air Canada check-in + choose seats (opens Thu Oct 8, 3:17pm)"},
+  {id:"licence",   t:"Marc's driver's licence + credit card in his name for Thrifty"},
+  {id:"voucher",   t:"GotRentalCars voucher saved / printed (584121097)"},
+  {id:"bags",      t:"Decide on checked bags — not included on either airline"},
+  {id:"byupass",   t:"BYU mobile passes loaded on Marc's phone (all 6 tickets)"},
+  {id:"church",    t:"Ask Courtney & Jordyn for Sunday ward + time"},
+  {id:"flowers",   t:"Flowers / gift for Jordyn's opening night"},
+  {id:"ascheckin", t:"Alaska check-in (opens Tue Oct 13, 3:02pm)"},
+  {id:"fuel",      t:"Refuel the car before returning it Wednesday"},
+  {id:"customs",   t:"Fill in the CBSA Advance Declaration before landing in Edmonton"}
+];
+
+const PACKING = [
+  {id:"p1", t:"Layers + a warm jacket (cool mornings, mild afternoons)"},
+  {id:"p2", t:"Church clothes for Sunday"},
+  {id:"p3", t:"Nicer outfit for opening night"},
+  {id:"p4", t:"Comfortable shoes for campus and trails"},
+  {id:"p5", t:"Phone chargers + a battery pack"},
+  {id:"p6", t:"Some US dollars / a no-FX-fee card"},
+  {id:"p7", t:"Snacks for the Denver connection"},
+  {id:"p8", t:"Any gifts or care-package items for the girls"}
+];
+
+/* ============ THEMES ============ */
+const THEMES = {
+  classic:{name:"Classic Navy & Gold", desc:"Same look as the India app",
+    deep:"#1b2a4a", deep2:"#26395e", hero2:"#3a2a4a", saffron:"#e07a2c", gold:"#c9a227", paper:"#fbf7ef", soft:"#f8f5ef", tint:"#f3ead9", line:"#e7e0d2"},
+  cougar:{name:"Cougar Blue", desc:"BYU navy and royal blue · default",
+    deep:"#002e5d", deep2:"#0a3f78", hero2:"#0062b8", saffron:"#0062b8", gold:"#8fb3d9", paper:"#f5f8fb", soft:"#eef3f8", tint:"#e1ebf6", line:"#d8e2ec"},
+  redrock:{name:"Red Rock", desc:"Southern Utah canyon reds and sand",
+    deep:"#5a2418", deep2:"#74311f", hero2:"#9a4526", saffron:"#c95a2b", gold:"#c98a3a", paper:"#fbf4ec", soft:"#f6ece0", tint:"#f3e0cf", line:"#ead9c7"},
+  autumn:{name:"Wasatch Autumn", desc:"Pine green, maple red, aspen gold",
+    deep:"#24372b", deep2:"#30483a", hero2:"#5a3a22", saffron:"#c4502a", gold:"#c99a1c", paper:"#f8f5ee", soft:"#f1ede2", tint:"#ece4cf", line:"#e2dccb"},
+  opening:{name:"Opening Night", desc:"Theatre plum, rose and stage gold",
+    deep:"#2a1835", deep2:"#3b2149", hero2:"#5c2347", saffron:"#c2457a", gold:"#c9a03a", paper:"#faf6f8", soft:"#f5eef2", tint:"#f3e2ea", line:"#eadde4"}
+};
+function applyTheme(key){
+  const t = THEMES[key] || THEMES.cougar, r = document.documentElement.style;
+  [['--deep','deep'],['--deep2','deep2'],['--hero2','hero2'],['--saffron','saffron'],['--gold','gold'],['--paper','paper'],['--soft','soft'],['--tint','tint'],['--line','line']].forEach(([v,k])=>r.setProperty(v,t[k]));
+  const m = document.querySelector('meta[name=theme-color]'); if(m) m.setAttribute('content', t.deep);
+}
+function setTheme(key){ state.theme = key; saveState(); applyTheme(key); render(); toast(THEMES[key].name); }
+function themePickerHtml(){
+  const cur = state.theme || 'cougar';
+  return Object.entries(THEMES).map(([k,t])=>`<button class="theme-opt ${k===cur?'active':''}" onclick="setTheme('${k}')">
+    <span class="sw"><i style="background:${t.deep}"></i><i style="background:${t.hero2}"></i><i style="background:${t.saffron}"></i><i style="background:${t.gold}"></i><i style="background:${t.paper}"></i></span>
+    <span style="flex:1"><div class="nm">${t.name}</div><div class="ds">${t.desc}</div></span>${k===cur?'<span style="color:var(--saffron);font-weight:800">✓</span>':''}</button>`).join('');
+}
+
+/* ============ STATE ============ */
+const STORE_KEY = 'utahTrip2026State';
+function defaultState(){ return {checks:{}, journal:{}}; }
+function loadState(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || defaultState(); }catch(e){ return defaultState(); } }
+function saveState(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+let state = loadState();
+
+/* ============ HELPERS ============ */
+function esc(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function localISO(d){ d = d || new Date(); const z = new Date(d.getTime() - d.getTimezoneOffset()*60000); return z.toISOString().slice(0,10); }
+function fmtDate(iso){ const d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('en-CA',{weekday:'long', month:'short', day:'numeric'}); }
+function shortDate(iso){ const d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('en-CA',{weekday:'short', month:'short', day:'numeric'}); }
+function toast(msg){ const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),1800); }
+function telLink(n){ return 'tel:' + n.replace(/[^0-9+]/g,''); }
+
+/* ============ ROUTER ============ */
+let activeTab = 'home';
+document.getElementById('tabs').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-tab]'); if(!b) return;
+  goTab(b.dataset.tab);
+});
+function goTab(tab){
+  activeTab = tab;
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  render(); window.scrollTo(0,0);
+}
+function render(){
+  const main = document.getElementById('main');
+  ({home:renderHome, itinerary:renderItinerary, bookings:renderBookings, explore:renderExplore, journal:renderJournal, weather:renderWeather, info:renderInfo})[activeTab](main);
+}
+
+/* ============ MODAL ============ */
+function showModal(title, html){
+  closeModal();
+  const m = document.createElement('div');
+  m.className='modal-bg'; m.id='appModal';
+  m.innerHTML = `<div class="spacer" onclick="closeModal()"></div>
+    <div class="sheet"><div class="sheet-head"><span>${title}</span><button onclick="closeModal()" aria-label="Close">✕</button></div>
+    <div class="sheet-body">${html}</div></div>`;
+  document.body.appendChild(m);
+}
+function closeModal(){ const m=document.getElementById('appModal'); if(m) m.remove(); }
+
+function bookingHtml(key){
+  const b = BOOKINGS[key];
+  const refs = `<div style="display:flex;flex-wrap:wrap;gap:8px 14px;margin-bottom:12px;">${b.refs.map(r=>`<div><div class="muted" style="font-size:11px;font-weight:700">${r[0]}</div><span class="ref">${r[1]}</span></div>`).join('')}</div>`;
+  const legs = (b.legs||[]).map((l,i)=>`<div class="leg"><div class="h">Flight ${i+1} · ${l.duration}</div>
+     <div style="font-size:11.5px;color:var(--muted);margin-bottom:6px">${l.flight}</div>
+     <div class="r"><div><div class="city">${l.from}</div><div class="tm">${l.departs}</div></div><div style="flex:none;color:var(--saffron)">→</div>
+     <div style="text-align:right"><div class="city">${l.to}</div><div class="tm">${l.arrives}</div></div></div>
+     ${l.note?`<div style="font-size:11.5px;color:var(--good);margin-top:5px">ℹ ${l.note}</div>`:''}</div>`).join('');
+  const alerts = (b.alerts||[]).map(a=>`<div class="alert"><b>Heads up:</b> ${a}</div>`).join('');
+  const kv = `<dl class="kv" style="margin:12px 0">${b.details.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>`;
+  const phones = [b.phone,b.phone2].filter(Boolean).map(p=>`<a class="btn secondary block" style="margin-top:8px" href="${telLink(p[1])}">📞 ${p[0]} · ${p[1]}</a>`).join('');
+  const links = (b.links||[]).map(l=>`<a class="btn block" style="margin-top:8px" href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join('');
+  return refs + legs + alerts + kv + links + phones;
+}
+function openBooking(key){ const b=BOOKINGS[key]; showModal(b.icon + ' ' + b.title, bookingHtml(key)); }
+function bookingButton(key){
+  const b = BOOKINGS[key];
+  return `<button class="bk" onclick="openBooking('${key}')"><span class="e">${b.icon}</span><div class="b"><div class="b1">${b.summary}</div><div class="b2">${b.sub} · tap for details</div></div><span class="go">›</span></button>`;
+}
+
+/* ============ HOME ============ */
+function countdownHtml(){
+  const now = Date.now(), start = new Date(TRIP.start).getTime(), end = new Date(TRIP.end).getTime(), show = new Date(TRIP.show).getTime();
+  if(now < start){
+    const ms = start-now, d=Math.floor(ms/864e5), h=Math.floor(ms%864e5/36e5), m=Math.floor(ms%36e5/6e4);
+    return `<div class="card"><span class="pill">Countdown to takeoff</span>
+      <div class="count"><div><b>${d}</b><span>days</span></div><div><b>${h}</b><span>hours</span></div><div><b>${m}</b><span>min</span></div></div>
+      <p class="muted" style="margin:8px 0 0">Fri Oct 9 · AC 4159 departs Edmonton at 3:17pm</p></div>`;
+  }
+  if(now <= end){
+    const today = ITINERARY.find(d=>d.date===localISO());
+    const showLine = now < show ? `<p style="margin:8px 0 0;font-size:13px">🎭 <b>${Math.ceil((show-now)/864e5)} day(s)</b> until Jordyn's opening night</p>` : '';
+    return `<div class="card" style="border:2px solid var(--saffron)"><span class="pill green">On the trip</span>
+      ${today?`<h2 style="margin:8px 0 2px;font-size:18px;color:var(--deep)">Today: ${today.title}</h2><p class="muted" style="margin:0 0 6px">📍 ${today.loc}</p><p style="margin:0;font-size:13.5px;line-height:1.45">${today.details}</p>`:''}
+      ${showLine}
+      <button class="btn block" style="margin-top:12px" onclick="goTab('itinerary')">Today's schedule →</button></div>`;
+  }
+  return `<div class="card"><span class="pill blue">Trip complete</span><h2 style="margin:8px 0 4px;font-size:18px;color:var(--deep)">Welcome home!</h2><p class="muted" style="margin:0">Oct 9 – 14, 2026 · Utah</p></div>`;
+}
+function renderHome(main){
+  main.innerHTML = `
+    ${countdownHtml()}
+    <div class="card" style="background:linear-gradient(135deg,var(--deep),var(--hero2));color:#fff;border:none">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--gold)">Opening night · BYU OnStage</div>
+      <div style="font-size:21px;font-weight:800;margin:4px 0 2px">Songs for a New World</div>
+      <div style="font-size:13px;opacity:.9">Starring Jordyn ✨ · Tue Oct 13 · 7:30pm<br>Black Box Theatre, BYU Arts Building · 6 tickets</div>
+      <button class="btn" style="margin-top:12px;background:var(--saffron)" onclick="openBooking('show')">Tickets & details</button>
+    </div>
+    <h2 class="section-title">Travellers</h2>
+    <div class="traveler-grid">${TRAVELERS.map(t=>`<div class="traveler-card">${t.name}<div class="r">${t.from}</div></div>`).join('')}</div>
+    <h2 class="section-title">All bookings</h2>
+    <div class="card" style="padding:10px 10px 4px">${['parking','flightOut','car','hotel','show','flightHome'].map(bookingButton).join('')}</div>
+    <h2 class="section-title">Quick links</h2>
+    <div class="card" style="padding:6px 4px">
+      ${ql('🗓️','Day-by-day itinerary','itinerary')}
+      ${ql('🎟️','Confirmation numbers & phone numbers','bookings')}
+      ${ql('🗺️','Things to do near BYU','explore')}
+      ${ql('📓','Family trip journal','journal')}
+      ${ql('🌤️','Orem weather forecast','weather')}
+      ${ql('✅','Checklists, packing & contacts','info')}
+    </div>
+    <div class="banner"><b>Add this app to your Home Screen</b> so it's one tap away.<br>
+      <b>iPhone:</b> Safari → Share → "Add to Home Screen".<br><b>Android:</b> Chrome ⋮ menu → "Add to Home screen".</div>
+    <button class="btn secondary block" onclick="goTab('info');setTimeout(()=>{const e=document.getElementById('themes');if(e)e.scrollIntoView({behavior:'smooth'})},80)">🎨 Change app colours</button>`;
+}
+function ql(icon,label,tab){ return `<button class="ql" onclick="goTab('${tab}')"><span style="font-size:18px">${icon}</span>${label}<span class="x">›</span></button>`; }
+
+/* ============ ITINERARY ============ */
+function renderItinerary(main){
+  const today = localISO();
+  main.innerHTML = `<h2 class="section-title">Day by day</h2>` + ITINERARY.map(d=>{
+    const isToday = d.date===today;
+    return `<div class="card day-card" id="day-${d.date}" style="${isToday?'border:2px solid var(--saffron);':''}">
+      <div class="date">${fmtDate(d.date)}${isToday?' · TODAY':''}</div>
+      <h3>${d.title}</h3>
+      <div class="loc">📍 ${d.loc}</div>
+      <p>${d.details}</p>
+      ${d.refs.map(bookingButton).join('')}
+      ${d.schedule && d.schedule.length ? `<div style="margin:12px 0 4px"><div class="label">📅 Day schedule</div><div class="sched">${d.schedule.map(s=>`<div class="s"><div class="t">${s.t}</div><div class="a">${s.a}</div></div>`).join('')}</div></div>`:''}
+      ${d.tips && d.tips.length ? `<div style="margin-top:10px"><div class="label" style="color:var(--muted)">💡 Tips & reminders</div><ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`:''}
+    </div>`;
+  }).join('');
+  const el = document.getElementById('day-'+today);
+  if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth', block:'start'}), 50);
+}
+
+/* ============ BOOKINGS ============ */
+function renderBookings(main){
+  const order = ['parking','flightOut','car','hotel','show','flightHome'];
+  main.innerHTML = `<h2 class="section-title">Confirmations</h2>
+    <div class="card" style="padding:6px 14px">${order.map(k=>{
+      const b=BOOKINGS[k];
+      return `<div style="padding:10px 0;border-top:${k===order[0]?'none':'1px solid var(--line)'}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <div style="font-size:13.5px;font-weight:700;color:var(--deep)">${b.icon} ${b.title}</div><span class="pill blue" style="margin:0">${b.type}</span></div>
+        ${b.refs.map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:8px"><span class="muted">${r[0]}</span>
+          <button class="btn ghost" style="padding:0" onclick="copyRef('${r[1]}')"><span class="ref">${r[1]}</span> ⧉</button></div>`).join('')}
+      </div>`;}).join('')}</div>
+    <p class="muted" style="margin:-4px 2px 12px">Tap a reference to copy it.</p>
+    <h2 class="section-title">Details</h2>
+    ${order.map(k=>`<div class="card" style="padding:10px 10px 4px">${bookingButton(k)}</div>`).join('')}`;
+}
+function copyRef(r){
+  if(navigator.clipboard){ navigator.clipboard.writeText(r).then(()=>toast('Copied ' + r)).catch(()=>toast(r)); } else toast(r);
+}
+
+/* ============ EXPLORE ============ */
+function renderExplore(main){
+  main.innerHTML = `<h2 class="section-title">Things to do with the girls</h2>
+    <div class="banner">Nothing here is booked — just ideas close to BYU for Saturday and Monday. Hours change, so check before you go.</div>
+    ${PLACES.map(p=>`<div class="card place"><div class="date" style="font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.4px">${p.area}</div>
+      <h3>${p.emoji} ${p.name}</h3><p>${p.text}</p>
+      <a class="btn secondary" href="https://maps.google.com/?q=${encodeURIComponent(p.q)}" target="_blank" rel="noopener">📍 Open in Maps</a></div>`).join('')}`;
+}
+
+/* ============ JOURNAL ============ */
+let journalPerson = TRAVELERS[0].id;
+let journalDay = null;
+function renderJournal(main){
+  const days = ITINERARY.map(d=>d.date);
+  if(!journalDay) journalDay = days.includes(localISO()) ? localISO() : days[0];
+  const day = ITINERARY.find(d=>d.date===journalDay);
+  const prompts = JOURNAL_PROMPTS[journalDay] || [];
+  const entry = (state.journal[journalPerson] || {})[journalDay] || {};
+  main.innerHTML = `<h2 class="section-title">📓 Trip journal</h2>
+    <div class="chips">${TRAVELERS.map(t=>`<button class="chip ${t.id===journalPerson?'active':''}" onclick="journalPerson='${t.id}';renderJournal(document.getElementById('main'))">${t.name}</button>`).join('')}</div>
+    <div class="chips">${days.map(d=>`<button class="chip ${d===journalDay?'active':''}" onclick="journalDay='${d}';renderJournal(document.getElementById('main'))">${shortDate(d)}</button>`).join('')}</div>
+    <div class="card">
+      <div class="date" style="font-size:11.5px;font-weight:800;color:var(--gold);text-transform:uppercase">${fmtDate(journalDay)}</div>
+      <h3 style="margin:2px 0 10px;font-size:15.5px;color:var(--deep)">${day.title}</h3>
+      ${prompts.map((p,i)=>`<label style="display:block;font-size:12.5px;font-weight:700;color:var(--deep);margin:10px 0 5px">${p}</label>
+        <textarea data-k="q${i}" placeholder="Write here…">${esc(entry['q'+i]||'')}</textarea>`).join('')}
+      <label style="display:block;font-size:12.5px;font-weight:700;color:var(--deep);margin:10px 0 5px">Anything else?</label>
+      <textarea data-k="notes" placeholder="Notes, funny moments, quotes…">${esc(entry.notes||'')}</textarea>
+      <button class="btn block" style="margin-top:12px" onclick="saveJournal()">Save entry</button>
+      <p class="muted" style="margin:8px 0 0">Entries are saved on this phone only.</p>
+    </div>`;
+}
+function saveJournal(){
+  const e = {}; document.querySelectorAll('#main textarea').forEach(t=>{ if(t.value.trim()) e[t.dataset.k]=t.value; });
+  state.journal[journalPerson] = state.journal[journalPerson] || {};
+  state.journal[journalPerson][journalDay] = e; saveState(); toast('Saved ✓');
+}
+
+/* ============ WEATHER ============ */
+const WMO = {0:['☀️','Clear'],1:['🌤️','Mostly clear'],2:['⛅','Partly cloudy'],3:['☁️','Cloudy'],45:['🌫️','Fog'],48:['🌫️','Fog'],51:['🌦️','Light drizzle'],53:['🌦️','Drizzle'],55:['🌦️','Drizzle'],61:['🌧️','Light rain'],63:['🌧️','Rain'],65:['🌧️','Heavy rain'],71:['🌨️','Light snow'],73:['🌨️','Snow'],75:['❄️','Heavy snow'],80:['🌦️','Showers'],81:['🌧️','Showers'],82:['⛈️','Heavy showers'],95:['⛈️','Thunderstorms'],96:['⛈️','Thunderstorms'],99:['⛈️','Thunderstorms']};
+function renderWeather(main){
+  main.innerHTML = `<h2 class="section-title">🌤️ Orem / Provo forecast</h2>
+    <div class="card" id="wxCard"><p class="muted" style="margin:0">Loading the live forecast…</p></div>
+    <div class="card" style="background:#f0f7ff">
+      <div style="font-size:13px;font-weight:800;color:var(--deep);margin-bottom:6px">🍁 Mid-October in Utah County</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.7">
+        <div>• Days are usually mild and sunny; nights are cool, often near freezing</div>
+        <div>• It's dry — bring lip balm and a water bottle</div>
+        <div>• Canyons and the Alpine Loop are colder and can see early snow</div>
+      </div></div>
+    <a class="btn block" href="https://forecast.weather.gov/MapClick.php?lat=40.2969&lon=-111.6946" target="_blank" rel="noopener">US National Weather Service — Orem ↗</a>`;
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=40.2969&longitude=-111.6946&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FDenver&forecast_days=16';
+  fetch(url).then(r=>r.json()).then(j=>{
+    const d = j.daily; if(!d) throw new Error('no data');
+    const rows = d.time.map((t,i)=>({t, code:d.weather_code[i], hi:d.temperature_2m_max[i], lo:d.temperature_2m_min[i], p:d.precipitation_probability_max[i]}))
+      .filter(r=>r.t>='2026-10-09' && r.t<='2026-10-14');
+    const card = document.getElementById('wxCard'); if(!card) return;
+    if(!rows.length){ card.innerHTML = `<p class="muted" style="margin:0">The trip-day forecast isn't available yet — check back closer to Oct 9.</p>`; return; }
+    const c2f = c=>Math.round(c*9/5+32);
+    card.innerHTML = rows.map(r=>{ const w = WMO[r.code] || ['🌡️','—'];
+      return `<div class="wx"><div class="d">${shortDate(r.t)}</div><div class="i">${w[0]}</div>
+        <div class="c">${w[1]}${r.p!=null?` · ${r.p}% precip`:''}</div>
+        <div class="t">${Math.round(r.hi)}° / ${Math.round(r.lo)}°C<div class="muted" style="font-size:11px;font-weight:600">${c2f(r.hi)}° / ${c2f(r.lo)}°F</div></div></div>`; }).join('') +
+      `<p class="muted" style="margin:8px 0 0;font-size:11px">Live forecast from Open-Meteo · updates each time you open this tab</p>`;
+  }).catch(()=>{
+    const card = document.getElementById('wxCard');
+    if(card) card.innerHTML = `<p class="muted" style="margin:0">Couldn't load the forecast (no connection?). Use the National Weather Service link below.</p>`;
+  });
+}
+
+/* ============ INFO ============ */
+function checklistHtml(list){
+  return list.map(i=>{ const on = !!state.checks[i.id];
+    return `<label class="checklist-item ${on?'checked':''}"><input type="checkbox" ${on?'checked':''} onchange="toggleCheck('${i.id}',this.checked)"><span>${i.t}</span></label>`; }).join('');
+}
+function toggleCheck(id,on){ state.checks[id]=on; saveState(); render(); }
+function renderInfo(main){
+  const done = CHECKLIST.filter(i=>state.checks[i.id]).length;
+  const contacts = [
+    ["Value Park (YEG parking)","780-890-8527"],
+    ["Hampton Inn & Suites Orem","801-426-8500"],
+    ["GotRentalCars (Thrifty booking)","1-855-264-9782"],
+    ["Air Canada","1-888-247-2262"],
+    ["Alaska Airlines","1-800-252-7522"],
+    ["trivago DEALS (hotel booking)","1-475-251-4340"],
+    ["Emergency (US)","911"]
+  ];
+  main.innerHTML = `<h2 class="section-title">✅ Trip checklist <span class="muted" style="font-weight:600">${done}/${CHECKLIST.length}</span></h2>
+    <div class="card" style="padding:6px 14px">${checklistHtml(CHECKLIST)}</div>
+    <h2 class="section-title">🧳 Packing</h2>
+    <div class="card" style="padding:6px 14px">${checklistHtml(PACKING)}</div>
+    <h2 class="section-title">📞 Contacts</h2>
+    <div class="card" style="padding:4px 14px">${contacts.map(c=>`<div class="contact"><span>${c[0]}</span><a href="${telLink(c[1])}">${c[1]}</a></div>`).join('')}</div>
+    <h2 class="section-title">🇺🇸 Good to know</h2>
+    <div class="card"><ul class="tips">
+      <li>Canadians need a valid passport to fly into the US. US customs is done at Edmonton before you board.</li>
+      <li>Utah is on Mountain Time — the same as Edmonton. Seattle is one hour behind.</li>
+      <li>Coming home after 48+ hours away, each person can bring back up to CA$800 in goods duty-free.</li>
+      <li>Use the CBSA Advance Declaration (in the ArriveCAN app or the airport kiosks) when you land at YEG.</li>
+      <li>Tipping is expected in US restaurants — about 15–20%.</li>
+    </ul></div>
+    <h2 class="section-title" id="themes">🎨 App colours</h2>
+    <p class="muted" style="margin:-4px 2px 10px">Tap a scheme to try it. Your choice is saved on this phone only.</p>
+    ${themePickerHtml()}
+    <button class="btn secondary block" style="margin-top:6px" onclick="resetChecks()">Reset checklists</button>`;
+}
+function resetChecks(){ if(confirm('Clear all the checkmarks on this phone?')){ state.checks={}; saveState(); render(); } }
+
+applyTheme(state.theme);
+render();
+setInterval(()=>{ if(activeTab==='home' && !document.getElementById('appModal')) render(); }, 60000);
+</script>
+</body>
+</html>
