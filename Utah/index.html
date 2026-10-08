@@ -57,6 +57,18 @@
   .qr-ref{font-family:ui-monospace,Menlo,monospace;font-size:15px;font-weight:700;color:var(--deep);margin-top:6px;letter-spacing:1px;}
   .wallet-btn{background:#000 !important;color:#fff !important;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
   a.btn.block.wallet-btn{display:flex;}
+  .guide-hero{background:linear-gradient(135deg,var(--deep),var(--hero2));color:#fff;border-radius:14px;padding:14px 15px;margin-bottom:14px;}
+  .gp{font-size:13.5px;line-height:1.5;margin:0 0 9px;}
+  details.song{border:1px solid var(--line);border-radius:12px;margin-bottom:7px;background:#fff;}
+  details.song summary{list-style:none;display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;}
+  details.song summary::-webkit-details-marker{display:none;}
+  details.song summary:after{content:"›";margin-left:auto;color:var(--saffron);font-size:18px;transition:transform .15s;}
+  details.song[open] summary:after{transform:rotate(90deg);}
+  details.song .sn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--tint);color:var(--deep);font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  details.song .st{font-size:13.5px;font-weight:700;color:var(--deep);line-height:1.3;}
+  details.song .stag{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--saffron);background:var(--tint);padding:1px 7px;border-radius:10px;vertical-align:1px;}
+  details.song p{margin:0;padding:0 12px 12px 46px;font-size:13px;line-height:1.5;color:#3a3d44;}
+  .oneline{margin-top:16px;background:var(--tint);border-radius:14px;padding:13px 14px;font-size:13.5px;line-height:1.5;font-style:italic;color:var(--deep);}
   .theme-opt{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-family:inherit;text-align:left;}
   .theme-opt.active{border:2px solid var(--saffron);}
   .theme-opt .sw{display:flex;flex:none;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.08);}
@@ -355,7 +367,7 @@ const ITINERARY = [
      {t:"~7:00pm",a:"Arrive at the Black Box Theatre — general admission seating"},
      {t:"7:30pm", a:"Curtain"}
    ],
-   tips:["Tickets are in Marc's Apple Wallet — tap the show banner above, then “Open tickets in Apple Wallet”","Flowers for Jordyn 💐"]},
+   guide:true, tips:["Read the 📖 show guide beforehand — it's a song cycle, not one story","Tickets are in Marc's Apple Wallet — tap the show banner above, then “Open tickets in Apple Wallet”","Flowers for Jordyn 💐"]},
   {date:"2026-10-14", title:"Fly home 🇨🇦", loc:"Orem → SLC → Seattle → YEG",
    details:"Breakfast, check out, drive to SLC, refuel and return the car, then Alaska home through Seattle.",
    refs:["hotel","car","flightHome","parking"],
@@ -421,6 +433,78 @@ const PACKING = [
   {id:"p7", t:"Snacks for the Denver connection"},
   {id:"p8", t:"Any gifts or care-package items for the girls"}
 ];
+
+
+/* ============ SHOW GUIDE ============ */
+const SHOW_GUIDE = {
+  intro: [
+    "<b>Songs for a New World</b> is by Jason Robert Brown, the composer of <i>The Last Five Years</i> and <i>Parade</i>. It opened Off-Broadway at New York's WPA Theatre in October 1995.",
+    "It isn't a traditional musical with one plot. It's a <b>song cycle</b>: 16 self-contained stories with almost no dialogue, sung by four performers who play a new character in nearly every number.",
+    "What ties them together is one kind of moment: the instant someone's familiar world falls away and they have to decide what to do next — hold on, let go, take a risk, or start again."
+  ],
+  watch: [
+    "Don't try to connect the characters. Treat each song as its own short story and listen for its turning point.",
+    "The mood swings a lot — gospel, pop, jazz and comedy sit side by side. <i>Just One Step</i> and <i>Surabaya-Santa</i> are played for laughs; <i>Stars and the Moon</i> and <i>Flying Home</i> are the tear-jerkers.",
+    "BYU is presenting it as a <b>concert performance</b>, so the focus is on the singing, with simpler staging. Casting and song order can differ from one production to the next.",
+    "Some songs touch on heavy subjects — prison, war and death, and a darkly comic threat to jump from a ledge — handled with care."
+  ],
+  acts: [
+    {name:"Act I", songs:[
+      ["The New World", "Opening · full company", "The four singers set up the evening's idea: one moment can change everything. The “new world” is a new reality, not a new place."],
+      ["On the Deck of a Spanish Sailing Ship, 1492", "", "Exhausted passengers crossing the Atlantic pray for the strength to keep going, and find fresh hope that a better life waits on the other side."],
+      ["Just One Step", "Comic", "A wealthy New Yorker climbs onto her penthouse ledge and threatens to jump unless her neglectful husband, Murray, finally pays attention. Funny on the surface; underneath, she's someone who feels unheard."],
+      ["I'm Not Afraid of Anything", "", "A bold young wife and mother brushes off the fears of everyone around her. Her fearlessness turns out to be the very thing keeping her from really connecting with them."],
+      ["The River Won't Flow", "Bluesy duet", "Two men wrestle with the promise that hard work pays off — when success seems to come easily to some and never to others."],
+      ["Stars and the Moon", "A show favourite", "A woman looks back on the romance and adventure she was offered, and how she chose money instead. She has everything now, and quietly wonders what she gave up."],
+      ["She Cries", "", "A man keeps walking away from a woman who isn't honest with him, and keeps coming back. Her tears are what pull him in every time."],
+      ["The Steam Train", "Act I closer", "A young man from the Bronx is certain basketball will be his way out and up. Pure confidence and drive, with a hint of how much is riding on a single dream."]
+    ]},
+    {name:"Act II", songs:[
+      ["The World Was Dancing", "", "A man haunted by his father's failed gamble on a risky business can't bring himself to commit to his fiancée, Amy. Fear of failing keeps him from choosing what he actually wants."],
+      ["Surabaya-Santa", "Comic", "A send-up of Kurt Weill's cabaret style: Mrs. Claus has had it with lonely Christmases and tells Santa she's leaving."],
+      ["Christmas Lullaby", "", "A young woman expecting a child turns to her faith and feels blessed and sure that her ordinary life has deep meaning. Gentle and reverent."],
+      ["King of the World", "", "A man in a prison cell protests his innocence and asks whether his good intentions ever mattered. He holds on to his dignity even when his freedom is gone."],
+      ["I'd Give It All for You", "Duet", "A separated couple realize they ran from each other out of fear of love, and find their way back home together."],
+      ["The Flagmaker, 1775", "", "During the Revolutionary War, a mother waits for her soldier son to come home and keeps her fear at bay by sewing a flag."],
+      ["Flying Home", "Gospel", "A young soldier hears angels calling him home — an echo of the flagmaker's story. Sorrow and peace at the same time."],
+      ["Hear My Song", "Finale · full company", "The company comes together with a message of hope: life won't always work out, but the courage to keep moving forward lights the way to a new world."]
+    ]}
+  ],
+  themes: [
+    ["Courage", "The 1492 passengers, the basketball dreamer, the flagmaker"],
+    ["Regret", "<i>Stars and the Moon</i>, <i>The World Was Dancing</i>"],
+    ["Love", "<i>She Cries</i>, <i>I'd Give It All for You</i>"],
+    ["Identity", "<i>I'm Not Afraid of Anything</i>, <i>King of the World</i>"],
+    ["Faith", "<i>Christmas Lullaby</i>, <i>Flying Home</i>, <i>Hear My Song</i>"]
+  ],
+  facts: [
+    "The original 1995 cast included Billy Porter, years before his Tony-winning turn in <i>Kinky Boots</i>.",
+    "Brown has said the show grew from a pile of separate songs into one piece through his work with director Daisy Prince.",
+    "It's written for four voices — two women and two men — who switch characters from song to song."
+  ],
+  oneLine: "A collection of stories about ordinary people standing at life's crossroads, facing the consequences of their choices, and finding the courage to step into an uncertain future."
+};
+function showGuideHtml(){
+  const g = SHOW_GUIDE;
+  let n = 0;
+  return `
+    <div class="guide-hero"><div class="qr-label" style="color:var(--gold)">BYU OnStage · Tue Oct 13 · 7:30pm</div>
+      <div style="font-size:19px;font-weight:800;margin:2px 0 4px">Songs for a New World</div>
+      <div style="font-size:12.5px;opacity:.9">Music & lyrics by Jason Robert Brown · with Jordyn ✨</div></div>
+    <div class="label">The show in a nutshell</div>
+    ${g.intro.map(t=>`<p class="gp">${t}</p>`).join('')}
+    <div class="label" style="margin-top:14px">How to watch it</div>
+    <ul class="tips">${g.watch.map(t=>`<li>${t}</li>`).join('')}</ul>
+    ${g.acts.map(a=>`<div class="label" style="margin-top:16px">${a.name}</div>
+      ${a.songs.map(sg=>{ n++; return `<details class="song"><summary><span class="sn">${n}</span><span class="st">${sg[0]}${sg[1]?`<span class="stag">${sg[1]}</span>`:''}</span></summary><p>${sg[2]}</p></details>`; }).join('')}`).join('')}
+    <p class="muted" style="margin:6px 2px 0">Tap a song to read about it. Order follows the licensed version; BYU's may vary.</p>
+    <div class="label" style="margin-top:16px">Big themes</div>
+    <dl class="kv">${g.themes.map(t=>`<dt>${t[0]}</dt><dd style="font-weight:500">${t[1]}</dd>`).join('')}</dl>
+    <div class="label" style="margin-top:16px">Fun facts</div>
+    <ul class="tips">${g.facts.map(t=>`<li>${t}</li>`).join('')}</ul>
+    <div class="oneline"><div class="qr-label">In one sentence</div>${g.oneLine}</div>`;
+}
+function openShowGuide(){ showModal('🎭 Show guide', showGuideHtml()); }
 
 /* ============ THEMES ============ */
 const THEMES = {
@@ -501,7 +585,7 @@ function bookingHtml(key){
      ${l.note?`<div style="font-size:11.5px;color:var(--good);margin-top:5px">ℹ ${l.note}</div>`:''}</div>`).join('');
   const alerts = (b.alerts||[]).map(a=>`<div class="alert"><b>Heads up:</b> ${a}</div>`).join('');
   const qr = b.qr ? `<div class="qr-card"><div class="qr-label">Gate QR code</div><div class="qr-box">${b.qr}</div><div class="qr-ref">Ref ${b.refs[0][1]}</div><div class="muted" style="margin-top:6px">${b.qrNote||''}</div></div>` : '';
-  const wallet = b.wallet ? walletButton() : '';
+  const wallet = b.wallet ? walletButton() + `<button class="btn secondary block" style="margin-bottom:14px" onclick="openShowGuide()">📖 Read the show guide</button>` : '';
   const kv = `<dl class="kv" style="margin:12px 0">${b.details.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>`;
   const phones = [b.phone,b.phone2].filter(Boolean).map(p=>`<a class="btn secondary block" style="margin-top:8px" href="${telLink(p[1])}">📞 ${p[0]} · ${p[1]}</a>`).join('');
   const links = (b.links||[]).map(l=>`<a class="btn block" style="margin-top:8px" href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join('');
@@ -548,7 +632,7 @@ function renderHome(main){
       <div style="font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--gold)">Opening night · BYU OnStage</div>
       <div style="font-size:21px;font-weight:800;margin:4px 0 2px">Songs for a New World</div>
       <div style="font-size:13px;opacity:.9">Starring Jordyn ✨ · Tue Oct 13 · 7:30pm<br>Black Box Theatre, BYU Arts Building · 6 tickets</div>
-      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><a class="btn wallet-btn" href="shoebox://" onclick="walletFallback()">🎟️ Apple Wallet</a><button class="btn" style="background:var(--saffron)" onclick="openBooking('show')">Details</button></div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><a class="btn wallet-btn" style="padding:10px 12px" href="shoebox://" onclick="walletFallback()">🎟️ Apple Wallet</a><button class="btn" style="background:#fff;color:var(--deep)" onclick="openShowGuide()">📖 Show guide</button><button class="btn" style="background:rgba(255,255,255,.18);padding:10px 12px" onclick="openBooking('show')">Details</button></div>
     </div>
     <h2 class="section-title">Travellers</h2>
     <div class="traveler-grid">${TRAVELERS.map(t=>`<div class="traveler-card">${t.name}<div class="r">${t.from}</div></div>`).join('')}</div>
@@ -580,6 +664,7 @@ function renderItinerary(main){
       <div class="loc">📍 ${d.loc}</div>
       <p>${d.details}</p>
       ${d.refs.map(bookingButton).join('')}
+      ${d.guide ? `<button class="bk" onclick="openShowGuide()"><span class="e">📖</span><div class="b"><div class="b1">Show guide — all 16 songs</div><div class="b2">What to expect · tap to read</div></div><span class="go">›</span></button>` : ''}
       ${d.schedule && d.schedule.length ? `<div style="margin:12px 0 4px"><div class="label">📅 Day schedule</div><div class="sched">${d.schedule.map(s=>`<div class="s"><div class="t">${s.t}</div><div class="a">${s.a}</div></div>`).join('')}</div></div>`:''}
       ${d.tips && d.tips.length ? `<div style="margin-top:10px"><div class="label" style="color:var(--muted)">💡 Tips & reminders</div><ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`:''}
     </div>`;
@@ -610,7 +695,8 @@ function copyRef(r){
 
 /* ============ EXPLORE ============ */
 function renderExplore(main){
-  main.innerHTML = `<h2 class="section-title">Things to do with the girls</h2>
+  main.innerHTML = `<div class="card" style="padding:10px 10px 4px"><button class="bk" onclick="openShowGuide()"><span class="e">🎭</span><div class="b"><div class="b1">Songs for a New World — show guide</div><div class="b2">The story, all 16 songs, themes · tap to read</div></div><span class="go">›</span></button></div>
+    <h2 class="section-title">Things to do with the girls</h2>
     <div class="banner">Nothing here is booked — just ideas close to BYU for Saturday and Monday. Hours change, so check before you go.</div>
     ${PLACES.map(p=>`<div class="card place"><div class="date" style="font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.4px">${p.area}</div>
       <h3>${p.emoji} ${p.name}</h3><p>${p.text}</p>
