@@ -303,6 +303,40 @@ const BOOKINGS = {
       ["Map: BYU Arts Building","https://maps.google.com/?q=BYU+Arts+Building+Provo+UT"]
     ]
   },
+  temple: {
+    icon:"⛪", title:"Orem Utah Temple", type:"Temple",
+    summary:"Orem Utah Temple · Sat 11:30am",
+    sub:"Baptisms & initiatories",
+    refs:[],
+    details:[
+      ["When","Saturday, Oct 10 · 11:30am appointment"],
+      ["Ordinances","Baptisms and initiatories"],
+      ["Where","Orem Utah Temple · off Geneva Road, just south of the I-15 University Parkway exit"],
+      ["From the hotel","About 5–10 minutes' drive"],
+      ["Bring","Temple recommends · family names/cards if you have them · ID"],
+      ["Tip","Arrive 15–20 minutes early to check in"]
+    ],
+    alerts:[],
+    links:[["Directions to the temple","https://maps.google.com/?q=Orem+Utah+Temple"],["Temple info & hours","https://www.churchofjesuschrist.org/temples/details/orem-utah-temple?lang=eng"]]
+  },
+  vb: {
+    icon:"🏐", title:"BYU Women's Volleyball vs. West Virginia", type:"Game",
+    summary:"BYU vs. West Virginia · Sat 6:30pm",
+    sub:"Smith Fieldhouse · 4 tickets",
+    refs:[["BYU Tickets order","678406-WVB26:32728"]],
+    wallet:"Open game tickets in Apple Wallet",
+    walletNote:"Opens Wallet on iPhone · tap the BYU Volleyball passes",
+    details:[
+      ["Game","BYU Women's Volleyball vs. West Virginia (Big 12)"],
+      ["When","Saturday, Oct 10 · 6:30pm"],
+      ["Where","Smith Fieldhouse, BYU campus"],
+      ["Tickets","4 × General Admission"],
+      ["Paid","US$52 ($13 each)"],
+      ["Entry","Tickets are in Marc's Apple Wallet — show them at the door"]
+    ],
+    alerts:["General admission — arrive about 30 minutes early to sit together.","You have 4 tickets. If Courtney and Jordyn are coming too, BYU students can usually get in with their student ID."],
+    links:[["Backup: BYU tickets account","https://byutickets.evenue.net/myaccount"],["Map: Smith Fieldhouse","https://maps.google.com/?q=Smith+Fieldhouse+BYU+Provo"]]
+  },
   flightHome: {
     icon:"✈️", title:"Salt Lake City → Edmonton", type:"Flight",
     summary:"Wed Oct 14 · SLC 3:02pm → YEG 8:31pm via Seattle",
@@ -343,11 +377,18 @@ const ITINERARY = [
      {t:"~10:45pm",a:"Check in at Hampton Inn & Suites Orem"}
    ],
    tips:["Passports for all four — required to enter the US","Utah is on Mountain Time — same as Edmonton, no clock change","Eat in Denver — the SLC leg has no meal"]},
-  {date:"2026-10-10", title:"Saturday with Courtney & Jordyn", loc:"Provo · Orem",
-   details:"First full day together. Hotel breakfast, then a free day with the girls — see the Explore tab for ideas close to campus.",
-   refs:["hotel"],
-   schedule:[{t:"Morning", a:"Breakfast at the hotel (included)"},{t:"Day", a:"Free time with Courtney & Jordyn"}],
-   tips:["Remember the car seats 5 — with all 6 of you, plan two cars"]},
+  {date:"2026-10-10", title:"Temple & BYU Volleyball 🏐", loc:"Orem · Provo",
+   details:"Baptisms and initiatories at the Orem Utah Temple in the morning, then BYU women's volleyball against West Virginia at Smith Fieldhouse tonight.",
+   refs:["temple","vb","hotel"],
+   schedule:[
+     {t:"Morning", a:"Breakfast at the hotel (included)"},
+     {t:"~11:10am",a:"Arrive at the Orem Utah Temple — bring recommends"},
+     {t:"11:30am", a:"Baptisms & initiatories"},
+     {t:"Afternoon",a:"Lunch and free time with Courtney & Jordyn"},
+     {t:"~6:00pm", a:"Arrive at Smith Fieldhouse (general admission)"},
+     {t:"6:30pm",  a:"BYU Women's Volleyball vs. West Virginia"}
+   ],
+   tips:["Temple recommends for everyone","Volleyball tickets are in Marc's Apple Wallet — tap the game banner above","Wear blue! 💙"]},
   {date:"2026-10-11", title:"Sunday", loc:"Provo",
    details:"Church with the girls, then a Sunday family dinner.",
    refs:[],
@@ -577,7 +618,7 @@ function closeModal(){ const m=document.getElementById('appModal'); if(m) m.remo
 
 function bookingHtml(key){
   const b = BOOKINGS[key];
-  const refs = `<div style="display:flex;flex-wrap:wrap;gap:8px 14px;margin-bottom:12px;">${b.refs.map(r=>`<div><div class="muted" style="font-size:11px;font-weight:700">${r[0]}</div><span class="ref">${r[1]}</span></div>`).join('')}</div>`;
+  const refs = !b.refs.length ? '' : `<div style="display:flex;flex-wrap:wrap;gap:8px 14px;margin-bottom:12px;">${b.refs.map(r=>`<div><div class="muted" style="font-size:11px;font-weight:700">${r[0]}</div><span class="ref">${r[1]}</span></div>`).join('')}</div>`;
   const legs = (b.legs||[]).map((l,i)=>`<div class="leg"><div class="h">Flight ${i+1} · ${l.duration}</div>
      <div style="font-size:11.5px;color:var(--muted);margin-bottom:6px">${l.flight}</div>
      <div class="r"><div><div class="city">${l.from}</div><div class="tm">${l.departs}</div></div><div style="flex:none;color:var(--saffron)">→</div>
@@ -585,16 +626,16 @@ function bookingHtml(key){
      ${l.note?`<div style="font-size:11.5px;color:var(--good);margin-top:5px">ℹ ${l.note}</div>`:''}</div>`).join('');
   const alerts = (b.alerts||[]).map(a=>`<div class="alert"><b>Heads up:</b> ${a}</div>`).join('');
   const qr = b.qr ? `<div class="qr-card"><div class="qr-label">Gate QR code</div><div class="qr-box">${b.qr}</div><div class="qr-ref">Ref ${b.refs[0][1]}</div><div class="muted" style="margin-top:6px">${b.qrNote||''}</div></div>` : '';
-  const wallet = b.wallet ? walletButton() + `<button class="btn secondary block" style="margin-bottom:14px" onclick="openShowGuide()">📖 Read the show guide</button>` : '';
+  const wallet = !b.wallet ? '' : (key==='show' ? walletButton() + `<button class="btn secondary block" style="margin-bottom:14px" onclick="openShowGuide()">📖 Read the show guide</button>` : walletButton(b.wallet, b.walletNote));
   const kv = `<dl class="kv" style="margin:12px 0">${b.details.map(d=>`<dt>${d[0]}</dt><dd>${d[1]}</dd>`).join('')}</dl>`;
   const phones = [b.phone,b.phone2].filter(Boolean).map(p=>`<a class="btn secondary block" style="margin-top:8px" href="${telLink(p[1])}">📞 ${p[0]} · ${p[1]}</a>`).join('');
   const links = (b.links||[]).map(l=>`<a class="btn block" style="margin-top:8px" href="${l[1]}" target="_blank" rel="noopener">${l[0]} ↗</a>`).join('');
   return qr + wallet + refs + legs + alerts + kv + links + phones;
 }
-function walletButton(){
+function walletButton(label, note){
   return `<a class="btn block wallet-btn" href="shoebox://" onclick="walletFallback()">
-    <span style="font-size:18px">🎟️</span> Open tickets in Apple Wallet</a>
-    <p class="muted" style="margin:6px 2px 12px;text-align:center">Opens the Wallet app on iPhone · tap the BYU Songs for a New World passes</p>`;
+    <span style="font-size:18px">🎟️</span> ${label||'Open tickets in Apple Wallet'}</a>
+    <p class="muted" style="margin:6px 2px 12px;text-align:center">${note||'Opens the Wallet app on iPhone · tap the BYU Songs for a New World passes'}</p>`;
 }
 function walletFallback(){
   const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
@@ -637,7 +678,7 @@ function renderHome(main){
     <h2 class="section-title">Travellers</h2>
     <div class="traveler-grid">${TRAVELERS.map(t=>`<div class="traveler-card">${t.name}<div class="r">${t.from}</div></div>`).join('')}</div>
     <h2 class="section-title">All bookings</h2>
-    <div class="card" style="padding:10px 10px 4px">${['parking','flightOut','car','hotel','show','flightHome'].map(bookingButton).join('')}</div>
+    <div class="card" style="padding:10px 10px 4px">${['parking','flightOut','car','hotel','temple','vb','show','flightHome'].map(bookingButton).join('')}</div>
     <h2 class="section-title">Quick links</h2>
     <div class="card" style="padding:6px 4px">
       ${ql('🗓️','Day-by-day itinerary','itinerary')}
@@ -675,7 +716,7 @@ function renderItinerary(main){
 
 /* ============ BOOKINGS ============ */
 function renderBookings(main){
-  const order = ['parking','flightOut','car','hotel','show','flightHome'];
+  const order = ['parking','flightOut','car','hotel','temple','vb','show','flightHome'];
   main.innerHTML = `<h2 class="section-title">Confirmations</h2>
     <div class="card" style="padding:6px 14px">${order.map(k=>{
       const b=BOOKINGS[k];
